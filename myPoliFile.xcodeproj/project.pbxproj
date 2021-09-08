@@ -23,6 +23,8 @@
 		66230C9E26E8DB93003DFD41 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66230C9D26E8DB93003DFD41 /* AlertViewController.swift */; };
 		66230CA026E8DDDC003DFD41 /* ErrorAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66230C9F26E8DDDC003DFD41 /* ErrorAlertController.swift */; };
 		66230CA226E8E35D003DFD41 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66230CA126E8E35D003DFD41 /* TestViewController.swift */; };
+		66230CA426E8EA25003DFD41 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66230CA326E8EA25003DFD41 /* MainViewController.swift */; };
+		66230CA726E8FFAF003DFD41 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66230CA626E8FFAF003DFD41 /* Course.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		66230C9D26E8DB93003DFD41 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		66230C9F26E8DDDC003DFD41 /* ErrorAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertController.swift; sourceTree = "<group>"; };
 		66230CA126E8E35D003DFD41 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		66230CA326E8EA25003DFD41 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		66230CA626E8FFAF003DFD41 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,7 @@
 		661FC5BC26E890E200B33983 /* myPoliFile */ = {
 			isa = PBXGroup;
 			children = (
+				66230CA526E8FF99003DFD41 /* Models */,
 				66230C9C26E8DB75003DFD41 /* Alerts */,
 				66230C9926E8CC1F003DFD41 /* Network */,
 				66230C9226E8AB43003DFD41 /* UIElements */,
@@ -84,10 +89,10 @@
 				661FC5C626E890E300B33983 /* Assets.xcassets */,
 				661FC5C826E890E300B33983 /* LaunchScreen.storyboard */,
 				661FC5CB26E890E300B33983 /* Info.plist */,
-				661FC5D126E890FF00B33983 /* User.swift */,
 				66230C9326E8ABA6003DFD41 /* PreferenceManager.swift */,
 				66230C9726E8BFB5003DFD41 /* LoadingViewController.swift */,
 				66230CA126E8E35D003DFD41 /* TestViewController.swift */,
+				66230CA326E8EA25003DFD41 /* MainViewController.swift */,
 			);
 			path = myPoliFile;
 			sourceTree = "<group>";
@@ -127,6 +132,15 @@
 				66230C9F26E8DDDC003DFD41 /* ErrorAlertController.swift */,
 			);
 			path = Alerts;
+			sourceTree = "<group>";
+		};
+		66230CA526E8FF99003DFD41 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				661FC5D126E890FF00B33983 /* User.swift */,
+				66230CA626E8FFAF003DFD41 /* Course.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,7 +220,9 @@
 				66230C9626E8ADE2003DFD41 /* WebLoginViewController.swift in Sources */,
 				661FC5C226E890E200B33983 /* WelcomeViewController.swift in Sources */,
 				66230C9426E8ABA6003DFD41 /* PreferenceManager.swift in Sources */,
+				66230CA726E8FFAF003DFD41 /* Course.swift in Sources */,
 				66230C9E26E8DB93003DFD41 /* AlertViewController.swift in Sources */,
+				66230CA426E8EA25003DFD41 /* MainViewController.swift in Sources */,
 				661FC5BE26E890E200B33983 /* AppDelegate.swift in Sources */,
 				66230C9826E8BFB5003DFD41 /* LoadingViewController.swift in Sources */,
 				66230C8B26E899C2003DFD41 /* WebManager.swift in Sources */,

@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         var rootVC: UIViewController!
+        PreferenceManager.removeToken()
         if(PreferenceManager.isTokenAvailable()){
             if let token = PreferenceManager.getToken() {
                 User.mySelf.token = token

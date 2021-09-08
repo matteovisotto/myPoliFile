@@ -70,7 +70,8 @@ extension LoadingViewController: TaskManagerDelegate {
                                     User.mySelf.userId = userId
                                     DispatchQueue.main.async {
                                         //Go to main app
-                                        let mainVC = TestViewController()
+                                        let mainVC = UINavigationController(rootViewController: MainViewController())
+                                        mainVC.navigationBar.isHidden = true
                                         let ad = UIApplication.shared.delegate as! AppDelegate
                                         let window = ad.window
                                         window?.rootViewController = mainVC
@@ -81,25 +82,34 @@ extension LoadingViewController: TaskManagerDelegate {
                                     let errorVC = ErrorAlertController()
                                     errorVC.setContent(title: "Error", message: "Unable to parse your personal data")
                                     errorVC.modalPresentationStyle = .overFullScreen
-                                    self.present(errorVC, animated: true, completion: nil)
+                                    DispatchQueue.main.async {
+                                        self.present(errorVC, animated: true, completion: nil)
+                                    }
+                                    
                                 }
                             } else {
                                 let errorVC = ErrorAlertController()
                                 errorVC.setContent(title: "Error", message: "Unable to find your personal data")
                                 errorVC.modalPresentationStyle = .overFullScreen
-                                self.present(errorVC, animated: true, completion: nil)
+                                DispatchQueue.main.async {
+                                    self.present(errorVC, animated: true, completion: nil)
+                                }
                             }
                         } else {
                             let errorVC = ErrorAlertController()
                             errorVC.setContent(title: "Error", message: "Unable to convert the received data")
                             errorVC.modalPresentationStyle = .overFullScreen
-                            self.present(errorVC, animated: true, completion: nil)
+                            DispatchQueue.main.async {
+                                self.present(errorVC, animated: true, completion: nil)
+                            }
                         }
                     } catch {
                         let errorVC = ErrorAlertController()
                         errorVC.setContent(title: "Error", message: error.localizedDescription)
                         errorVC.modalPresentationStyle = .overFullScreen
-                        self.present(errorVC, animated: true, completion: nil)
+                        DispatchQueue.main.async {
+                            self.present(errorVC, animated: true, completion: nil)
+                        }
                     }
                 }
             } else {
@@ -107,7 +117,9 @@ extension LoadingViewController: TaskManagerDelegate {
                 let errorVC = ErrorAlertController()
                 errorVC.setContent(title: "Error", message: stringContent)
                 errorVC.modalPresentationStyle = .overFullScreen
-                self.present(errorVC, animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    self.present(errorVC, animated: true, completion: nil)
+                }
             }
         
     }
