@@ -12,8 +12,7 @@ class User: NSObject {
         
     public var token: String = ""
     public var userId: Int = 0
-    public var name: String = ""
-    public var surname: String = ""
+    public var fullname: String = ""
     public var email: String = ""
     public var username: String = "10608623@polimi.it"
 }

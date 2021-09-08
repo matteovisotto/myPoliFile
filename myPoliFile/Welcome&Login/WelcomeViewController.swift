@@ -38,19 +38,26 @@ class WelcomeViewController: BaseViewController {
                 do {
                     let dic = try JSONSerialization.jsonObject(with: data, options: []) as? [String: String]
                     if let token = dic?["token"] {
-                        //PreferenceManager.setToken(token: token)
+                        PreferenceManager.setToken(token: token)
                         User.mySelf.token = token
-                        let x = LoadingViewController()
-                        x.modalPresentationStyle = .fullScreen
-                        self.present(x, animated: true, completion: nil)
+                        let loadignVC = LoadingViewController()
+                        loadignVC.modalPresentationStyle = .fullScreen
+                        self.present(loadignVC, animated: true, completion: nil)
                     } else {
-                        //Show error
+                        let errorVC = ErrorAlertController()
+                        errorVC.setContent(title: "Error", message: "Unable to find your personal token. Please check from the webpage if the access key is configured")
+                        errorVC.modalPresentationStyle = .overFullScreen
+                        self.present(errorVC, animated: true, completion: nil)
                     }
                 } catch {
-                    print(error.localizedDescription)
+                    let errorVC = ErrorAlertController()
+                    errorVC.setContent(title: "Error", message: error.localizedDescription)
+                    errorVC.modalPresentationStyle = .overFullScreen
+                    self.present(errorVC, animated: true, completion: nil)
                 }
             }
         }
+        
     }
 
        

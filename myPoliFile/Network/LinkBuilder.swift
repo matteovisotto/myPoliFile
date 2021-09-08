@@ -17,9 +17,19 @@ class LinkBuilder {
     public static let siteURL: String = "https://webeep.polimi.it/"
     public static let webserver: String = "webservice/rest/server.php"
     
+    public static func build(serviceName: String) -> String{
+        return LinkBuilder.build(serviceName: serviceName, withParameters: nil, returnMethod: .json)
+    }
     
+    public static func build(serviceName: String, withParameters params: String?) -> String{
+        return LinkBuilder.build(serviceName: serviceName, withParameters: params, returnMethod: .json)
+    }
     
-    public static func build(serviceName: String, withParameters params: String?, returnMethod: LinkBuilder.OutputFormat = LinkBuilder.OutputFormat.json) -> String {
+    public static func build(serviceName: String, returnMethod: LinkBuilder.OutputFormat) -> String {
+        return LinkBuilder.build(serviceName: serviceName, withParameters: nil, returnMethod: returnMethod)
+    }
+    
+    public static func build(serviceName: String, withParameters params: String?, returnMethod: LinkBuilder.OutputFormat) -> String {
         var url: String = siteURL
         url = url + webserver + "?moodlewsrestformat="+returnMethod.rawValue+"&wstoken="+User.mySelf.token+"&wsfunction="+serviceName+"&"+(params ?? "")
         return url

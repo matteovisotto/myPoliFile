@@ -19,6 +19,10 @@
 		66230C9426E8ABA6003DFD41 /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66230C9326E8ABA6003DFD41 /* PreferenceManager.swift */; };
 		66230C9626E8ADE2003DFD41 /* WebLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66230C9526E8ADE2003DFD41 /* WebLoginViewController.swift */; };
 		66230C9826E8BFB5003DFD41 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66230C9726E8BFB5003DFD41 /* LoadingViewController.swift */; };
+		66230C9B26E8CC39003DFD41 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66230C9A26E8CC39003DFD41 /* TaskManager.swift */; };
+		66230C9E26E8DB93003DFD41 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66230C9D26E8DB93003DFD41 /* AlertViewController.swift */; };
+		66230CA026E8DDDC003DFD41 /* ErrorAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66230C9F26E8DDDC003DFD41 /* ErrorAlertController.swift */; };
+		66230CA226E8E35D003DFD41 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66230CA126E8E35D003DFD41 /* TestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,10 @@
 		66230C9326E8ABA6003DFD41 /* PreferenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
 		66230C9526E8ADE2003DFD41 /* WebLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebLoginViewController.swift; sourceTree = "<group>"; };
 		66230C9726E8BFB5003DFD41 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		66230C9A26E8CC39003DFD41 /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
+		66230C9D26E8DB93003DFD41 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		66230C9F26E8DDDC003DFD41 /* ErrorAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertController.swift; sourceTree = "<group>"; };
+		66230CA126E8E35D003DFD41 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +76,8 @@
 		661FC5BC26E890E200B33983 /* myPoliFile */ = {
 			isa = PBXGroup;
 			children = (
+				66230C9C26E8DB75003DFD41 /* Alerts */,
+				66230C9926E8CC1F003DFD41 /* Network */,
 				66230C9226E8AB43003DFD41 /* UIElements */,
 				66230C9126E8AB35003DFD41 /* Welcome&Login */,
 				661FC5BD26E890E200B33983 /* AppDelegate.swift */,
@@ -75,11 +85,9 @@
 				661FC5C826E890E300B33983 /* LaunchScreen.storyboard */,
 				661FC5CB26E890E300B33983 /* Info.plist */,
 				661FC5D126E890FF00B33983 /* User.swift */,
-				661FC5D326E8936500B33983 /* LinkBuilder.swift */,
-				66230C8A26E899C2003DFD41 /* WebManager.swift */,
-				66230C8D26E8A32C003DFD41 /* BaseViewController.swift */,
 				66230C9326E8ABA6003DFD41 /* PreferenceManager.swift */,
 				66230C9726E8BFB5003DFD41 /* LoadingViewController.swift */,
+				66230CA126E8E35D003DFD41 /* TestViewController.swift */,
 			);
 			path = myPoliFile;
 			sourceTree = "<group>";
@@ -96,9 +104,29 @@
 		66230C9226E8AB43003DFD41 /* UIElements */ = {
 			isa = PBXGroup;
 			children = (
+				66230C8D26E8A32C003DFD41 /* BaseViewController.swift */,
 				66230C8F26E8A3F7003DFD41 /* AppButton.swift */,
+				66230C9D26E8DB93003DFD41 /* AlertViewController.swift */,
 			);
 			path = UIElements;
+			sourceTree = "<group>";
+		};
+		66230C9926E8CC1F003DFD41 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				661FC5D326E8936500B33983 /* LinkBuilder.swift */,
+				66230C8A26E899C2003DFD41 /* WebManager.swift */,
+				66230C9A26E8CC39003DFD41 /* TaskManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		66230C9C26E8DB75003DFD41 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				66230C9F26E8DDDC003DFD41 /* ErrorAlertController.swift */,
+			);
+			path = Alerts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,15 +198,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66230CA226E8E35D003DFD41 /* TestViewController.swift in Sources */,
 				66230C9026E8A3F7003DFD41 /* AppButton.swift in Sources */,
 				661FC5D226E890FF00B33983 /* User.swift in Sources */,
 				661FC5D426E8936500B33983 /* LinkBuilder.swift in Sources */,
+				66230C9B26E8CC39003DFD41 /* TaskManager.swift in Sources */,
 				66230C9626E8ADE2003DFD41 /* WebLoginViewController.swift in Sources */,
 				661FC5C226E890E200B33983 /* WelcomeViewController.swift in Sources */,
 				66230C9426E8ABA6003DFD41 /* PreferenceManager.swift in Sources */,
+				66230C9E26E8DB93003DFD41 /* AlertViewController.swift in Sources */,
 				661FC5BE26E890E200B33983 /* AppDelegate.swift in Sources */,
 				66230C9826E8BFB5003DFD41 /* LoadingViewController.swift in Sources */,
 				66230C8B26E899C2003DFD41 /* WebManager.swift in Sources */,
+				66230CA026E8DDDC003DFD41 /* ErrorAlertController.swift in Sources */,
 				66230C8E26E8A32C003DFD41 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
