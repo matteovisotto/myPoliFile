@@ -24,6 +24,14 @@ class BaseViewController: UIViewController {
         }
         return c
     }
+    
+    open var secondaryLabelColor: UIColor {
+        var c: UIColor = UIColor.darkGray
+        if #available(iOS 13.0, *) {
+            c = UIColor.secondaryLabel
+        }
+        return c
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,6 +8,9 @@
 import Foundation
 
 class Course: NSObject {
+    
+    public static var courses: [Course] = []
+    
     var courseId: Int = 0
     var fullname: String = ""
     var displayName: String = ""

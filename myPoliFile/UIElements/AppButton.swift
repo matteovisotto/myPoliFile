@@ -9,7 +9,8 @@ import UIKit
 
 class AppButton: UIButton {
     
-    public var normalColor: UIColor = #colorLiteral(red: 0.386259675, green: 0.7774221301, blue: 0.6624203324, alpha: 1) //#5BC8A8
+    //public var normalColor: UIColor = #colorLiteral(red: 0.386259675, green: 0.7774221301, blue: 0.6624203324, alpha: 1) //#5BC8A8
+    public var normalColor: UIColor = UIColor(displayP3Red: 65/255.0, green: 131/255.0, blue: 215/255.0, alpha: 1) //#4183d7
     public var highlightedColor: UIColor = #colorLiteral(red: 0.07058823529, green: 0.06274509804, blue: 0.3215686275, alpha: 1) //#121052
     public var normalTextColor: UIColor = .white
     public var highlightedTextColor: UIColor = .white
@@ -37,19 +38,3 @@ class AppButton: UIButton {
     
 }
 
-extension UIView {
-    @discardableResult
-    func applyGradient(colours: [UIColor]) -> CAGradientLayer {
-        return self.applyGradient(colours: colours, locations: nil)
-    }
-
-    @discardableResult
-    func applyGradient(colours: [UIColor], locations: [NSNumber]?) -> CAGradientLayer {
-        let gradient: CAGradientLayer = CAGradientLayer()
-        gradient.frame = self.bounds
-        gradient.colors = colours.map { $0.cgColor }
-        gradient.locations = locations
-        self.layer.insertSublayer(gradient, at: 0)
-        return gradient
-    }
-}

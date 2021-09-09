@@ -16,6 +16,8 @@ class ErrorAlertController: AlertViewController {
     private var alertTitle: String = ""
     private var alertMessage: String = ""
     
+    open var isLoadingPhase = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
@@ -57,6 +59,13 @@ class ErrorAlertController: AlertViewController {
     
     @objc private func didTapDismiss() {
         self.dismiss(animated: true, completion: nil)
+        if isLoadingPhase {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let window = appDelegate.window
+            window?.rootViewController = FatalErrorViewController()
+            window?.makeKeyAndVisible()
+            
+        }
     }
 
 }

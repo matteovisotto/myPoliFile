@@ -31,13 +31,13 @@ class WelcomeViewController: BaseViewController {
     
     @objc private func didTapStartButton() {
         let loginVC = WebLoginViewController()
-        loginVC.modalPresentationStyle = .fullScreen
-        self.present(loginVC, animated: true, completion: nil)
+        navigationController?.pushViewController(loginVC, animated: true)
         loginVC.callback = { content in
             if let data = content.data(using: .utf8) {
                 do {
                     let dic = try JSONSerialization.jsonObject(with: data, options: []) as? [String: String]
                     if let token = dic?["token"] {
+                        self.startButton.isHidden = true
                         PreferenceManager.setToken(token: token)
                         User.mySelf.token = token
                         let loadignVC = LoadingViewController()

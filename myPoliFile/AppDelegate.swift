@@ -15,16 +15,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         var rootVC: UIViewController!
-        PreferenceManager.removeToken()
+        //PreferenceManager.removeToken()
         if(PreferenceManager.isTokenAvailable()){
             if let token = PreferenceManager.getToken() {
                 User.mySelf.token = token
                 rootVC = LoadingViewController()
             } else {
-                rootVC = WelcomeViewController()
+                let navController = UINavigationController(rootViewController: WelcomeViewController())
+                navController.navigationBar.isHidden = true
+                rootVC = navController
             }
         } else {
-            rootVC = WelcomeViewController()
+            let navController = UINavigationController(rootViewController: WelcomeViewController())
+            navController.navigationBar.isHidden = true
+            rootVC = navController
         }
         window?.rootViewController = rootVC
         window?.makeKeyAndVisible()

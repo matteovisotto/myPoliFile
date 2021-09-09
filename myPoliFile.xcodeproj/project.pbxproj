@@ -25,6 +25,15 @@
 		66230CA226E8E35D003DFD41 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66230CA126E8E35D003DFD41 /* TestViewController.swift */; };
 		66230CA426E8EA25003DFD41 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66230CA326E8EA25003DFD41 /* MainViewController.swift */; };
 		66230CA726E8FFAF003DFD41 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66230CA626E8FFAF003DFD41 /* Course.swift */; };
+		66230CA926E9DF43003DFD41 /* BackHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66230CA826E9DF43003DFD41 /* BackHeader.swift */; };
+		66230CAB26E9E171003DFD41 /* LoadingLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66230CAA26E9E171003DFD41 /* LoadingLoginView.swift */; };
+		66230CB526E9E513003DFD41 /* CircleLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66230CAE26E9E512003DFD41 /* CircleLoader.swift */; };
+		66230CBA26E9E513003DFD41 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66230CB326E9E513003DFD41 /* Loader.swift */; };
+		66230CBC26E9F8F1003DFD41 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66230CBB26E9F8F1003DFD41 /* Category.swift */; };
+		66230CBF26E9FBD9003DFD41 /* CourseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66230CBE26E9FBD9003DFD41 /* CourseParser.swift */; };
+		66230CC126E9FD9A003DFD41 /* CategoryParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66230CC026E9FD9A003DFD41 /* CategoryParser.swift */; };
+		66230CC326EA2625003DFD41 /* UserParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66230CC226EA2625003DFD41 /* UserParser.swift */; };
+		66230CC526EA2974003DFD41 /* FatalErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66230CC426EA2974003DFD41 /* FatalErrorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +57,15 @@
 		66230CA126E8E35D003DFD41 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		66230CA326E8EA25003DFD41 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		66230CA626E8FFAF003DFD41 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		66230CA826E9DF43003DFD41 /* BackHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackHeader.swift; sourceTree = "<group>"; };
+		66230CAA26E9E171003DFD41 /* LoadingLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingLoginView.swift; sourceTree = "<group>"; };
+		66230CAE26E9E512003DFD41 /* CircleLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleLoader.swift; sourceTree = "<group>"; };
+		66230CB326E9E513003DFD41 /* Loader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
+		66230CBB26E9F8F1003DFD41 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		66230CBE26E9FBD9003DFD41 /* CourseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseParser.swift; sourceTree = "<group>"; };
+		66230CC026E9FD9A003DFD41 /* CategoryParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryParser.swift; sourceTree = "<group>"; };
+		66230CC226EA2625003DFD41 /* UserParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserParser.swift; sourceTree = "<group>"; };
+		66230CC426EA2974003DFD41 /* FatalErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FatalErrorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +98,8 @@
 		661FC5BC26E890E200B33983 /* myPoliFile */ = {
 			isa = PBXGroup;
 			children = (
+				66230CBD26E9FBC8003DFD41 /* Parsers */,
+				66230CAC26E9E501003DFD41 /* Loaders */,
 				66230CA526E8FF99003DFD41 /* Models */,
 				66230C9C26E8DB75003DFD41 /* Alerts */,
 				66230C9926E8CC1F003DFD41 /* Network */,
@@ -112,6 +132,8 @@
 				66230C8D26E8A32C003DFD41 /* BaseViewController.swift */,
 				66230C8F26E8A3F7003DFD41 /* AppButton.swift */,
 				66230C9D26E8DB93003DFD41 /* AlertViewController.swift */,
+				66230CA826E9DF43003DFD41 /* BackHeader.swift */,
+				66230CAA26E9E171003DFD41 /* LoadingLoginView.swift */,
 			);
 			path = UIElements;
 			sourceTree = "<group>";
@@ -130,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				66230C9F26E8DDDC003DFD41 /* ErrorAlertController.swift */,
+				66230CC426EA2974003DFD41 /* FatalErrorViewController.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -139,8 +162,28 @@
 			children = (
 				661FC5D126E890FF00B33983 /* User.swift */,
 				66230CA626E8FFAF003DFD41 /* Course.swift */,
+				66230CBB26E9F8F1003DFD41 /* Category.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		66230CAC26E9E501003DFD41 /* Loaders */ = {
+			isa = PBXGroup;
+			children = (
+				66230CAE26E9E512003DFD41 /* CircleLoader.swift */,
+				66230CB326E9E513003DFD41 /* Loader.swift */,
+			);
+			path = Loaders;
+			sourceTree = "<group>";
+		};
+		66230CBD26E9FBC8003DFD41 /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				66230CBE26E9FBD9003DFD41 /* CourseParser.swift */,
+				66230CC026E9FD9A003DFD41 /* CategoryParser.swift */,
+				66230CC226EA2625003DFD41 /* UserParser.swift */,
+			);
+			path = Parsers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,21 +256,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				66230CA226E8E35D003DFD41 /* TestViewController.swift in Sources */,
+				66230CA926E9DF43003DFD41 /* BackHeader.swift in Sources */,
 				66230C9026E8A3F7003DFD41 /* AppButton.swift in Sources */,
 				661FC5D226E890FF00B33983 /* User.swift in Sources */,
 				661FC5D426E8936500B33983 /* LinkBuilder.swift in Sources */,
 				66230C9B26E8CC39003DFD41 /* TaskManager.swift in Sources */,
 				66230C9626E8ADE2003DFD41 /* WebLoginViewController.swift in Sources */,
+				66230CC326EA2625003DFD41 /* UserParser.swift in Sources */,
 				661FC5C226E890E200B33983 /* WelcomeViewController.swift in Sources */,
 				66230C9426E8ABA6003DFD41 /* PreferenceManager.swift in Sources */,
 				66230CA726E8FFAF003DFD41 /* Course.swift in Sources */,
+				66230CB526E9E513003DFD41 /* CircleLoader.swift in Sources */,
+				66230CC126E9FD9A003DFD41 /* CategoryParser.swift in Sources */,
 				66230C9E26E8DB93003DFD41 /* AlertViewController.swift in Sources */,
 				66230CA426E8EA25003DFD41 /* MainViewController.swift in Sources */,
 				661FC5BE26E890E200B33983 /* AppDelegate.swift in Sources */,
+				66230CAB26E9E171003DFD41 /* LoadingLoginView.swift in Sources */,
 				66230C9826E8BFB5003DFD41 /* LoadingViewController.swift in Sources */,
 				66230C8B26E899C2003DFD41 /* WebManager.swift in Sources */,
+				66230CC526EA2974003DFD41 /* FatalErrorViewController.swift in Sources */,
 				66230CA026E8DDDC003DFD41 /* ErrorAlertController.swift in Sources */,
+				66230CBA26E9E513003DFD41 /* Loader.swift in Sources */,
 				66230C8E26E8A32C003DFD41 /* BaseViewController.swift in Sources */,
+				66230CBC26E9F8F1003DFD41 /* Category.swift in Sources */,
+				66230CBF26E9FBD9003DFD41 /* CourseParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

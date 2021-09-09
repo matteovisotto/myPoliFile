@@ -10,7 +10,9 @@ import UIKit
 class LoadingViewController: BaseViewController {
 
     private var userInfoURL = ""
+    private var categoriesURL = ""
     private var userTask: TaskManager!
+    private var categoryTask: TaskManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,12 +21,19 @@ class LoadingViewController: BaseViewController {
         let p = LinkBuilder.prepareParameters(params: parameter)
         self.userInfoURL = LinkBuilder.build(serviceName: "core_user_get_users_by_field", withParameters: p)
         loadUserInfo()
+        self.categoriesURL = LinkBuilder.build(serviceName: "core_course_get_categories")
     }
     
     private func loadUserInfo() {
         userTask = TaskManager(url: URL(string: userInfoURL)!)
         userTask.delegate = self
         userTask.execute()
+    }
+    
+    private func loadCategories() {
+        categoryTask = TaskManager(url: URL(string: self.categoriesURL)!)
+        categoryTask.delegate = self
+        categoryTask.execute()
     }
     
     private func setupLayout() {
@@ -55,69 +64,30 @@ extension LoadingViewController: TaskManagerDelegate {
     func taskManager(taskManager: TaskManager, didFinishWith result: Bool, stringContent: String) {
             //Load user information task result
             if result {
-                if let data = stringContent.data(using: .utf8) {
-                    do {
-                        let people = try JSONSerialization.jsonObject(with: data, options: []) as? [AnyObject]
-                        if let p = people {
-                            if (p.count == 1) {
-                                let person = p[0] as? [String:Any]
-                                if let pr = person {
-                                    let userId: Int = pr["id"] as! Int
-                                    let fullname: String = pr["fullname"] as! String
-                                    let email: String = pr["email"] as! String
-                                    User.mySelf.email = email
-                                    User.mySelf.fullname = fullname
-                                    User.mySelf.userId = userId
-                                    DispatchQueue.main.async {
-                                        //Go to main app
-                                        let mainVC = UINavigationController(rootViewController: MainViewController())
-                                        mainVC.navigationBar.isHidden = true
-                                        let ad = UIApplication.shared.delegate as! AppDelegate
-                                        let window = ad.window
-                                        window?.rootViewController = mainVC
-                                        window?.makeKeyAndVisible()
-                                        self.dismiss(animated: true, completion: nil)
-                                    }
-                                } else {
-                                    let errorVC = ErrorAlertController()
-                                    errorVC.setContent(title: "Error", message: "Unable to parse your personal data")
-                                    errorVC.modalPresentationStyle = .overFullScreen
-                                    DispatchQueue.main.async {
-                                        self.present(errorVC, animated: true, completion: nil)
-                                    }
-                                    
-                                }
-                            } else {
-                                let errorVC = ErrorAlertController()
-                                errorVC.setContent(title: "Error", message: "Unable to find your personal data")
-                                errorVC.modalPresentationStyle = .overFullScreen
-                                DispatchQueue.main.async {
-                                    self.present(errorVC, animated: true, completion: nil)
-                                }
-                            }
-                        } else {
-                            let errorVC = ErrorAlertController()
-                            errorVC.setContent(title: "Error", message: "Unable to convert the received data")
-                            errorVC.modalPresentationStyle = .overFullScreen
-                            DispatchQueue.main.async {
-                                self.present(errorVC, animated: true, completion: nil)
-                            }
-                        }
-                    } catch {
-                        let errorVC = ErrorAlertController()
-                        errorVC.setContent(title: "Error", message: error.localizedDescription)
-                        errorVC.modalPresentationStyle = .overFullScreen
-                        DispatchQueue.main.async {
-                            self.present(errorVC, animated: true, completion: nil)
-                        }
+                if(taskManager == userTask) {
+                    let uParser = UserParser(target: self, stringData: stringContent)
+                    uParser.parse {
+                        self.loadCategories()
+                    }
+                } else if (taskManager == categoryTask) {
+                    let cParser = CategoryParser(target: self, stringData: stringContent)
+                    cParser.parse {
+                        let mainVC = UINavigationController(rootViewController: MainViewController())
+                        mainVC.navigationBar.isHidden = true
+                        let ad = UIApplication.shared.delegate as! AppDelegate
+                        let window = ad.window
+                        window?.rootViewController = mainVC
+                        window?.makeKeyAndVisible()
+                        self.dismiss(animated: true, completion: nil)
                     }
                 }
             } else {
                 //Show error
-                let errorVC = ErrorAlertController()
-                errorVC.setContent(title: "Error", message: stringContent)
-                errorVC.modalPresentationStyle = .overFullScreen
+                
                 DispatchQueue.main.async {
+                    let errorVC = ErrorAlertController()
+                    errorVC.setContent(title: "Error", message: stringContent)
+                    errorVC.modalPresentationStyle = .overFullScreen
                     self.present(errorVC, animated: true, completion: nil)
                 }
             }

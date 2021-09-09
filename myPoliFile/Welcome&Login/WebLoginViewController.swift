@@ -11,7 +11,7 @@ import WebKit
 class WebLoginViewController: BaseViewController, WKNavigationDelegate {
     
     private var webView = WKWebView()
-    private var navigationBar = UIView()
+    private var navigationBar = BackHeader()
     private var loadingView: UIView!
     var callback: (_ content: String)->() = {_ in }
 
@@ -32,29 +32,8 @@ class WebLoginViewController: BaseViewController, WKNavigationDelegate {
         navigationBar.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor).isActive = true
         navigationBar.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor).isActive = true
         navigationBar.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
-        
-        let titleLabel = UILabel()
-        titleLabel.text = "PoliMi Login"
-        titleLabel.font = .boldSystemFont(ofSize: 18)
-        titleLabel.textAlignment = .center
-        navigationBar.addSubview(titleLabel)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.topAnchor.constraint(equalTo: navigationBar.topAnchor).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: navigationBar.rightAnchor).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: navigationBar.leftAnchor).isActive = true
-        
-        let backButton = UIButton()
-        backButton.setImage(UIImage(named: "arrowBack"), for: .normal)
-        backButton.imageView?.tintColor = labelColor
-        backButton.imageView?.contentMode = .scaleAspectFit
-        navigationBar.addSubview(backButton)
-        backButton.translatesAutoresizingMaskIntoConstraints = false
-        backButton.leftAnchor.constraint(equalTo: navigationBar.leftAnchor, constant: 10).isActive = true
-        backButton.widthAnchor.constraint(equalToConstant: 33).isActive = true
-        backButton.heightAnchor.constraint(equalToConstant: 33).isActive = true
-        backButton.centerYAnchor.constraint(equalTo: navigationBar.centerYAnchor).isActive = true
-        backButton.addTarget(self, action: #selector(didTapback), for: .touchUpInside)
+        navigationBar.backButton.addTarget(self, action: #selector(didTapback), for: .touchUpInside)
+        navigationBar.titleLabel.text = "PoliMi Login"
         
         self.view.addSubview(webView)
         webView.translatesAutoresizingMaskIntoConstraints = false
@@ -65,18 +44,8 @@ class WebLoginViewController: BaseViewController, WKNavigationDelegate {
     }
     
     private func prepareLoadingView() {
-        loadingView = UIView()
+        loadingView = LoadingLoginView()
         loadingView.backgroundColor = backgroundColor
-        let label = UILabel()
-        label.text = "Completing login..."
-        label.font = .boldSystemFont(ofSize: 30)
-        label.numberOfLines = .zero
-        label.textAlignment = .center
-        loadingView.addSubview(label)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.centerYAnchor.constraint(equalTo: loadingView.centerYAnchor).isActive = true
-        label.leftAnchor.constraint(equalTo: loadingView.leftAnchor, constant: 10).isActive = true
-        label.rightAnchor.constraint(equalTo: loadingView.rightAnchor, constant: -10).isActive = true
         self.view.addSubview(loadingView)
         loadingView.translatesAutoresizingMaskIntoConstraints = false
         loadingView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor).isActive = true
@@ -94,6 +63,7 @@ class WebLoginViewController: BaseViewController, WKNavigationDelegate {
         } else if (currentUrl == "https://webeep.polimi.it/login/token.php?username=" + User.mySelf.username + "&password=&service=moodle_mobile_app") {
             webView.evaluateJavaScript("document.documentElement.innerText.toString()",
                                        completionHandler: { (html: Any?, error: Error?) in
+                                        self.navigationController?.popViewController(animated: true)
                                         self.dismiss(animated: true, completion: nil)
                                         DispatchQueue.main.async {
                                             self.callback(html as! String)
@@ -104,6 +74,7 @@ class WebLoginViewController: BaseViewController, WKNavigationDelegate {
     }
     
     @objc private func didTapback(){
+        self.navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
     }
 

@@ -15,6 +15,7 @@ class User: NSObject {
     public var fullname: String = ""
     public var email: String = ""
     public var username: String = "10608623@polimi.it"
+    public var profileImageURL: String = ""
 }
 
 
