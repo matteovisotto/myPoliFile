@@ -9,42 +9,132 @@ import UIKit
 
 class MainViewController: BaseViewController {
 
-    private var courseTask: TaskManager!
+    private var collectionView: UICollectionView!
+    private var containerView = UIView()
+    
+    private var headerView = HomeHeader()
+    
+    private var selectedItem: Int = 0
+    
+    private let viewControllers: [UIViewController] = [CoursesViewController(), SearchViewController(), DownloadViewController()]
+    private let titles: [String] = ["My Courses", "Search", "Download"]
+    private let imageNames: [String] = ["courses", "search", "download"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        downloadCourses()
+        self.hideKeyboardWhenTappedAround()
+        self.view.backgroundColor = .groupTableViewBackground
         
+        let collectionViewLayout = UICollectionViewFlowLayout()
         
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         
+        setHeader()
+        setCollectionView()
+        setContainerView()
+        
+        collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: .right)
+        displayContentController(content: viewControllers[self.selectedItem])
     }
     
-    private func downloadCourses() {
-        let parameters: [String: Any] = ["userid":User.mySelf.userId]
-        let urlString = LinkBuilder.build(serviceName: "core_enrol_get_users_courses", withParameters: LinkBuilder.prepareParameters(params: parameters))
-        self.courseTask = TaskManager(url: URL(string: urlString)!)
-        self.courseTask.delegate = self
-        self.courseTask.execute()
+    
+    @objc private func didTapSettingBtn() {
+        self.navigationController?.pushViewController(SettingsViewController(), animated: true)
     }
-
-}
-
-extension MainViewController: TaskManagerDelegate {
-    func taskManager(taskManager: TaskManager, didFinishWith result: Bool, stringContent: String) {
-        if result {
-            let parser = CourseParser(target: self, stringData: stringContent)
-            parser.parse {
-                //Update View -> Already in the mail thread
-            }
-        } else {
-            //Show error
-            let errorVC = ErrorAlertController()
-            errorVC.setContent(title: "Error", message: stringContent)
-            errorVC.modalPresentationStyle = .overFullScreen
-            DispatchQueue.main.async {
-                self.present(errorVC, animated: true, completion: nil)
-            }
-        }
+    
+    @objc private func didTapNotificationBtn() {
+        print("Implement notification!")
+    }
+    
+    private func setHeader() {
+        self.view.addSubview(headerView)
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        headerView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        headerView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor).isActive = true
+        headerView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor).isActive = true
         
+        //headerView.logoImage = UIImage(named: "logo")!
+        headerView.headerTitle = "My Courses"
+        headerView.settingsButton.addTarget(self, action: #selector(didTapSettingBtn), for: .touchUpInside)
+        headerView.notificationButton.addTarget(self, action: #selector(didTapNotificationBtn), for: .touchUpInside)
     }
+    
+    private func setCollectionView() {
+        self.view.addSubview(collectionView)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        collectionView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: 10).isActive = true
+        collectionView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: -10).isActive = true
+        collectionView.backgroundColor = backgroundColor
+        collectionView.layer.cornerRadius = 10
+        collectionView.layer.masksToBounds = false
+        collectionView.layer.shadowColor = UIColor.darkGray.cgColor
+        collectionView.layer.shadowOffset = CGSize(width: 0, height: 3)
+        collectionView.layer.shadowRadius = 1.5
+        collectionView.layer.shadowOpacity = 0.3
+        
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        collectionView.register(TabBarCollectionViewCell.self, forCellWithReuseIdentifier: "menuCell")
+    }
+    
+    private func setContainerView() {
+        self.view.addSubview(containerView)
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.topAnchor.constraint(equalTo: headerView.bottomAnchor).isActive = true
+        containerView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor).isActive = true
+        containerView.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: -3).isActive = true
+        containerView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor).isActive = true
+        containerView.backgroundColor = .clear
+    }
+
+    private func displayContentController(content: UIViewController) {
+        addChild(content)
+        content.view.frame = CGRect(x: 0, y: 0, width: self.containerView.frame.width, height: self.containerView.frame.height)
+        self.containerView.addSubview(content.view)
+        content.didMove(toParent: self)
+    }
+    
+    private func hideContentController(content: UIViewController) {
+        content.willMove(toParent: nil)
+        content.view.removeFromSuperview()
+        content.removeFromParent()
+    }
+    
 }
 
+extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.viewControllers.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "menuCell", for: indexPath) as! TabBarCollectionViewCell
+        cell.backgroundColor = .clear
+        cell.image = UIImage(named: self.imageNames[indexPath.item]) ?? UIImage()
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let controllers = CGFloat(self.viewControllers.count)
+        return CGSize(width: (collectionView.bounds.width/controllers)-10, height: collectionView.bounds.height-6)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 3, left: 5, bottom: 3, right: 5)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.hideContentController(content: self.viewControllers[self.selectedItem])
+        self.displayContentController(content: self.viewControllers[indexPath.item])
+        self.headerView.headerTitle = self.titles[indexPath.item]
+        self.selectedItem = indexPath.item
+    }
+}

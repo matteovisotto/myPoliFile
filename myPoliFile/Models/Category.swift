@@ -14,4 +14,14 @@ class Category {
     
     var categoryId: Int = 0
     var categoryName: String = ""
+    
+    public static func getCategoryById(categoryId: Int) -> Category?{
+        for c in self.categories {
+            if(c.categoryId == categoryId){
+                return c
+            }
+        }
+        return nil
+    }
+    
 }

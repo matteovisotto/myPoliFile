@@ -34,10 +34,11 @@ class BackHeader: UIView {
         backButton.setImage(UIImage(named: "arrowBack"), for: .normal)
         backButton.imageView?.tintColor = labelColor
         backButton.imageView?.contentMode = .scaleAspectFit
+        
         addSubview(backButton)
         backButton.translatesAutoresizingMaskIntoConstraints = false
         backButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 10).isActive = true
-        backButton.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        backButton.widthAnchor.constraint(equalToConstant: 25).isActive = true //25
         backButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
         backButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
     }
