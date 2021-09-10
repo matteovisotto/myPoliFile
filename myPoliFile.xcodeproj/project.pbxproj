@@ -51,6 +51,13 @@
 		66DE700426EB5B2B00D8380E /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE700326EB5B2B00D8380E /* Recording.swift */; };
 		66DE700626EB5D9300D8380E /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE700526EB5D9300D8380E /* Announcement.swift */; };
 		66DE700826EB5DAE00D8380E /* Forum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE700726EB5DAE00D8380E /* Forum.swift */; };
+		66DE700B26EB72C900D8380E /* ModuleURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE700A26EB72C900D8380E /* ModuleURL.swift */; };
+		66DE700D26EB72E400D8380E /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE700C26EB72E400D8380E /* Module.swift */; };
+		66DE701026EB750200D8380E /* URLContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE700F26EB750200D8380E /* URLContent.swift */; };
+		66DE701226EB76D100D8380E /* ModuleForum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE701126EB76D100D8380E /* ModuleForum.swift */; };
+		66DE701526EB772300D8380E /* ModuleFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE701426EB772300D8380E /* ModuleFolder.swift */; };
+		66DE701726EB774800D8380E /* FolderContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE701626EB774800D8380E /* FolderContent.swift */; };
+		66DE701926EB789500D8380E /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE701826EB789500D8380E /* Section.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +107,13 @@
 		66DE700326EB5B2B00D8380E /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 		66DE700526EB5D9300D8380E /* Announcement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
 		66DE700726EB5DAE00D8380E /* Forum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forum.swift; sourceTree = "<group>"; };
+		66DE700A26EB72C900D8380E /* ModuleURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleURL.swift; sourceTree = "<group>"; };
+		66DE700C26EB72E400D8380E /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
+		66DE700F26EB750200D8380E /* URLContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLContent.swift; sourceTree = "<group>"; };
+		66DE701126EB76D100D8380E /* ModuleForum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleForum.swift; sourceTree = "<group>"; };
+		66DE701426EB772300D8380E /* ModuleFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFolder.swift; sourceTree = "<group>"; };
+		66DE701626EB774800D8380E /* FolderContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderContent.swift; sourceTree = "<group>"; };
+		66DE701826EB789500D8380E /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,12 +219,14 @@
 		66230CA526E8FF99003DFD41 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				66DE700926EB72B500D8380E /* Modules */,
 				661FC5D126E890FF00B33983 /* User.swift */,
 				66230CA626E8FFAF003DFD41 /* Course.swift */,
 				66230CBB26E9F8F1003DFD41 /* Category.swift */,
 				66DE700326EB5B2B00D8380E /* Recording.swift */,
 				66DE700526EB5D9300D8380E /* Announcement.swift */,
 				66DE700726EB5DAE00D8380E /* Forum.swift */,
+				66DE701826EB789500D8380E /* Section.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -251,6 +267,35 @@
 				664190B426EA9FFF00A08308 /* UIViewControllerExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		66DE700926EB72B500D8380E /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				66DE701326EB771600D8380E /* Folder */,
+				66DE700E26EB74F400D8380E /* URL */,
+				66DE700C26EB72E400D8380E /* Module.swift */,
+				66DE701126EB76D100D8380E /* ModuleForum.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		66DE700E26EB74F400D8380E /* URL */ = {
+			isa = PBXGroup;
+			children = (
+				66DE700A26EB72C900D8380E /* ModuleURL.swift */,
+				66DE700F26EB750200D8380E /* URLContent.swift */,
+			);
+			path = URL;
+			sourceTree = "<group>";
+		};
+		66DE701326EB771600D8380E /* Folder */ = {
+			isa = PBXGroup;
+			children = (
+				66DE701426EB772300D8380E /* ModuleFolder.swift */,
+				66DE701626EB774800D8380E /* FolderContent.swift */,
+			);
+			path = Folder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,6 +376,7 @@
 				661FC5D426E8936500B33983 /* LinkBuilder.swift in Sources */,
 				66230C9B26E8CC39003DFD41 /* TaskManager.swift in Sources */,
 				66230C9626E8ADE2003DFD41 /* WebLoginViewController.swift in Sources */,
+				66DE700D26EB72E400D8380E /* Module.swift in Sources */,
 				664190A526EA68E900A08308 /* SearchViewController.swift in Sources */,
 				66230CC326EA2625003DFD41 /* UserParser.swift in Sources */,
 				664190A126EA53DD00A08308 /* HomeHeader.swift in Sources */,
@@ -348,7 +394,9 @@
 				66DE700826EB5DAE00D8380E /* Forum.swift in Sources */,
 				6641909F26EA4F5500A08308 /* SquareImageButton.swift in Sources */,
 				66230CA426E8EA25003DFD41 /* MainViewController.swift in Sources */,
+				66DE700B26EB72C900D8380E /* ModuleURL.swift in Sources */,
 				661FC5BE26E890E200B33983 /* AppDelegate.swift in Sources */,
+				66DE701026EB750200D8380E /* URLContent.swift in Sources */,
 				66230CAB26E9E171003DFD41 /* LoadingLoginView.swift in Sources */,
 				664190B526EA9FFF00A08308 /* UIViewControllerExtension.swift in Sources */,
 				66230C9826E8BFB5003DFD41 /* LoadingViewController.swift in Sources */,
@@ -356,6 +404,8 @@
 				66230C8B26E899C2003DFD41 /* WebManager.swift in Sources */,
 				66230CC526EA2974003DFD41 /* FatalErrorViewController.swift in Sources */,
 				66230CA026E8DDDC003DFD41 /* ErrorAlertController.swift in Sources */,
+				66DE701726EB774800D8380E /* FolderContent.swift in Sources */,
+				66DE701926EB789500D8380E /* Section.swift in Sources */,
 				66230CBA26E9E513003DFD41 /* Loader.swift in Sources */,
 				66230C8E26E8A32C003DFD41 /* BaseViewController.swift in Sources */,
 				6641909B26EA378100A08308 /* SettingsViewController.swift in Sources */,
@@ -364,6 +414,8 @@
 				66230CBF26E9FBD9003DFD41 /* CourseParser.swift in Sources */,
 				664190A326EA67E800A08308 /* CoursesViewController.swift in Sources */,
 				66DE700426EB5B2B00D8380E /* Recording.swift in Sources */,
+				66DE701226EB76D100D8380E /* ModuleForum.swift in Sources */,
+				66DE701526EB772300D8380E /* ModuleFolder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

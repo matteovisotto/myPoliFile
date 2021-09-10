@@ -20,9 +20,7 @@ class Course: NSObject {
     var isHidden: Bool = false
     var isFavourite: Bool = false
     
-    var forum: Forum? = nil
-    var announcement: Announcement? = nil
-    var recordings: [Recording] = []
+    var sections: [Section] = []
     
     public static func clear() {
         self.courses.removeAll()

@@ -9,23 +9,6 @@ import Foundation
 import UIKit
 
 class CourseDetailParser {
-    
-    enum Sections {
-        case introduction
-        case noticeBoard
-        case materials
-        case recordings
-        case deliveries
-        case undefined
-    }
-    
-    enum Modules{
-        case forum
-        case announcement
-        case url
-        case folder
-    }
-    
     private var targetVC: UIViewController!
     private var stringData: String!
     private var course: Course!
@@ -42,22 +25,47 @@ class CourseDetailParser {
                 if let sections = s {
                     for s in sections { //Iteration in sections
                         if let section = s as? [String: Any]{
-                            let sectionName = section["name"] as! String
-                            let sectionType = self.defineSectionType(name: sectionName)
+                            let sectionName = fixLangTag(string: section["name"] as! String)
+                            let sectionType = Section.defineSectionType(name: sectionName)
                             let sectionModules = section["modules"] as! [[String: Any]]
-                            switch sectionType {
-                            case .noticeBoard:
-                                parseNoticeBoard(content: sectionModules)
-                                break
-                            case .materials:
-                                parseMaterials(content: sectionModules)
-                                break
-                            case .recordings:
-                                parseRecordings(content: sectionModules)
-                                break
-                            default:
-                                continue
+                            let newSection = Section()
+                            newSection.name = sectionName
+                            newSection.sectionType = sectionType
+                            for m in sectionModules {
+                                let modname = m["modname"] as! String
+                                let modnameEnum = Module.defineModname(modname: modname)
+                                let instance = m["instance"] as! Int
+                                let name = fixLangTag(string: m["name"] as! String)
+                                var module: Module!
+                                
+                                switch modnameEnum {
+                                case .url:
+                                    module = ModuleURL()
+                                    let mod = module as! ModuleURL
+                                    mod.instance = instance
+                                    mod.contents = ModuleURL.parseContent(content: m["contents"] as! [[String : Any]])
+                                    mod.name = name
+                                    break
+                                case .folder:
+                                    module = ModuleFolder()
+                                    let mod = module as! ModuleFolder
+                                    mod.instance = instance
+                                    mod.contents = ModuleFolder.parseContent(content: m["contents"] as! [[String : Any]])
+                                    mod.name = name
+                                    break
+                                case .forum:
+                                    module = ModuleForum()
+                                    module.instance = instance
+                                    module.name = name
+                                    break
+                                default:
+                                    module = Module(modname: .undefined)
+                                    module.instance = instance
+                                    module.name = name
+                                }
+                                newSection.content.append(module)
                             }
+                            course.sections.append(newSection)
                         } else {
                             DispatchQueue.main.async {
                                 let errorVC = ErrorAlertController()
@@ -67,6 +75,9 @@ class CourseDetailParser {
                             }
                             return
                         }
+                        
+                       
+                        
                     }
                     DispatchQueue.main.async {
                         completionHandler()
@@ -93,70 +104,16 @@ class CourseDetailParser {
         }
     }
     
-    private func defineSectionType(name: String)-> Sections {
-        if(name.contains("Introduzione")){
-            return .introduction
-        } else if (name.contains("Bacheca")) {
-            return .noticeBoard
-        } else if (name.contains("Materiali")) {
-            return .materials
-        } else if (name.contains("Registrazioni")) {
-            return .recordings
-        } else if (name.contains("Consegne")) {
-            return .deliveries
-        } else {
-            return .undefined
+    private func fixLangTag(string: String) -> String {
+        if (string.contains("{mlang}")){
+            var regex = "\\{mlang [a-z]{2}\\}(.*)\\{mlang\\}\\{mlang [a-z]{2}\\}"
+            var repl = ""
+            let txt = string.replacingOccurrences(of: regex, with: repl, options: [.regularExpression])
+            regex = "\\{mlang\\}"
+            repl = ""
+            return txt.replacingOccurrences(of: regex, with: repl, options: [.regularExpression])
         }
-    }
-    
-    private func parseNoticeBoard(content: [[String: Any]]) {
-        course.forum = nil
-        course.announcement = nil
-        for m in content {
-            let name = m["name"] as! String
-            let modname = m["modname"] as! String
-            if(name.contains("Annunci") && modname == "forum"){ //Announcement
-                let forumId = m["instance"] as! Int
-                let newAnn = Announcement()
-                newAnn.forumId = forumId
-                course.announcement = newAnn
-                
-            } else if (name.contains("Forum") && modname == "forum") { //Forum
-                let forumId = m["instance"] as! Int
-               let newForum = Forum()
-                newForum.forumId = forumId
-                course.forum = newForum
-            }
-        }
-    }
-    
-    private func parseMaterials(content: [[String: Any]]) {
-        for m in content {
-            
-        }
-    }
-    
-    private func parseRecordings(content: [[String: Any]]) {
-        course.recordings.removeAll()
-        for m in content {
-            let name = m["name"] as! String
-            let modname = m["modname"] as! String
-            if (name.contains("Recordings") && modname=="url"){
-                if let contents =  m["contents"] as? [[String: Any]]{
-                    for c in contents{
-                        let type = c["type"] as! String
-                        let name = c["filename"] as! String
-                        let url = c["fileurl"] as! String
-                        if (type == "url"){
-                            let newRecording = Recording()
-                            newRecording.name = name
-                            newRecording.url = url
-                            course.recordings.append(newRecording)
-                        }
-                    }
-                }
-            }
-        }
+        return string
     }
     
 }

@@ -38,6 +38,7 @@ class CourseContentViewController: BaseViewController {
     }
     
     private func downloadCourse() {
+        self.course.sections.removeAll()
         loader = CircleLoader.createGeometricLoader()
         loader.startAnimation()
         let parameters: [String: Any] = ["courseid":self.course.courseId]
