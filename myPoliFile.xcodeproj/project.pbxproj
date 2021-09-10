@@ -46,6 +46,11 @@
 		664190AF26EA8C7B00A08308 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664190AE26EA8C7B00A08308 /* TagView.swift */; };
 		664190B126EA8DBE00A08308 /* CourseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664190B026EA8DBE00A08308 /* CourseCollectionViewCell.swift */; };
 		664190B526EA9FFF00A08308 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664190B426EA9FFF00A08308 /* UIViewControllerExtension.swift */; };
+		66DE6FFE26EB3D2500D8380E /* CourseContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE6FFD26EB3D2500D8380E /* CourseContentViewController.swift */; };
+		66DE700226EB462800D8380E /* CourseDetailParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE700126EB462800D8380E /* CourseDetailParser.swift */; };
+		66DE700426EB5B2B00D8380E /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE700326EB5B2B00D8380E /* Recording.swift */; };
+		66DE700626EB5D9300D8380E /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE700526EB5D9300D8380E /* Announcement.swift */; };
+		66DE700826EB5DAE00D8380E /* Forum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE700726EB5DAE00D8380E /* Forum.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +95,11 @@
 		664190AE26EA8C7B00A08308 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		664190B026EA8DBE00A08308 /* CourseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCollectionViewCell.swift; sourceTree = "<group>"; };
 		664190B426EA9FFF00A08308 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		66DE6FFD26EB3D2500D8380E /* CourseContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseContentViewController.swift; sourceTree = "<group>"; };
+		66DE700126EB462800D8380E /* CourseDetailParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailParser.swift; sourceTree = "<group>"; };
+		66DE700326EB5B2B00D8380E /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
+		66DE700526EB5D9300D8380E /* Announcement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
+		66DE700726EB5DAE00D8380E /* Forum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forum.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +153,7 @@
 				664190A226EA67E800A08308 /* CoursesViewController.swift */,
 				664190A426EA68E900A08308 /* SearchViewController.swift */,
 				664190A626EA68FD00A08308 /* DownloadViewController.swift */,
+				66DE6FFD26EB3D2500D8380E /* CourseContentViewController.swift */,
 			);
 			path = myPoliFile;
 			sourceTree = "<group>";
@@ -197,6 +208,9 @@
 				661FC5D126E890FF00B33983 /* User.swift */,
 				66230CA626E8FFAF003DFD41 /* Course.swift */,
 				66230CBB26E9F8F1003DFD41 /* Category.swift */,
+				66DE700326EB5B2B00D8380E /* Recording.swift */,
+				66DE700526EB5D9300D8380E /* Announcement.swift */,
+				66DE700726EB5DAE00D8380E /* Forum.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -216,6 +230,7 @@
 				66230CBE26E9FBD9003DFD41 /* CourseParser.swift */,
 				66230CC026E9FD9A003DFD41 /* CategoryParser.swift */,
 				66230CC226EA2625003DFD41 /* UserParser.swift */,
+				66DE700126EB462800D8380E /* CourseDetailParser.swift */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -310,6 +325,7 @@
 				66230CA226E8E35D003DFD41 /* TestViewController.swift in Sources */,
 				66230CA926E9DF43003DFD41 /* BackHeader.swift in Sources */,
 				664190AA26EA775300A08308 /* TabBarCollectionViewCell.swift in Sources */,
+				66DE700226EB462800D8380E /* CourseDetailParser.swift in Sources */,
 				66230C9026E8A3F7003DFD41 /* AppButton.swift in Sources */,
 				661FC5D226E890FF00B33983 /* User.swift in Sources */,
 				661FC5D426E8936500B33983 /* LinkBuilder.swift in Sources */,
@@ -319,7 +335,9 @@
 				66230CC326EA2625003DFD41 /* UserParser.swift in Sources */,
 				664190A126EA53DD00A08308 /* HomeHeader.swift in Sources */,
 				664190AF26EA8C7B00A08308 /* TagView.swift in Sources */,
+				66DE700626EB5D9300D8380E /* Announcement.swift in Sources */,
 				661FC5C226E890E200B33983 /* WelcomeViewController.swift in Sources */,
+				66DE6FFE26EB3D2500D8380E /* CourseContentViewController.swift in Sources */,
 				66230C9426E8ABA6003DFD41 /* PreferenceManager.swift in Sources */,
 				66230CA726E8FFAF003DFD41 /* Course.swift in Sources */,
 				66230CB526E9E513003DFD41 /* CircleLoader.swift in Sources */,
@@ -327,6 +345,7 @@
 				66230CC126E9FD9A003DFD41 /* CategoryParser.swift in Sources */,
 				664190AD26EA77C200A08308 /* UIColorExtension.swift in Sources */,
 				66230C9E26E8DB93003DFD41 /* AlertViewController.swift in Sources */,
+				66DE700826EB5DAE00D8380E /* Forum.swift in Sources */,
 				6641909F26EA4F5500A08308 /* SquareImageButton.swift in Sources */,
 				66230CA426E8EA25003DFD41 /* MainViewController.swift in Sources */,
 				661FC5BE26E890E200B33983 /* AppDelegate.swift in Sources */,
@@ -344,6 +363,7 @@
 				664190B126EA8DBE00A08308 /* CourseCollectionViewCell.swift in Sources */,
 				66230CBF26E9FBD9003DFD41 /* CourseParser.swift in Sources */,
 				664190A326EA67E800A08308 /* CoursesViewController.swift in Sources */,
+				66DE700426EB5B2B00D8380E /* Recording.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

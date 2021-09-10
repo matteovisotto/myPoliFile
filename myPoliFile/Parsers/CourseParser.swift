@@ -39,10 +39,13 @@ class CourseParser {
                             newCourse.category = category
                             newCourse.isHidden = isHidden
                             newCourse.isFavourite = isFavourite
-                            Course.courses.append(newCourse)
-                            DispatchQueue.main.async {
-                                completionHandler()
-                                
+                            if(isHidden){
+                                Course.hidden.append(newCourse)
+                            } else {
+                                Course.courses.append(newCourse)
+                                if(isFavourite){
+                                    Course.favourite.append(newCourse)
+                                }
                             }
                         } else {
                             DispatchQueue.main.async {
@@ -53,6 +56,9 @@ class CourseParser {
                             }
                             return
                         }
+                    }
+                    DispatchQueue.main.async {
+                        completionHandler()
                     }
                        
                 } else {

@@ -149,7 +149,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             PreferenceManager.removeToken()
             User.mySelf = User()
             Category.categories.removeAll()
-            Course.courses.removeAll()
+            Course.clear()
             
             let rootVC = UINavigationController(rootViewController: WelcomeViewController())
             rootVC.navigationBar.isHidden = true

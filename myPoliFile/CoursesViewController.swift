@@ -8,7 +8,7 @@
 import UIKit
 
 class CoursesViewController: BaseViewController {
-
+    private var loader = Loader()
     private var courseTask: TaskManager!
     
     private var collectionView: UICollectionView!
@@ -41,7 +41,9 @@ class CoursesViewController: BaseViewController {
     }
 
     private func downloadCourses() {
-        Course.courses.removeAll()
+        loader = CircleLoader.createGeometricLoader()
+        loader.startAnimation()
+        Course.clear()
         let parameters: [String: Any] = ["userid":User.mySelf.userId]
         let urlString = LinkBuilder.build(serviceName: "core_enrol_get_users_courses", withParameters: LinkBuilder.prepareParameters(params: parameters))
         self.courseTask = TaskManager(url: URL(string: urlString)!)
@@ -56,13 +58,16 @@ extension CoursesViewController: TaskManagerDelegate {
             let parser = CourseParser(target: self, stringData: stringContent)
             parser.parse {
                 self.collectionView.reloadData()
+                self.loader.stopAnimation()
             }
         } else {
             //Show error
-            let errorVC = ErrorAlertController()
-            errorVC.setContent(title: "Error", message: stringContent)
-            errorVC.modalPresentationStyle = .overFullScreen
             DispatchQueue.main.async {
+                self.loader.stopAnimation()
+                let errorVC = ErrorAlertController()
+                errorVC.isLoadingPhase = false
+                errorVC.setContent(title: "Error", message: stringContent)
+                errorVC.modalPresentationStyle = .overFullScreen
                 self.present(errorVC, animated: true, completion: nil)
             }
         }
@@ -107,5 +112,8 @@ extension CoursesViewController: UICollectionViewDataSource, UICollectionViewDel
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+        let detailVC = CourseContentViewController()
+        detailVC.course = Course.courses[indexPath.item]
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }
