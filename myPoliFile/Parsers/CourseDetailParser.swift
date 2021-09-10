@@ -23,7 +23,7 @@ class CourseDetailParser {
             do {
                 let s = try JSONSerialization.jsonObject(with: data, options: []) as? [AnyObject]
                 if let sections = s {
-                    for s in sections { //Iteration in sections
+                    for s in sections {
                         if let section = s as? [String: Any]{
                             let sectionName = fixLangTag(string: section["name"] as! String)
                             let sectionType = Section.defineSectionType(name: sectionName)
