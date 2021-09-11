@@ -15,17 +15,20 @@ class CourseContentViewController: BaseViewController {
     private let navigationBar = BackHeader()
     private var loader = Loader()
     private var collectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        let collectionViewFlowLayout = UICollectionViewFlowLayout()
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewFlowLayout)
         setupNavigationBar()
+        setupCollectionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let collectionViewFlowLayout = UICollectionViewFlowLayout()
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewFlowLayout)
         downloadCourse()
-        setupCollectionView()
+        
     }
     
     private func setupNavigationBar() {
@@ -152,6 +155,9 @@ extension CourseContentViewController: UICollectionViewDelegate, UICollectionVie
             break
         case .folder:
             //Open folder controller
+            let folderController = FolderViewController()
+            folderController.module = module
+            self.navigationController?.pushViewController(folderController, animated: true)
             break
         default:
             return
