@@ -69,7 +69,7 @@ class CourseDetailParser {
                         } else {
                             DispatchQueue.main.async {
                                 let errorVC = ErrorAlertController()
-                                errorVC.setContent(title: "Error", message: "Unable to parse your personal data")
+                                errorVC.setContent(title: "Error", message: "Unable to parse curse data")
                                 errorVC.modalPresentationStyle = .overFullScreen
                                 self.targetVC.present(errorVC, animated: true, completion: nil)
                             }

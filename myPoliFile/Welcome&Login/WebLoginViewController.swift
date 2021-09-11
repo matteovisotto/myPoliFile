@@ -17,6 +17,7 @@ class WebLoginViewController: BaseViewController, WKNavigationDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = backgroundColor
         setupLayout()
         let url = URL(string: WebManager.loginUrl)!
         let request = URLRequest(url: url)

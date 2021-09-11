@@ -11,7 +11,6 @@ class SettingsViewController: BaseViewController {
 
     private let navigationBar = BackHeader()
     private let profileView = UserInfoView()
-    private let coverView = UIView()
     
     private lazy var tableView: UITableView = {
         if #available(iOS 13.0, *){
@@ -27,7 +26,6 @@ class SettingsViewController: BaseViewController {
         self.view.backgroundColor = .groupTableViewBackground
         setNavigationBar()
         setProfileView()
-        //setCoverView()
         setTableView()
         
         tableView.dataSource = self
@@ -57,17 +55,6 @@ class SettingsViewController: BaseViewController {
         profileView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor).isActive = true
         profileView.email = User.mySelf.email
         profileView.fullname = User.mySelf.fullname
-        
-    }
-    
-    private func setCoverView() {
-        self.view.addSubview(coverView)
-        coverView.translatesAutoresizingMaskIntoConstraints = false
-        coverView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor).isActive = true
-        coverView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor).isActive = true
-        coverView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        coverView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        coverView.backgroundColor = .groupTableViewBackground
         
     }
     
@@ -147,6 +134,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             //Logout
             PreferenceManager.removeToken()
+            PreferenceManager.removePersonalCode()
             User.mySelf = User()
             Category.categories.removeAll()
             Course.clear()

@@ -35,6 +35,7 @@ class BaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = backgroundColor
+        self.view.backgroundColor = .groupTableViewBackground
+        self.hideKeyboardWhenTappedAround()
     }
 }

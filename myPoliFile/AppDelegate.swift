@@ -16,9 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         var rootVC: UIViewController!
         //PreferenceManager.removeToken()
-        if(PreferenceManager.isTokenAvailable()){
-            if let token = PreferenceManager.getToken() {
+        if(PreferenceManager.isTokenAvailable() && PreferenceManager.isPersonalCodeAvailable()){
+            if let token = PreferenceManager.getToken(), let personalCode = PreferenceManager.getPersonalCode() {
                 User.mySelf.token = token
+                User.mySelf.username = personalCode+"@polimi.it"
                 rootVC = LoadingViewController()
             } else {
                 let navController = UINavigationController(rootViewController: WelcomeViewController())

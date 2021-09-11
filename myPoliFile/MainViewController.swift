@@ -8,6 +8,8 @@
 import UIKit
 
 class MainViewController: BaseViewController {
+    static let safeAreaBottom:CGFloat = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
+    static let tabBarHeight: CGFloat = 50
 
     private var collectionView: UICollectionView!
     private var containerView = UIView()
@@ -43,7 +45,7 @@ class MainViewController: BaseViewController {
     }
     
     @objc private func didTapNotificationBtn() {
-        print("Implement notification!")
+        self.navigationController?.pushViewController(BeePNotificationViewController(), animated: true)
     }
     
     private func setHeader() {
@@ -62,17 +64,24 @@ class MainViewController: BaseViewController {
     private func setCollectionView() {
         self.view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        collectionView.heightAnchor.constraint(equalToConstant: MainViewController.tabBarHeight).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        collectionView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: 10).isActive = true
-        collectionView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: -10).isActive = true
+        if(MainViewController.safeAreaBottom == 0){
+            collectionView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor).isActive = true
+            collectionView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor).isActive = true
+        } else {
+            collectionView.widthAnchor.constraint(equalToConstant: 300).isActive = true
+            collectionView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+            collectionView.layer.cornerRadius = MainViewController.tabBarHeight/2
+            collectionView.layer.masksToBounds = false
+            collectionView.layer.shadowColor = UIColor.darkGray.cgColor
+            collectionView.layer.shadowOffset = CGSize(width: 0, height: 3)
+            collectionView.layer.shadowRadius = 1.5
+            collectionView.layer.shadowOpacity = 0.3
+        }
+        
         collectionView.backgroundColor = backgroundColor
-        collectionView.layer.cornerRadius = 10
-        collectionView.layer.masksToBounds = false
-        collectionView.layer.shadowColor = UIColor.darkGray.cgColor
-        collectionView.layer.shadowOffset = CGSize(width: 0, height: 3)
-        collectionView.layer.shadowRadius = 1.5
-        collectionView.layer.shadowOpacity = 0.3
+        
         
         
         collectionView.delegate = self
@@ -86,9 +95,12 @@ class MainViewController: BaseViewController {
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.topAnchor.constraint(equalTo: headerView.bottomAnchor).isActive = true
         containerView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor).isActive = true
-        containerView.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: -3).isActive = true
+        containerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         containerView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor).isActive = true
         containerView.backgroundColor = .clear
+        collectionView.layer.zPosition = 1
+        self.view.bringSubviewToFront(self.collectionView)
+        self.view.layoutSubviews()
     }
 
     private func displayContentController(content: UIViewController) {
@@ -120,7 +132,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let controllers = CGFloat(self.viewControllers.count)
-        return CGSize(width: (collectionView.bounds.width/controllers)-10, height: collectionView.bounds.height-6)
+        return CGSize(width: (collectionView.bounds.width/controllers)-(collectionView.bounds.height/2), height: collectionView.bounds.height-10)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -128,7 +140,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 3, left: 5, bottom: 3, right: 5)
+        return UIEdgeInsets(top: 5, left: collectionView.bounds.height/2, bottom: 5, right: collectionView.bounds.height/2)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

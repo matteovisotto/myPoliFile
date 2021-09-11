@@ -45,7 +45,7 @@ class LoadingViewController: BaseViewController {
         imageView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         imageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "icon")
+        imageView.image = UIImage(named: "icon1")
         
         let label = UILabel()
         label.text = "Loading..."

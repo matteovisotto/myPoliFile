@@ -10,11 +10,26 @@ import UIKit
 class WelcomeViewController: BaseViewController {
     
     private let startButton = AppButton()
+    private let personalCodeTF = FloatingTextField()
+    private let welcomeLabel = UILabel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        addWelcomeLabel()
         addStartButton()
-        
+        addTextField()
+    }
+    
+    private func addWelcomeLabel() {
+        self.view.addSubview(welcomeLabel)
+        welcomeLabel.text = "Welcome \nto myPoliFile"
+        welcomeLabel.numberOfLines = .zero
+        welcomeLabel.textColor = .primary
+        welcomeLabel.font = .systemFont(ofSize: 40, weight: .black)
+        welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
+        welcomeLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
+        welcomeLabel.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: 10).isActive = true
+        welcomeLabel.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: -10).isActive = true
     }
     
     private func addStartButton() {
@@ -27,9 +42,27 @@ class WelcomeViewController: BaseViewController {
         startButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
         startButton.setTitle("Login with PoliMi", for: .normal)
         startButton.addTarget(self, action: #selector(didTapStartButton), for: .touchUpInside)
+        startButton.isEnabled = false
+    }
+    
+    private func addTextField() {
+        self.view.addSubview(personalCodeTF)
+        personalCodeTF.translatesAutoresizingMaskIntoConstraints = false
+        personalCodeTF.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: 15).isActive = true
+        personalCodeTF.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: -15).isActive = true
+        personalCodeTF.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        personalCodeTF.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        personalCodeTF._placeholder = "PoliMi Personal Code"
+        personalCodeTF.keyboardType = .numberPad
+        personalCodeTF.addTarget(self, action: #selector(didTextFieldChanged), for: .editingChanged)
+        
     }
     
     @objc private func didTapStartButton() {
+        PreferenceManager.setPersonalCode(personalCode: self.personalCodeTF.text!)
+        User.mySelf.username = self.personalCodeTF.text! + "@polimi.it"
+        self.personalCodeTF.isHidden = true
+        self.startButton.isHidden = true
         let loginVC = WebLoginViewController()
         navigationController?.pushViewController(loginVC, animated: true)
         loginVC.callback = { content in
@@ -59,8 +92,14 @@ class WelcomeViewController: BaseViewController {
         }
         
     }
-
-       
+    
+    @objc private func didTextFieldChanged() {
+        if(self.personalCodeTF.text?.count == 8 && self.personalCodeTF.text!.isNumeric) {
+            self.startButton.isEnabled = true
+        } else {
+            self.startButton.isEnabled = false
+        }
+    }
     
 }
 

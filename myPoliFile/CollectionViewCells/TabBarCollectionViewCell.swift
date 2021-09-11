@@ -45,8 +45,6 @@ class TabBarCollectionViewCell: UICollectionViewCell {
     private func setupCell() {
         addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
         imageView.topAnchor.constraint(equalTo: topAnchor, constant: 2.5).isActive = true
         imageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         imageView.contentMode = .scaleAspectFit
