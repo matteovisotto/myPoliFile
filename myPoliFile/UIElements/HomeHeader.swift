@@ -30,7 +30,6 @@ class HomeHeader: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupButtons()
-        //setupLogo()
         setupTitle()
     }
     
@@ -61,26 +60,6 @@ class HomeHeader: UIView {
         notificationButton.btnImage = UIImage(named: "bell")!
         
     }
-    
-    private func setupLogo() {
-        addSubview(logoImageView)
-        logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        logoImageView.topAnchor.constraint(equalTo: topAnchor, constant: 5).isActive = true
-        logoImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 10).isActive = true
-        logoImageView.widthAnchor.constraint(equalToConstant: 138.5).isActive = true
-        logoImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        logoImageView.contentMode = .scaleAspectFit
-    }
-    
-//    private func setupTitle() {
-//        addSubview(titleLabel)
-//        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-//        titleLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 10).isActive = true
-//        titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 10).isActive = true
-//        titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -10).isActive = true
-//        titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
-//        titleLabel.font = .systemFont(ofSize: 30, weight: .heavy)
-//    }
     
     private func setupTitle() {
         addSubview(titleLabel)

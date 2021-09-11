@@ -36,6 +36,9 @@
 		66230CC526EA2974003DFD41 /* FatalErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66230CC426EA2974003DFD41 /* FatalErrorViewController.swift */; };
 		6634789026EC87D600B63527 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6634788F26EC87D600B63527 /* StringExtension.swift */; };
 		6634789226EC889A00B63527 /* FloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6634789126EC889A00B63527 /* FloatingTextField.swift */; };
+		6634789426EC973400B63527 /* ModuleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6634789326EC973400B63527 /* ModuleCollectionViewCell.swift */; };
+		6634789726EC989200B63527 /* SectionTitleCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6634789626EC989200B63527 /* SectionTitleCollectionReusableView.swift */; };
+		6634789A26ECACB600B63527 /* FolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6634789926ECACB600B63527 /* FolderViewController.swift */; };
 		6641909B26EA378100A08308 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641909A26EA378100A08308 /* SettingsViewController.swift */; };
 		6641909D26EA38EA00A08308 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641909C26EA38EA00A08308 /* UserInfoView.swift */; };
 		6641909F26EA4F5500A08308 /* SquareImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641909E26EA4F5500A08308 /* SquareImageButton.swift */; };
@@ -101,6 +104,9 @@
 		66230CC426EA2974003DFD41 /* FatalErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FatalErrorViewController.swift; sourceTree = "<group>"; };
 		6634788F26EC87D600B63527 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		6634789126EC889A00B63527 /* FloatingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTextField.swift; sourceTree = "<group>"; };
+		6634789326EC973400B63527 /* ModuleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleCollectionViewCell.swift; sourceTree = "<group>"; };
+		6634789626EC989200B63527 /* SectionTitleCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitleCollectionReusableView.swift; sourceTree = "<group>"; };
+		6634789926ECACB600B63527 /* FolderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderViewController.swift; sourceTree = "<group>"; };
 		6641909A26EA378100A08308 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		6641909C26EA38EA00A08308 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		6641909E26EA4F5500A08308 /* SquareImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareImageButton.swift; sourceTree = "<group>"; };
@@ -164,6 +170,8 @@
 		661FC5BC26E890E200B33983 /* myPoliFile */ = {
 			isa = PBXGroup;
 			children = (
+				6634789826ECAC9700B63527 /* ModulesController */,
+				6634789526EC986500B63527 /* CollectionViewSupplementaryView */,
 				664190AB26EA77B200A08308 /* Extensions */,
 				664190A826EA773100A08308 /* CollectionViewCells */,
 				66230CBD26E9FBC8003DFD41 /* Parsers */,
@@ -274,12 +282,29 @@
 			path = Parsers;
 			sourceTree = "<group>";
 		};
+		6634789526EC986500B63527 /* CollectionViewSupplementaryView */ = {
+			isa = PBXGroup;
+			children = (
+				6634789626EC989200B63527 /* SectionTitleCollectionReusableView.swift */,
+			);
+			path = CollectionViewSupplementaryView;
+			sourceTree = "<group>";
+		};
+		6634789826ECAC9700B63527 /* ModulesController */ = {
+			isa = PBXGroup;
+			children = (
+				6634789926ECACB600B63527 /* FolderViewController.swift */,
+			);
+			path = ModulesController;
+			sourceTree = "<group>";
+		};
 		664190A826EA773100A08308 /* CollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
 				664190B026EA8DBE00A08308 /* CourseCollectionViewCell.swift */,
 				664190A926EA775300A08308 /* TabBarCollectionViewCell.swift */,
 				66DE702626EB90A900D8380E /* GenericCollectionViewCell.swift */,
+				6634789326EC973400B63527 /* ModuleCollectionViewCell.swift */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -405,6 +430,7 @@
 				66230CA226E8E35D003DFD41 /* TestViewController.swift in Sources */,
 				66230CA926E9DF43003DFD41 /* BackHeader.swift in Sources */,
 				664190AA26EA775300A08308 /* TabBarCollectionViewCell.swift in Sources */,
+				6634789A26ECACB600B63527 /* FolderViewController.swift in Sources */,
 				66DE700226EB462800D8380E /* CourseDetailParser.swift in Sources */,
 				66230C9026E8A3F7003DFD41 /* AppButton.swift in Sources */,
 				661FC5D226E890FF00B33983 /* User.swift in Sources */,
@@ -422,6 +448,7 @@
 				66DE6FFE26EB3D2500D8380E /* CourseContentViewController.swift in Sources */,
 				66230C9426E8ABA6003DFD41 /* PreferenceManager.swift in Sources */,
 				66230CA726E8FFAF003DFD41 /* Course.swift in Sources */,
+				6634789726EC989200B63527 /* SectionTitleCollectionReusableView.swift in Sources */,
 				66230CB526E9E513003DFD41 /* CircleLoader.swift in Sources */,
 				66D4602826EBE141003C4682 /* BeePNotificationViewController.swift in Sources */,
 				664190A726EA68FD00A08308 /* DownloadViewController.swift in Sources */,
@@ -436,6 +463,7 @@
 				66D4602C26EBE574003C4682 /* Discussion.swift in Sources */,
 				661FC5BE26E890E200B33983 /* AppDelegate.swift in Sources */,
 				66DE701026EB750200D8380E /* URLContent.swift in Sources */,
+				6634789426EC973400B63527 /* ModuleCollectionViewCell.swift in Sources */,
 				66230CAB26E9E171003DFD41 /* LoadingLoginView.swift in Sources */,
 				6634789226EC889A00B63527 /* FloatingTextField.swift in Sources */,
 				6634789026EC87D600B63527 /* StringExtension.swift in Sources */,

@@ -13,7 +13,7 @@ class ModuleFolder: Module {
     var contents: [FolderContent] = []
     
     required init() {
-        super.init(modname: .folder)
+        super.init(modname: .folder, icon: UIImage(named: "icon-folder")!)
     }
     
     public static func parseContent(content: [[String: Any]]) -> [FolderContent]{

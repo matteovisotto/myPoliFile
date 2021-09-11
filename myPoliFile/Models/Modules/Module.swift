@@ -17,12 +17,14 @@ class Module {
         case undefined
     }
     
-    init(modname: Modname) {
+    init(modname: Modname, icon: UIImage) {
         self.modname = modname
+        self.icon = icon
     }
     
     var name: String = ""
     public private(set) var modname: Modname = .undefined
+    public private(set) var icon: UIImage = UIImage()
     var instance: Int = 0
     
     public static func defineModname(modname: String) -> Modname {

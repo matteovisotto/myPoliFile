@@ -37,22 +37,21 @@ class LoadingViewController: BaseViewController {
     }
     
     private func setupLayout() {
-        let imageView = UIImageView()
-        self.view.addSubview(imageView)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
-        imageView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        imageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "icon1")
+        let appName = UILabel()
+        self.view.addSubview(appName)
+        appName.translatesAutoresizingMaskIntoConstraints = false
+        appName.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        appName.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        appName.text = "myPoliFile"
+        appName.font = .systemFont(ofSize: 40, weight: .black)
+        appName.textColor = UIColor(named: "titlePrimary")
         
         let label = UILabel()
         label.text = "Loading..."
         label.textAlignment = .center
         self.view.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 5).isActive = true
+        label.topAnchor.constraint(equalTo: appName.bottomAnchor, constant: 5).isActive = true
         label.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: 10).isActive = true
         label.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: -10).isActive = true
         

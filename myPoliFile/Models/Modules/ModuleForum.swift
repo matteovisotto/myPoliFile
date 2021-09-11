@@ -11,6 +11,6 @@ import UIKit
 class ModuleForum: Module {
     
     required init() {
-        super.init(modname: .forum)
+        super.init(modname: .forum, icon: UIImage(named: "icon-forum")!)
     }
 }

@@ -185,8 +185,16 @@ extension CoursesViewController: UICollectionViewDataSource, UICollectionViewDel
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         if (realNumberOfItems == 0) {return}
+        var course: Course!
+        if(self.selectedMenuIndex == 0){
+            course = Course.courses[indexPath.item]
+        } else if (self.selectedMenuIndex == 1){
+            course = Course.favourite[indexPath.item]
+        } else {
+            course = Course.hidden[indexPath.item]
+        }
         let detailVC = CourseContentViewController()
-        detailVC.course = Course.courses[indexPath.item]
+        detailVC.course = course
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }

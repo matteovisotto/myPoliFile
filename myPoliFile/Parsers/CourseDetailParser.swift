@@ -59,7 +59,7 @@ class CourseDetailParser {
                                     module.name = name
                                     break
                                 default:
-                                    module = Module(modname: .undefined)
+                                    module = Module(modname: .undefined, icon: UIImage(named: "icon-undefined") ?? UIImage())
                                     module.instance = instance
                                     module.name = name
                                 }

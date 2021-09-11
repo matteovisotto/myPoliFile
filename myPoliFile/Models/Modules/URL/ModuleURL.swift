@@ -13,7 +13,7 @@ class ModuleURL: Module {
     var contents: [URLContent] = []
     
     required init() {
-        super.init(modname: .url)
+        super.init(modname: .url, icon: UIImage(named: "icon-url")!)
     }
     
     public static func parseContent(content: [[String: Any]]) -> [URLContent]{

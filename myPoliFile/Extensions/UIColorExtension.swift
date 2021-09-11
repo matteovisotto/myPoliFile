@@ -9,5 +9,8 @@ import Foundation
 import UIKit
 
 extension UIColor {
-    static let primary: UIColor = UIColor(displayP3Red: 65/255.0, green: 131/255.0, blue: 215/255.0, alpha: 1)
+    static let primary: UIColor = UIColor(named: "titlePrimary")!
+    static let buttonPrimary = UIColor(named: "buttonPrimary")!
+    static let buttonSecondary = UIColor(named: "buttonSecondary")!
+    //UIColor(displayP3Red: 49/255.0, green: 95/255.0, blue: 221/255.0, alpha: 1)
 }

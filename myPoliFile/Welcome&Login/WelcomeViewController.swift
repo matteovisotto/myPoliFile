@@ -61,8 +61,6 @@ class WelcomeViewController: BaseViewController {
     @objc private func didTapStartButton() {
         PreferenceManager.setPersonalCode(personalCode: self.personalCodeTF.text!)
         User.mySelf.username = self.personalCodeTF.text! + "@polimi.it"
-        self.personalCodeTF.isHidden = true
-        self.startButton.isHidden = true
         let loginVC = WebLoginViewController()
         navigationController?.pushViewController(loginVC, animated: true)
         loginVC.callback = { content in
@@ -71,6 +69,8 @@ class WelcomeViewController: BaseViewController {
                     let dic = try JSONSerialization.jsonObject(with: data, options: []) as? [String: String]
                     if let token = dic?["token"] {
                         self.startButton.isHidden = true
+                        self.personalCodeTF.isHidden = true
+                        self.welcomeLabel.isHidden = true
                         PreferenceManager.setToken(token: token)
                         User.mySelf.token = token
                         let loadignVC = LoadingViewController()
