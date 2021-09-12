@@ -183,7 +183,7 @@ extension FolderViewController: UICollectionViewDelegate, UICollectionViewDataSo
             let newFolderVC = FolderViewController()
             newFolderVC.module = self.module
             newFolderVC.viewPath = (Array(self.files.keys))[indexPath.item]
-            newFolderVC.files = self.files
+            newFolderVC.files = [(Array(self.files.keys))[indexPath.item]: self.files[(Array(self.files.keys))[indexPath.item]]!]
             self.navigationController?.pushViewController(newFolderVC, animated: true)
             return
         }

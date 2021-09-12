@@ -18,9 +18,9 @@ protocol DownloaderDelegate {
 
 class Downloader {
     private let urlSession = URLSession.shared
-    private var file: FolderContent!
+    private var file: ModuleContent!
     var delegate: DownloaderDelegate? = nil
-    init(file: FolderContent) {
+    init(file: ModuleContent) {
         self.file = file
     }
     

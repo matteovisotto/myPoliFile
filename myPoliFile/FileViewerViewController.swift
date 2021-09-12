@@ -13,7 +13,7 @@ class FileViewerViewController: BaseViewController {
     private var webView = WKWebView()
     private var navigationBar = BackHeader()
     
-    open var file: FolderContent!
+    open var file: ModuleContent!
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -1,16 +1,15 @@
 //
-//  FolderContent.swift
+//  ResourceContent.swift
 //  myPoliFile
 //
-//  Created by Matteo Visotto on 10/09/21.
+//  Created by Matteo Visotto on 12/09/21.
 //
 
 import Foundation
 import UIKit
 
-class FolderContent: ModuleContent {
+class ResourceContent: ModuleContent {
     var mimetype: String = ""
-    var author: String = ""
     var isOpenable: Bool = false
     var fileExtension: String = ""
     
@@ -27,7 +26,6 @@ class FolderContent: ModuleContent {
         }
         self.contentPath = content["filepath"] as! String
         self.mimetype = content["mimetype"] as! String
-        self.author = content["author"] as! String
         self.fileExtension = (self.contentName as NSString).pathExtension
         self.isOpenable = isFileOpenable(fileExtension: self.fileExtension)
     }
@@ -36,5 +34,4 @@ class FolderContent: ModuleContent {
         let allowedInWebView = ["pdf", "docx", "doc", "ppt", "pptx", "xls", "xlsx", "txt", "png", "gif", "jpg", "jpeg"]
         return allowedInWebView.contains(fileExtension)
     }
-    
 }

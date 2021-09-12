@@ -73,6 +73,20 @@ class CourseContentViewController: BaseViewController {
         self.navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
     }
+    
+    private func downloadFile(selectedFile: ModuleContent) {
+        loader = CircleLoader.createGeometricLoader()
+        loader.startAnimation()
+        let downloader = Downloader(file: selectedFile)
+        downloader.delegate = self
+        downloader.startDownload()
+    }
+    
+    private func openFile(selectedFile: ModuleContent) {
+        let fileViewerController = FileViewerViewController()
+        fileViewerController.file = selectedFile
+        self.navigationController?.pushViewController(fileViewerController, animated: true)
+    }
 }
 
 extension CourseContentViewController: TaskManagerDelegate {
@@ -143,7 +157,6 @@ extension CourseContentViewController: UICollectionViewDelegate, UICollectionVie
         case .url:
             let m = module as! ModuleURL
             if(m.contents.count == 1){
-                print(m.contents.first!.contentURL)
                 UIApplication.shared.open(URL(string: m.contents.first!.contentURL)!, options: [:], completionHandler: nil)
                 
             } else {
@@ -161,9 +174,72 @@ extension CourseContentViewController: UICollectionViewDelegate, UICollectionVie
             folderController.files = FolderViewController.prepareFiles(myFiles: (module as! ModuleFolder).contents)
             self.navigationController?.pushViewController(folderController, animated: true)
             break
+        case .resource:
+            let m = module as! ModuleResource
+            guard let content = m.contents else {return}
+            if(content.type == "file"){
+                if(content.isOpenable){
+                    let pref = PreferenceManager.getFileDefaultAction() ?? 2
+                    switch pref {
+                    case 0:
+                        //Open
+                        openFile(selectedFile: content)
+                        break
+                    case 1:
+                        downloadFile(selectedFile: content)
+                        break
+                    default:
+                        //Ask
+                        let bottomSheet = FileOptionBottomSheet()
+                        bottomSheet.completion = {result, option in
+                            if(result){
+                                if (option! == 0){
+                                    //Open
+                                    self.openFile(selectedFile: content)
+                                } else {
+                                    //Download
+                                    self.downloadFile(selectedFile: content)
+                                }
+                            }
+                        }
+                        bottomSheet.modalPresentationStyle = .overFullScreen
+                        self.present(bottomSheet, animated: true, completion: nil)
+                        break
+                    }
+                } else {
+                    //Download
+                    downloadFile(selectedFile: content)
+                }
+            } else {
+                UIApplication.shared.open(URL(string: content.contentURL)!, options: [:], completionHandler: nil)
+            }
+            break
         default:
             return
         }
     }
+    
+}
+
+extension CourseContentViewController: DownloaderDelegate {
+    func didDownloaded(result: Bool, url: URL?) {
+        DispatchQueue.main.async {
+            self.loader.stopAnimation()
+            if(result){
+                
+                let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [url!], applicationActivities: nil)
+                activityViewController.popoverPresentationController?.sourceView=self.view
+                self.present(activityViewController, animated: true, completion: nil)
+            } else {
+                //File error
+                let alert = UIAlertController(title: "Error", message: "An error occured while downloading the file.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: {action in
+                        return
+                }))
+                self.present(alert, animated: true)
+            }
+        }
+    }
+    
     
 }

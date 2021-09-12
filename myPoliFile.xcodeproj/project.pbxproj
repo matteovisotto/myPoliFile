@@ -52,6 +52,9 @@
 		663478B226ED438E00B63527 /* DeviceFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663478B126ED438E00B63527 /* DeviceFileManager.swift */; };
 		663478B426EDD45D00B63527 /* ModuleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663478B326EDD45D00B63527 /* ModuleLabel.swift */; };
 		663478B626EDEBF900B63527 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663478B526EDEBF900B63527 /* SwitchTableViewCell.swift */; };
+		663478B926EE01BB00B63527 /* ModuleResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663478B826EE01BB00B63527 /* ModuleResource.swift */; };
+		663478BB26EE03EF00B63527 /* ResourceContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663478BA26EE03EF00B63527 /* ResourceContent.swift */; };
+		663478BD26EE06F200B63527 /* ModuleContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663478BC26EE06F200B63527 /* ModuleContent.swift */; };
 		6641909B26EA378100A08308 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641909A26EA378100A08308 /* SettingsViewController.swift */; };
 		6641909D26EA38EA00A08308 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641909C26EA38EA00A08308 /* UserInfoView.swift */; };
 		6641909F26EA4F5500A08308 /* SquareImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641909E26EA4F5500A08308 /* SquareImageButton.swift */; };
@@ -133,6 +136,9 @@
 		663478B126ED438E00B63527 /* DeviceFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceFileManager.swift; sourceTree = "<group>"; };
 		663478B326EDD45D00B63527 /* ModuleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleLabel.swift; sourceTree = "<group>"; };
 		663478B526EDEBF900B63527 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
+		663478B826EE01BB00B63527 /* ModuleResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleResource.swift; sourceTree = "<group>"; };
+		663478BA26EE03EF00B63527 /* ResourceContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceContent.swift; sourceTree = "<group>"; };
+		663478BC26EE06F200B63527 /* ModuleContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleContent.swift; sourceTree = "<group>"; };
 		6641909A26EA378100A08308 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		6641909C26EA38EA00A08308 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		6641909E26EA4F5500A08308 /* SquareImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareImageButton.swift; sourceTree = "<group>"; };
@@ -349,6 +355,15 @@
 			path = Files;
 			sourceTree = "<group>";
 		};
+		663478B726EE01A600B63527 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				663478B826EE01BB00B63527 /* ModuleResource.swift */,
+				663478BA26EE03EF00B63527 /* ResourceContent.swift */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		664190A826EA773100A08308 /* CollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -376,11 +391,13 @@
 		66DE700926EB72B500D8380E /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				663478B726EE01A600B63527 /* Resource */,
 				66DE701326EB771600D8380E /* Folder */,
 				66DE700E26EB74F400D8380E /* URL */,
 				66DE700C26EB72E400D8380E /* Module.swift */,
 				66DE701126EB76D100D8380E /* ModuleForum.swift */,
 				663478B326EDD45D00B63527 /* ModuleLabel.swift */,
+				663478BC26EE06F200B63527 /* ModuleContent.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -489,6 +506,7 @@
 				66DE700226EB462800D8380E /* CourseDetailParser.swift in Sources */,
 				66230C9026E8A3F7003DFD41 /* AppButton.swift in Sources */,
 				663478AD26ED40F400B63527 /* OfflineFileCollectionViewCell.swift in Sources */,
+				663478BB26EE03EF00B63527 /* ResourceContent.swift in Sources */,
 				663478A726ED233700B63527 /* FileViewerViewController.swift in Sources */,
 				661FC5D226E890FF00B33983 /* User.swift in Sources */,
 				661FC5D426E8936500B33983 /* LinkBuilder.swift in Sources */,
@@ -505,6 +523,7 @@
 				6634789F26ECEE5000B63527 /* SegmentTableViewCell.swift in Sources */,
 				66DE702326EB8CA000D8380E /* MVTopMenuCell.swift in Sources */,
 				661FC5C226E890E200B33983 /* WelcomeViewController.swift in Sources */,
+				663478B926EE01BB00B63527 /* ModuleResource.swift in Sources */,
 				66DE6FFE26EB3D2500D8380E /* CourseContentViewController.swift in Sources */,
 				66230C9426E8ABA6003DFD41 /* PreferenceManager.swift in Sources */,
 				66230CA726E8FFAF003DFD41 /* Course.swift in Sources */,
@@ -542,6 +561,7 @@
 				663478A526ED176300B63527 /* ForumViewController.swift in Sources */,
 				66DE701726EB774800D8380E /* FolderContent.swift in Sources */,
 				66DE701926EB789500D8380E /* Section.swift in Sources */,
+				663478BD26EE06F200B63527 /* ModuleContent.swift in Sources */,
 				66230CBA26E9E513003DFD41 /* Loader.swift in Sources */,
 				663478A926ED275500B63527 /* SearchCourseParser.swift in Sources */,
 				66DE702726EB90A900D8380E /* GenericCollectionViewCell.swift in Sources */,
