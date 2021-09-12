@@ -24,7 +24,7 @@ class AlertViewController: BaseViewController {
         alertView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         alertView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         alertView.widthAnchor.constraint(equalToConstant: getWidth()).isActive = true
-        alertView.layer.cornerRadius = 10
+        alertView.layer.cornerRadius = 15
     }
     
     private func getWidth() -> CGFloat {

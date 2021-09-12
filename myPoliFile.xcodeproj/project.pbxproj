@@ -39,6 +39,18 @@
 		6634789426EC973400B63527 /* ModuleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6634789326EC973400B63527 /* ModuleCollectionViewCell.swift */; };
 		6634789726EC989200B63527 /* SectionTitleCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6634789626EC989200B63527 /* SectionTitleCollectionReusableView.swift */; };
 		6634789A26ECACB600B63527 /* FolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6634789926ECACB600B63527 /* FolderViewController.swift */; };
+		6634789C26ECDA2D00B63527 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6634789B26ECDA2D00B63527 /* Downloader.swift */; };
+		6634789F26ECEE5000B63527 /* SegmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6634789E26ECEE5000B63527 /* SegmentTableViewCell.swift */; };
+		663478A126ED059C00B63527 /* FolderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663478A026ED059C00B63527 /* FolderCollectionViewCell.swift */; };
+		663478A326ED05B000B63527 /* FileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663478A226ED05B000B63527 /* FileCollectionViewCell.swift */; };
+		663478A526ED176300B63527 /* ForumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663478A426ED176300B63527 /* ForumViewController.swift */; };
+		663478A726ED233700B63527 /* FileViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663478A626ED233700B63527 /* FileViewerViewController.swift */; };
+		663478A926ED275500B63527 /* SearchCourseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663478A826ED275500B63527 /* SearchCourseParser.swift */; };
+		663478AB26ED372700B63527 /* FileOptionBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663478AA26ED372700B63527 /* FileOptionBottomSheet.swift */; };
+		663478AD26ED40F400B63527 /* OfflineFileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663478AC26ED40F400B63527 /* OfflineFileCollectionViewCell.swift */; };
+		663478AF26ED415400B63527 /* OfflineFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663478AE26ED415400B63527 /* OfflineFile.swift */; };
+		663478B226ED438E00B63527 /* DeviceFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663478B126ED438E00B63527 /* DeviceFileManager.swift */; };
+		663478B426EDD45D00B63527 /* ModuleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663478B326EDD45D00B63527 /* ModuleLabel.swift */; };
 		6641909B26EA378100A08308 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641909A26EA378100A08308 /* SettingsViewController.swift */; };
 		6641909D26EA38EA00A08308 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641909C26EA38EA00A08308 /* UserInfoView.swift */; };
 		6641909F26EA4F5500A08308 /* SquareImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641909E26EA4F5500A08308 /* SquareImageButton.swift */; };
@@ -107,6 +119,18 @@
 		6634789326EC973400B63527 /* ModuleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleCollectionViewCell.swift; sourceTree = "<group>"; };
 		6634789626EC989200B63527 /* SectionTitleCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitleCollectionReusableView.swift; sourceTree = "<group>"; };
 		6634789926ECACB600B63527 /* FolderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderViewController.swift; sourceTree = "<group>"; };
+		6634789B26ECDA2D00B63527 /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
+		6634789E26ECEE5000B63527 /* SegmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentTableViewCell.swift; sourceTree = "<group>"; };
+		663478A026ED059C00B63527 /* FolderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCollectionViewCell.swift; sourceTree = "<group>"; };
+		663478A226ED05B000B63527 /* FileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCollectionViewCell.swift; sourceTree = "<group>"; };
+		663478A426ED176300B63527 /* ForumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumViewController.swift; sourceTree = "<group>"; };
+		663478A626ED233700B63527 /* FileViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileViewerViewController.swift; sourceTree = "<group>"; };
+		663478A826ED275500B63527 /* SearchCourseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCourseParser.swift; sourceTree = "<group>"; };
+		663478AA26ED372700B63527 /* FileOptionBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileOptionBottomSheet.swift; sourceTree = "<group>"; };
+		663478AC26ED40F400B63527 /* OfflineFileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineFileCollectionViewCell.swift; sourceTree = "<group>"; };
+		663478AE26ED415400B63527 /* OfflineFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfflineFile.swift; sourceTree = "<group>"; };
+		663478B126ED438E00B63527 /* DeviceFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceFileManager.swift; sourceTree = "<group>"; };
+		663478B326EDD45D00B63527 /* ModuleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleLabel.swift; sourceTree = "<group>"; };
 		6641909A26EA378100A08308 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		6641909C26EA38EA00A08308 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		6641909E26EA4F5500A08308 /* SquareImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareImageButton.swift; sourceTree = "<group>"; };
@@ -170,6 +194,8 @@
 		661FC5BC26E890E200B33983 /* myPoliFile */ = {
 			isa = PBXGroup;
 			children = (
+				663478B026ED438200B63527 /* Files */,
+				6634789D26ECEE3900B63527 /* TableViewCells */,
 				6634789826ECAC9700B63527 /* ModulesController */,
 				6634789526EC986500B63527 /* CollectionViewSupplementaryView */,
 				664190AB26EA77B200A08308 /* Extensions */,
@@ -195,6 +221,7 @@
 				664190A626EA68FD00A08308 /* DownloadViewController.swift */,
 				66DE6FFD26EB3D2500D8380E /* CourseContentViewController.swift */,
 				66D4602726EBE141003C4682 /* BeePNotificationViewController.swift */,
+				663478A626ED233700B63527 /* FileViewerViewController.swift */,
 			);
 			path = myPoliFile;
 			sourceTree = "<group>";
@@ -232,6 +259,7 @@
 				661FC5D326E8936500B33983 /* LinkBuilder.swift */,
 				66230C8A26E899C2003DFD41 /* WebManager.swift */,
 				66230C9A26E8CC39003DFD41 /* TaskManager.swift */,
+				6634789B26ECDA2D00B63527 /* Downloader.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -241,6 +269,7 @@
 			children = (
 				66230C9F26E8DDDC003DFD41 /* ErrorAlertController.swift */,
 				66230CC426EA2974003DFD41 /* FatalErrorViewController.swift */,
+				663478AA26ED372700B63527 /* FileOptionBottomSheet.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -248,6 +277,7 @@
 		66230CA526E8FF99003DFD41 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				663478AE26ED415400B63527 /* OfflineFile.swift */,
 				66DE700926EB72B500D8380E /* Modules */,
 				661FC5D126E890FF00B33983 /* User.swift */,
 				66230CA626E8FFAF003DFD41 /* Course.swift */,
@@ -278,6 +308,7 @@
 				66230CC226EA2625003DFD41 /* UserParser.swift */,
 				66DE700126EB462800D8380E /* CourseDetailParser.swift */,
 				66D4602926EBE43A003C4682 /* DiscussionParser.swift */,
+				663478A826ED275500B63527 /* SearchCourseParser.swift */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -294,8 +325,25 @@
 			isa = PBXGroup;
 			children = (
 				6634789926ECACB600B63527 /* FolderViewController.swift */,
+				663478A426ED176300B63527 /* ForumViewController.swift */,
 			);
 			path = ModulesController;
+			sourceTree = "<group>";
+		};
+		6634789D26ECEE3900B63527 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				6634789E26ECEE5000B63527 /* SegmentTableViewCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		663478B026ED438200B63527 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				663478B126ED438E00B63527 /* DeviceFileManager.swift */,
+			);
+			path = Files;
 			sourceTree = "<group>";
 		};
 		664190A826EA773100A08308 /* CollectionViewCells */ = {
@@ -305,6 +353,9 @@
 				664190A926EA775300A08308 /* TabBarCollectionViewCell.swift */,
 				66DE702626EB90A900D8380E /* GenericCollectionViewCell.swift */,
 				6634789326EC973400B63527 /* ModuleCollectionViewCell.swift */,
+				663478A026ED059C00B63527 /* FolderCollectionViewCell.swift */,
+				663478A226ED05B000B63527 /* FileCollectionViewCell.swift */,
+				663478AC26ED40F400B63527 /* OfflineFileCollectionViewCell.swift */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -326,6 +377,7 @@
 				66DE700E26EB74F400D8380E /* URL */,
 				66DE700C26EB72E400D8380E /* Module.swift */,
 				66DE701126EB76D100D8380E /* ModuleForum.swift */,
+				663478B326EDD45D00B63527 /* ModuleLabel.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -433,6 +485,8 @@
 				6634789A26ECACB600B63527 /* FolderViewController.swift in Sources */,
 				66DE700226EB462800D8380E /* CourseDetailParser.swift in Sources */,
 				66230C9026E8A3F7003DFD41 /* AppButton.swift in Sources */,
+				663478AD26ED40F400B63527 /* OfflineFileCollectionViewCell.swift in Sources */,
+				663478A726ED233700B63527 /* FileViewerViewController.swift in Sources */,
 				661FC5D226E890FF00B33983 /* User.swift in Sources */,
 				661FC5D426E8936500B33983 /* LinkBuilder.swift in Sources */,
 				66230C9B26E8CC39003DFD41 /* TaskManager.swift in Sources */,
@@ -440,9 +494,11 @@
 				66DE700D26EB72E400D8380E /* Module.swift in Sources */,
 				664190A526EA68E900A08308 /* SearchViewController.swift in Sources */,
 				66230CC326EA2625003DFD41 /* UserParser.swift in Sources */,
+				663478B226ED438E00B63527 /* DeviceFileManager.swift in Sources */,
 				664190A126EA53DD00A08308 /* HomeHeader.swift in Sources */,
 				664190AF26EA8C7B00A08308 /* TagView.swift in Sources */,
 				66DE700626EB5D9300D8380E /* Announcement.swift in Sources */,
+				6634789F26ECEE5000B63527 /* SegmentTableViewCell.swift in Sources */,
 				66DE702326EB8CA000D8380E /* MVTopMenuCell.swift in Sources */,
 				661FC5C226E890E200B33983 /* WelcomeViewController.swift in Sources */,
 				66DE6FFE26EB3D2500D8380E /* CourseContentViewController.swift in Sources */,
@@ -453,6 +509,7 @@
 				66D4602826EBE141003C4682 /* BeePNotificationViewController.swift in Sources */,
 				664190A726EA68FD00A08308 /* DownloadViewController.swift in Sources */,
 				66230CC126E9FD9A003DFD41 /* CategoryParser.swift in Sources */,
+				663478A326ED05B000B63527 /* FileCollectionViewCell.swift in Sources */,
 				664190AD26EA77C200A08308 /* UIColorExtension.swift in Sources */,
 				66230C9E26E8DB93003DFD41 /* AlertViewController.swift in Sources */,
 				66DE700826EB5DAE00D8380E /* Forum.swift in Sources */,
@@ -463,20 +520,26 @@
 				66D4602C26EBE574003C4682 /* Discussion.swift in Sources */,
 				661FC5BE26E890E200B33983 /* AppDelegate.swift in Sources */,
 				66DE701026EB750200D8380E /* URLContent.swift in Sources */,
+				663478AB26ED372700B63527 /* FileOptionBottomSheet.swift in Sources */,
 				6634789426EC973400B63527 /* ModuleCollectionViewCell.swift in Sources */,
 				66230CAB26E9E171003DFD41 /* LoadingLoginView.swift in Sources */,
+				6634789C26ECDA2D00B63527 /* Downloader.swift in Sources */,
 				6634789226EC889A00B63527 /* FloatingTextField.swift in Sources */,
 				6634789026EC87D600B63527 /* StringExtension.swift in Sources */,
 				664190B526EA9FFF00A08308 /* UIViewControllerExtension.swift in Sources */,
+				663478B426EDD45D00B63527 /* ModuleLabel.swift in Sources */,
 				66230C9826E8BFB5003DFD41 /* LoadingViewController.swift in Sources */,
 				6641909D26EA38EA00A08308 /* UserInfoView.swift in Sources */,
 				66230C8B26E899C2003DFD41 /* WebManager.swift in Sources */,
 				66230CC526EA2974003DFD41 /* FatalErrorViewController.swift in Sources */,
 				66230CA026E8DDDC003DFD41 /* ErrorAlertController.swift in Sources */,
 				66D4602A26EBE43A003C4682 /* DiscussionParser.swift in Sources */,
+				663478AF26ED415400B63527 /* OfflineFile.swift in Sources */,
+				663478A526ED176300B63527 /* ForumViewController.swift in Sources */,
 				66DE701726EB774800D8380E /* FolderContent.swift in Sources */,
 				66DE701926EB789500D8380E /* Section.swift in Sources */,
 				66230CBA26E9E513003DFD41 /* Loader.swift in Sources */,
+				663478A926ED275500B63527 /* SearchCourseParser.swift in Sources */,
 				66DE702726EB90A900D8380E /* GenericCollectionViewCell.swift in Sources */,
 				66230C8E26E8A32C003DFD41 /* BaseViewController.swift in Sources */,
 				66DE702426EB8CA000D8380E /* MVTopMenuProtocols.swift in Sources */,
@@ -485,6 +548,7 @@
 				664190B126EA8DBE00A08308 /* CourseCollectionViewCell.swift in Sources */,
 				66230CBF26E9FBD9003DFD41 /* CourseParser.swift in Sources */,
 				664190A326EA67E800A08308 /* CoursesViewController.swift in Sources */,
+				663478A126ED059C00B63527 /* FolderCollectionViewCell.swift in Sources */,
 				66DE700426EB5B2B00D8380E /* Recording.swift in Sources */,
 				66DE701226EB76D100D8380E /* ModuleForum.swift in Sources */,
 				66DE701526EB772300D8380E /* ModuleFolder.swift in Sources */,

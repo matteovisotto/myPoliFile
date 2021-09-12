@@ -58,6 +58,11 @@ class CourseDetailParser {
                                     module.instance = instance
                                     module.name = name
                                     break
+                                case .label:
+                                    module = ModuleLabel()
+                                    module.instance = instance
+                                    module.name = name
+                                    break
                                 default:
                                     module = Module(modname: .undefined, icon: UIImage(named: "icon-undefined") ?? UIImage())
                                     module.instance = instance
@@ -75,9 +80,6 @@ class CourseDetailParser {
                             }
                             return
                         }
-                        
-                       
-                        
                     }
                     DispatchQueue.main.async {
                         completionHandler()

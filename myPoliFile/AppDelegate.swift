@@ -15,7 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         var rootVC: UIViewController!
-        //PreferenceManager.removeToken()
+        
+        if(!PreferenceManager.isFileDefaultActionAvailable()){
+            PreferenceManager.setFileDefaultAction(defaultAction: 2)
+        }
+        
         if(PreferenceManager.isTokenAvailable() && PreferenceManager.isPersonalCodeAvailable()){
             if let token = PreferenceManager.getToken(), let personalCode = PreferenceManager.getPersonalCode() {
                 User.mySelf.token = token

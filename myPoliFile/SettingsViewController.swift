@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MessageUI
 
 class SettingsViewController: BaseViewController {
 
@@ -79,6 +80,10 @@ class SettingsViewController: BaseViewController {
         self.dismiss(animated: true, completion: nil)
         self.navigationController?.popViewController(animated: true)
     }
+    
+    @objc private func segmentedControlChanged(_ sender: UISegmentedControl) {
+        PreferenceManager.setFileDefaultAction(defaultAction: sender.selectedSegmentIndex)
+    }
 }
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -89,9 +94,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 2
+            return 1
         case 1:
-            return 3
+            return 1
         case 2:
             return 1
         default:
@@ -102,8 +107,17 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.section == 0){
-            return UITableViewCell()
+            let cell = SegmentTableViewCell()
+            cell.selectedIndex = PreferenceManager.getFileDefaultAction() ?? 2
+            cell.segmentedControl.addTarget(self, action: #selector(segmentedControlChanged(_:)), for: .valueChanged)
+            return cell
         } else if (indexPath.section == 1) {
+            if(indexPath.row == 0){
+                let cell = UITableViewCell()
+                cell.accessoryType = .disclosureIndicator
+                cell.textLabel?.text = "Contact app developer"
+                return cell
+            }
             return UITableViewCell()
         } else {
             let cell = UITableViewCell()
@@ -117,7 +131,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "General"
+            return "Default file action"
         case 1:
             return "Information"
         default:
@@ -125,16 +139,33 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "Set the default action for a file that can be opended in preview. If it can't it will alwayes be downloaded"
+        case 1:
+            return ""
+        default:
+            return ""
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        if (indexPath.section == 0){
-            
-        } else if (indexPath.section == 1) {
-            
-        } else {
+         if (indexPath.section == 1) {
+            if(indexPath.row == 0) {
+                let mailComposeViewController = configureMailController()
+                if MFMailComposeViewController.canSendMail() {
+                    self.present(mailComposeViewController, animated: true, completion: nil)
+                } else {
+                    print("Unable to send mail")
+                }
+            }
+         } else if (indexPath.section == 2){
             //Logout
             PreferenceManager.removeToken()
             PreferenceManager.removePersonalCode()
+            PreferenceManager.removeFileDefaultAction()
             User.mySelf = User()
             Category.categories.removeAll()
             Course.clear()
@@ -149,4 +180,22 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+}
+
+extension SettingsViewController: MFMailComposeViewControllerDelegate {
+    //Function to send an email
+    func configureMailController() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self
+        
+        mailComposerVC.setToRecipients(["matteo.visotto@mail.polimi.it"])
+        mailComposerVC.setSubject("[myPoliFile]")
+        mailComposerVC.setMessageBody("", isHTML: true)
+        
+        return mailComposerVC
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
 }

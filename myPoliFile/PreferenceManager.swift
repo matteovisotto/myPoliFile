@@ -53,6 +53,27 @@ class PreferenceManager {
         UserDefaults.standard.removeObject(forKey: "polimiPersonalCode")
     }
     
+    //MARK:- File default action
+    
+    public static func setFileDefaultAction(defaultAction: Int) {
+        UserDefaults.standard.setValue(defaultAction, forKey: "fileDefaultAction")
+    }
+    
+    public static func isFileDefaultActionAvailable() -> Bool {
+        let m = UserDefaults.standard
+        if let _ = m.string(forKey: "fileDefaultAction") {
+            return true
+        }
+        return false
+    }
+    
+    public static func getFileDefaultAction() -> Int? {
+        return UserDefaults.standard.integer(forKey: "fileDefaultAction")
+    }
+    
+    public static func removeFileDefaultAction() {
+        UserDefaults.standard.removeObject(forKey: "fileDefaultAction")
+    }
     
     
 }

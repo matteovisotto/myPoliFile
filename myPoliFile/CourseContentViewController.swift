@@ -151,12 +151,14 @@ extension CourseContentViewController: UICollectionViewDelegate, UICollectionVie
             }
             break
         case .forum:
-            //Open forum controller
+            let forumController = ForumViewController()
+            self.navigationController?.pushViewController(forumController, animated: true)
             break
         case .folder:
             //Open folder controller
             let folderController = FolderViewController()
             folderController.module = module
+            folderController.files = FolderViewController.prepareFiles(myFiles: (module as! ModuleFolder).contents)
             self.navigationController?.pushViewController(folderController, animated: true)
             break
         default:
