@@ -32,6 +32,7 @@ class CoursesViewController: BaseViewController {
     }
     
     private var loader = Loader()
+    private let refreshControl = UIRefreshControl()
     private var courseTask: TaskManager!
     private let topMenu = TopMenu()
     private let menuItems: [String] = ["All", "Favourire", "Hidden"]
@@ -52,7 +53,14 @@ class CoursesViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        downloadCourses()
+        if(Course.courses.count == 0){
+            downloadCourses()
+        } else {
+            if (PreferenceManager.getCoursesReloading()){
+                downloadCourses()
+            }
+        }
+        
     }
     
     private func setupTopMenu() {
@@ -81,6 +89,9 @@ class CoursesViewController: BaseViewController {
         collectionView.backgroundColor = .clear
         collectionView.register(CourseCollectionViewCell.self, forCellWithReuseIdentifier: "courseCell")
         collectionView.register(GenericCollectionViewCell.self, forCellWithReuseIdentifier: "genericCell")
+        collectionView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(didAskRefresh), for: .valueChanged)
+        refreshControl.tintColor = .primary.withAlphaComponent(0.5)
     }
 
     private func downloadCourses() {
@@ -92,6 +103,13 @@ class CoursesViewController: BaseViewController {
         self.courseTask = TaskManager(url: URL(string: urlString)!)
         self.courseTask.delegate = self
         self.courseTask.execute()
+    }
+    
+    @objc private func didAskRefresh() {
+        Course.clear()
+        collectionView.reloadData()
+        refreshControl.endRefreshing()
+        downloadCourses()
     }
 }
 
@@ -157,7 +175,7 @@ extension CoursesViewController: UICollectionViewDataSource, UICollectionViewDel
         if let cat = category {
             cell.tagView.text = cat.categoryName
             if(cat.categoryName.lowercased() == "ccs"){
-                cell.tagView.color = .primary
+                cell.tagView.color = .buttonPrimary
             } else if (cat.categoryName.lowercased() == "generale") {
                 cell.tagView.text = "Generic"
                 cell.tagView.color = .systemOrange

@@ -75,5 +75,26 @@ class PreferenceManager {
         UserDefaults.standard.removeObject(forKey: "fileDefaultAction")
     }
     
+    //MARK:- Courses Loading
+    public static func setCoursesReloading(defaultAction: Bool) {
+        UserDefaults.standard.setValue(defaultAction, forKey: "coursesReloading")
+    }
+    
+    public static func isCoursesReloadingAvailable() -> Bool {
+        let m = UserDefaults.standard
+        if let _ = m.string(forKey: "coursesReloading") {
+            return true
+        }
+        return false
+    }
+    
+    public static func getCoursesReloading() -> Bool {
+        return UserDefaults.standard.bool(forKey: "coursesReloading")
+    }
+    
+    public static func removeCoursesReloading() {
+        UserDefaults.standard.removeObject(forKey: "coursesReloading")
+    }
+    
     
 }

@@ -84,11 +84,15 @@ class SettingsViewController: BaseViewController {
     @objc private func segmentedControlChanged(_ sender: UISegmentedControl) {
         PreferenceManager.setFileDefaultAction(defaultAction: sender.selectedSegmentIndex)
     }
+    
+    @objc private func switchValueChange(_ sender: UISwitch) {
+        PreferenceManager.setCoursesReloading(defaultAction: sender.isOn)
+    }
 }
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        3
+        4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -98,6 +102,8 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             return 1
         case 2:
+            return 1
+        case 3:
             return 1
         default:
             return 0
@@ -111,7 +117,13 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.selectedIndex = PreferenceManager.getFileDefaultAction() ?? 2
             cell.segmentedControl.addTarget(self, action: #selector(segmentedControlChanged(_:)), for: .valueChanged)
             return cell
-        } else if (indexPath.section == 1) {
+        } else if (indexPath.section == 1){
+            let cell = SwitchTableViewCell()
+            cell.text = "Always reload"
+            cell.switchStatus = PreferenceManager.getCoursesReloading()
+            cell.switchControl.addTarget(self, action: #selector(switchValueChange(_:)), for: .valueChanged)
+            return cell
+        } else if (indexPath.section == 2) {
             if(indexPath.row == 0){
                 let cell = UITableViewCell()
                 cell.accessoryType = .disclosureIndicator
@@ -133,6 +145,8 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             return "Default file action"
         case 1:
+            return "Courses"
+        case 2:
             return "Information"
         default:
             return ""
@@ -142,9 +156,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "Set the default action for a file that can be opended in preview. If it can't it will alwayes be downloaded"
+            return "Set the default action for a file that can be opended in preview. If it can't it will always be downloaded"
         case 1:
-            return ""
+            return "If active courses will be reloaded each time the screen is shown. This action could take long time"
         default:
             return ""
         }
@@ -152,20 +166,24 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-         if (indexPath.section == 1) {
+         if (indexPath.section == 2) {
             if(indexPath.row == 0) {
                 let mailComposeViewController = configureMailController()
                 if MFMailComposeViewController.canSendMail() {
                     self.present(mailComposeViewController, animated: true, completion: nil)
                 } else {
-                    print("Unable to send mail")
+                    let errorVC = ErrorAlertController()
+                    errorVC.setContent(title: "Error", message: "Unable to open mail app")
+                    errorVC.modalPresentationStyle = .overFullScreen
+                    self.present(errorVC, animated: true, completion: nil)
                 }
             }
-         } else if (indexPath.section == 2){
+         } else if (indexPath.section == 3){
             //Logout
             PreferenceManager.removeToken()
             PreferenceManager.removePersonalCode()
             PreferenceManager.removeFileDefaultAction()
+            PreferenceManager.removeCoursesReloading()
             User.mySelf = User()
             Category.categories.removeAll()
             Course.clear()

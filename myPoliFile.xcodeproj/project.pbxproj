@@ -51,6 +51,7 @@
 		663478AF26ED415400B63527 /* OfflineFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663478AE26ED415400B63527 /* OfflineFile.swift */; };
 		663478B226ED438E00B63527 /* DeviceFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663478B126ED438E00B63527 /* DeviceFileManager.swift */; };
 		663478B426EDD45D00B63527 /* ModuleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663478B326EDD45D00B63527 /* ModuleLabel.swift */; };
+		663478B626EDEBF900B63527 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663478B526EDEBF900B63527 /* SwitchTableViewCell.swift */; };
 		6641909B26EA378100A08308 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641909A26EA378100A08308 /* SettingsViewController.swift */; };
 		6641909D26EA38EA00A08308 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641909C26EA38EA00A08308 /* UserInfoView.swift */; };
 		6641909F26EA4F5500A08308 /* SquareImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641909E26EA4F5500A08308 /* SquareImageButton.swift */; };
@@ -131,6 +132,7 @@
 		663478AE26ED415400B63527 /* OfflineFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfflineFile.swift; sourceTree = "<group>"; };
 		663478B126ED438E00B63527 /* DeviceFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceFileManager.swift; sourceTree = "<group>"; };
 		663478B326EDD45D00B63527 /* ModuleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleLabel.swift; sourceTree = "<group>"; };
+		663478B526EDEBF900B63527 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		6641909A26EA378100A08308 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		6641909C26EA38EA00A08308 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		6641909E26EA4F5500A08308 /* SquareImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareImageButton.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				6634789E26ECEE5000B63527 /* SegmentTableViewCell.swift */,
+				663478B526EDEBF900B63527 /* SwitchTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 				661FC5D226E890FF00B33983 /* User.swift in Sources */,
 				661FC5D426E8936500B33983 /* LinkBuilder.swift in Sources */,
 				66230C9B26E8CC39003DFD41 /* TaskManager.swift in Sources */,
+				663478B626EDEBF900B63527 /* SwitchTableViewCell.swift in Sources */,
 				66230C9626E8ADE2003DFD41 /* WebLoginViewController.swift in Sources */,
 				66DE700D26EB72E400D8380E /* Module.swift in Sources */,
 				664190A526EA68E900A08308 /* SearchViewController.swift in Sources */,

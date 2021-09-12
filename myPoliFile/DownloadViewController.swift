@@ -14,6 +14,7 @@ class DownloadViewController: BaseViewController {
     private let quickLookController = QLPreviewController()
     private var realNumberOfFiles: Int = 0
     private var files: [OfflineFile] = []
+    private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,9 +46,17 @@ class DownloadViewController: BaseViewController {
         collectionView.backgroundColor = .clear
         collectionView.register(OfflineFileCollectionViewCell.self, forCellWithReuseIdentifier: "fileCell")
         collectionView.register(GenericCollectionViewCell.self, forCellWithReuseIdentifier: "genericCell")
+        collectionView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(didAskRefresh), for: .valueChanged)
+        refreshControl.tintColor = .primary.withAlphaComponent(0.5)
     }
     
-
+    @objc private func didAskRefresh() {
+        self.files = DeviceFileManager.loadFiles() ?? []
+        collectionView.reloadData()
+        quickLookController.reloadData()
+        refreshControl.endRefreshing()
+    }
 }
 
 extension DownloadViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
