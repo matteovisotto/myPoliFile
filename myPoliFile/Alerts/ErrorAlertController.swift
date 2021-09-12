@@ -11,7 +11,7 @@ class ErrorAlertController: AlertViewController {
     
     private let titleLable = UILabel()
     private let messageLable = UILabel()
-    private let dismissButton = AppButton()
+    private let dismissButton = UIButton()
 
     private var alertTitle: String = ""
     private var alertMessage: String = ""
@@ -24,9 +24,20 @@ class ErrorAlertController: AlertViewController {
     }
     
     private func setupLayout() {
+        alertView.addSubview(dismissButton)
+        dismissButton.translatesAutoresizingMaskIntoConstraints = false
+        dismissButton.topAnchor.constraint(equalTo: alertView.topAnchor, constant: 10).isActive = true
+        dismissButton.rightAnchor.constraint(equalTo: alertView.rightAnchor, constant: -10).isActive = true
+        dismissButton.heightAnchor.constraint(equalToConstant: 18).isActive = true
+        dismissButton.widthAnchor.constraint(equalToConstant: 18).isActive = true
+        dismissButton.setImage(UIImage(named: "cross"), for: .normal)
+        dismissButton.imageView?.tintColor = labelColor
+        dismissButton.addTarget(self, action: #selector(didTapDismiss), for: .touchUpInside)
+        
+        
         alertView.addSubview(titleLable)
         titleLable.translatesAutoresizingMaskIntoConstraints = false
-        titleLable.topAnchor.constraint(equalTo: alertView.topAnchor, constant: 10).isActive = true
+        titleLable.topAnchor.constraint(equalTo: alertView.topAnchor, constant: 15).isActive = true
         titleLable.leftAnchor.constraint(equalTo: alertView.leftAnchor, constant: 15).isActive = true
         titleLable.rightAnchor.constraint(equalTo: alertView.rightAnchor, constant: -15).isActive = true
         titleLable.font = .boldSystemFont(ofSize: 25)
@@ -38,18 +49,11 @@ class ErrorAlertController: AlertViewController {
         messageLable.topAnchor.constraint(equalTo: titleLable.bottomAnchor, constant: 15).isActive = true
         messageLable.leftAnchor.constraint(equalTo: alertView.leftAnchor, constant: 15).isActive = true
         messageLable.rightAnchor.constraint(equalTo: alertView.rightAnchor, constant: -15).isActive = true
+        messageLable.bottomAnchor.constraint(equalTo: alertView.bottomAnchor, constant: -15).isActive = true
         messageLable.numberOfLines = .zero
         messageLable.text = self.alertMessage
         
-        alertView.addSubview(dismissButton)
-        dismissButton.translatesAutoresizingMaskIntoConstraints = false
-        dismissButton.topAnchor.constraint(equalTo: messageLable.bottomAnchor, constant: 15).isActive = true
-        dismissButton.leftAnchor.constraint(equalTo: alertView.leftAnchor, constant: 15).isActive = true
-        dismissButton.rightAnchor.constraint(equalTo: alertView.rightAnchor, constant: -15).isActive = true
-        dismissButton.bottomAnchor.constraint(equalTo: alertView.bottomAnchor, constant: -10).isActive = true
-        dismissButton.setTitle("Dismiss", for: .normal)
-        dismissButton.addTarget(self, action: #selector(didTapDismiss), for: .touchUpInside)
-        dismissButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        
     }
     
     public func setContent(title: String?, message: String) {

@@ -44,6 +44,7 @@ class CoursesViewController: BaseViewController {
         self.view.backgroundColor = .clear
         setupTopMenu()
         let collectionViewLayout = UICollectionViewFlowLayout()
+        collectionViewLayout.estimatedItemSize = CGSize(width: UIScreen.main.bounds.width-20, height: 10)
         self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         setupCollectionView()
         self.topMenu.setSelectedIndex(atIndex: 0)
@@ -171,12 +172,12 @@ extension CoursesViewController: UICollectionViewDataSource, UICollectionViewDel
         return UIEdgeInsets(top: 10, left: 10, bottom: MainViewController.safeAreaBottom+MainViewController.tabBarHeight+10, right: 10)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    /*func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if (realNumberOfItems == 0){
             return CGSize(width: collectionView.bounds.width-20, height: collectionView.bounds.height-20)
         }
-        return CGSize(width: collectionView.bounds.width-20, height: 180)
-    }
+        return CGSize(width: collectionView.bounds.width-20, height: 140)
+    }*/
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 15
