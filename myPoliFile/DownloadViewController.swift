@@ -106,16 +106,33 @@ class DownloadViewController: BaseViewController {
         let p = gestureRecognizer.location(in: collectionView)
 
         if let indexPath = collectionView.indexPathForItem(at: p) {
+            UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
             let section = indexPath.section
             let item = indexPath.item
+            let deleteAlert = FileDeleteBottomSheet()
             if(section==0 && !(self.realNumberOfFolders==0)){
                 let folder = folders[item]
-                
+                deleteAlert.alertTitle = "Delete folder?"
+                deleteAlert.alertDescription = "Are you sure you want to delete folder " + folder.folderName + " and all the files it contains?"
+                deleteAlert.completion = {result in
+                    if result {
+                        let _ = DeviceFileManager.deleteFolder(using: folder)
+                        self.loadContent()
+                    }
+                }
             } else if (section==1 && !(self.realNumberOfFiles==0)){
                 let file = files[item]
-                
-            }
-            
+                deleteAlert.alertTitle = "Delete file?"
+                deleteAlert.alertDescription = "Are you sure you want to delete " + file.fileName
+                deleteAlert.completion = {result in
+                    if result {
+                        let _ = DeviceFileManager.deleteFile(using: file, inCourseFolder: self.currentPath)
+                        self.loadContent()
+                    }
+                }
+            } else {return}
+            deleteAlert.modalPresentationStyle = .overFullScreen
+            self.present(deleteAlert, animated: true, completion: nil)
         }
     }
     

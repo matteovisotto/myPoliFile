@@ -165,7 +165,7 @@ extension CourseContentViewController: UICollectionViewDelegate, UICollectionVie
             AppGlobal.currentModule = ""
             let m = module as! ModuleResource
             guard let content = m.contents else {return}
-            let fileAction = FileAction(target: self, moduleContent: content, loader: self.loader)
+            let fileAction = FileOpenAction(target: self, moduleContent: content, loader: self.loader)
             fileAction.displayActions()
             break
         default:

@@ -55,7 +55,7 @@
 		663478B926EE01BB00B63527 /* ModuleResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663478B826EE01BB00B63527 /* ModuleResource.swift */; };
 		663478BB26EE03EF00B63527 /* ResourceContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663478BA26EE03EF00B63527 /* ResourceContent.swift */; };
 		663478BD26EE06F200B63527 /* ModuleContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663478BC26EE06F200B63527 /* ModuleContent.swift */; };
-		663478BF26EE2EDD00B63527 /* FileAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663478BE26EE2EDD00B63527 /* FileAction.swift */; };
+		663478BF26EE2EDD00B63527 /* FileOpenAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663478BE26EE2EDD00B63527 /* FileOpenAction.swift */; };
 		6641909B26EA378100A08308 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641909A26EA378100A08308 /* SettingsViewController.swift */; };
 		6641909D26EA38EA00A08308 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641909C26EA38EA00A08308 /* UserInfoView.swift */; };
 		6641909F26EA4F5500A08308 /* SquareImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641909E26EA4F5500A08308 /* SquareImageButton.swift */; };
@@ -92,6 +92,7 @@
 		66DE702426EB8CA000D8380E /* MVTopMenuProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE702126EB8CA000D8380E /* MVTopMenuProtocols.swift */; };
 		66DE702526EB8CA000D8380E /* MVTopMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE702226EB8CA000D8380E /* MVTopMenuView.swift */; };
 		66DE702726EB90A900D8380E /* GenericCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE702626EB90A900D8380E /* GenericCollectionViewCell.swift */; };
+		66E59AE326EFE2A300EC1CAD /* FileDeleteBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E59AE226EFE2A300EC1CAD /* FileDeleteBottomSheet.swift */; };
 		66F2CE1526EF5A42003B1868 /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F2CE1426EF5A42003B1868 /* AppGlobal.swift */; };
 		66F2CE1726EF5CB5003B1868 /* CourseName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F2CE1626EF5CB5003B1868 /* CourseName.swift */; };
 		66F2CE1926EF5DF7003B1868 /* OfflineFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F2CE1826EF5DF7003B1868 /* OfflineFolder.swift */; };
@@ -148,7 +149,7 @@
 		663478B826EE01BB00B63527 /* ModuleResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleResource.swift; sourceTree = "<group>"; };
 		663478BA26EE03EF00B63527 /* ResourceContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceContent.swift; sourceTree = "<group>"; };
 		663478BC26EE06F200B63527 /* ModuleContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleContent.swift; sourceTree = "<group>"; };
-		663478BE26EE2EDD00B63527 /* FileAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FileAction.swift; path = ../../../../../Documents/FileAction.swift; sourceTree = "<group>"; };
+		663478BE26EE2EDD00B63527 /* FileOpenAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FileOpenAction.swift; path = ../../../../../Documents/FileOpenAction.swift; sourceTree = "<group>"; };
 		6641909A26EA378100A08308 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		6641909C26EA38EA00A08308 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		6641909E26EA4F5500A08308 /* SquareImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareImageButton.swift; sourceTree = "<group>"; };
@@ -185,6 +186,7 @@
 		66DE702126EB8CA000D8380E /* MVTopMenuProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVTopMenuProtocols.swift; sourceTree = "<group>"; };
 		66DE702226EB8CA000D8380E /* MVTopMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVTopMenuView.swift; sourceTree = "<group>"; };
 		66DE702626EB90A900D8380E /* GenericCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCollectionViewCell.swift; sourceTree = "<group>"; };
+		66E59AE226EFE2A300EC1CAD /* FileDeleteBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDeleteBottomSheet.swift; sourceTree = "<group>"; };
 		66F2CE1426EF5A42003B1868 /* AppGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGlobal.swift; sourceTree = "<group>"; };
 		66F2CE1626EF5CB5003B1868 /* CourseName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseName.swift; sourceTree = "<group>"; };
 		66F2CE1826EF5DF7003B1868 /* OfflineFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineFolder.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				66230C9F26E8DDDC003DFD41 /* ErrorAlertController.swift */,
 				66230CC426EA2974003DFD41 /* FatalErrorViewController.swift */,
 				663478AA26ED372700B63527 /* FileOptionBottomSheet.swift */,
+				66E59AE226EFE2A300EC1CAD /* FileDeleteBottomSheet.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -304,7 +307,7 @@
 		66230CA526E8FF99003DFD41 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				663478AE26ED415400B63527 /* OfflineFile.swift */,
+				66E59AE126EFE24400EC1CAD /* OfflineContent */,
 				66DE700926EB72B500D8380E /* Modules */,
 				661FC5D126E890FF00B33983 /* User.swift */,
 				66230CA626E8FFAF003DFD41 /* Course.swift */,
@@ -315,7 +318,6 @@
 				66DE701826EB789500D8380E /* Section.swift */,
 				66D4602B26EBE574003C4682 /* Discussion.swift */,
 				66F2CE1626EF5CB5003B1868 /* CourseName.swift */,
-				66F2CE1826EF5DF7003B1868 /* OfflineFolder.swift */,
 				66623A3926EFA1AB000B94B9 /* Notification.swift */,
 			);
 			path = Models;
@@ -375,7 +377,7 @@
 			isa = PBXGroup;
 			children = (
 				663478B126ED438E00B63527 /* DeviceFileManager.swift */,
-				663478BE26EE2EDD00B63527 /* FileAction.swift */,
+				663478BE26EE2EDD00B63527 /* FileOpenAction.swift */,
 			);
 			path = Files;
 			sourceTree = "<group>";
@@ -457,6 +459,15 @@
 			path = MVTopMenu;
 			sourceTree = "<group>";
 		};
+		66E59AE126EFE24400EC1CAD /* OfflineContent */ = {
+			isa = PBXGroup;
+			children = (
+				66F2CE1826EF5DF7003B1868 /* OfflineFolder.swift */,
+				663478AE26ED415400B63527 /* OfflineFile.swift */,
+			);
+			path = OfflineContent;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -526,6 +537,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66E59AE326EFE2A300EC1CAD /* FileDeleteBottomSheet.swift in Sources */,
 				66230CA226E8E35D003DFD41 /* TestViewController.swift in Sources */,
 				66230CA926E9DF43003DFD41 /* BackHeader.swift in Sources */,
 				664190AA26EA775300A08308 /* TabBarCollectionViewCell.swift in Sources */,
@@ -552,7 +564,7 @@
 				66DE702326EB8CA000D8380E /* MVTopMenuCell.swift in Sources */,
 				661FC5C226E890E200B33983 /* WelcomeViewController.swift in Sources */,
 				663478B926EE01BB00B63527 /* ModuleResource.swift in Sources */,
-				663478BF26EE2EDD00B63527 /* FileAction.swift in Sources */,
+				663478BF26EE2EDD00B63527 /* FileOpenAction.swift in Sources */,
 				66DE6FFE26EB3D2500D8380E /* CourseContentViewController.swift in Sources */,
 				66230C9426E8ABA6003DFD41 /* PreferenceManager.swift in Sources */,
 				66230CA726E8FFAF003DFD41 /* Course.swift in Sources */,

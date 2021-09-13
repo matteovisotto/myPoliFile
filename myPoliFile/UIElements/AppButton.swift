@@ -10,9 +10,17 @@ import UIKit
 class AppButton: UIButton {
     
     
-    public var normalColor: UIColor = .buttonPrimary
+    public var normalColor: UIColor = .buttonPrimary {
+        didSet{
+            backgroundColor = normalColor
+        }
+    }
     public var highlightedColor: UIColor = .buttonSecondary
-    public var normalTextColor: UIColor = .white
+    public var normalTextColor: UIColor = .white {
+        didSet{
+            setTitleColor(normalTextColor, for: .normal)
+        }
+    }
     public var highlightedTextColor: UIColor = .white
     
 
@@ -35,6 +43,7 @@ class AppButton: UIButton {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     
 }
 

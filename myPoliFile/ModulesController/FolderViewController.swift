@@ -174,7 +174,7 @@ extension FolderViewController: UICollectionViewDelegate, UICollectionViewDataSo
             return
         }
         let selectedFile = folderContents[indexPath.item]
-        let fileAction = FileAction(target: self, moduleContent: selectedFile, loader: self.loader)
+        let fileAction = FileOpenAction(target: self, moduleContent: selectedFile, loader: self.loader)
         fileAction.displayActions()
     }
 }
