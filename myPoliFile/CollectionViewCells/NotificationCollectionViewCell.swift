@@ -41,9 +41,23 @@ class NotificationCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupLayout() {
+        let imageView = UIImageView(image: UIImage(named: "announcement")!)
+        contentView.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
+        imageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 5).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 17).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 17).isActive = true
+        imageView.contentMode = .scaleAspectFit
+        if #available(iOS 13.0, *) {
+            imageView.tintColor = .secondaryLabel
+        } else {
+            imageView.tintColor = .lightGray
+        }
+        
         contentView.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
+        label.topAnchor.constraint(equalTo:imageView.bottomAnchor, constant: 5).isActive = true
         label.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10).isActive = true
         label.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10).isActive = true
         label.font = .systemFont(ofSize: 20, weight: .semibold)
@@ -57,6 +71,7 @@ class NotificationCollectionViewCell: UICollectionViewCell {
         timeLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
         timeLabel.font = .systemFont(ofSize: 15)
         timeLabel.numberOfLines = .zero
+        timeLabel.textAlignment = .right
         if #available(iOS 13.0, *) {
             timeLabel.textColor = .secondaryLabel
         } else {
