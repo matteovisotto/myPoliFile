@@ -13,8 +13,13 @@ class DownloadViewController: BaseViewController {
     private var collectionView: UICollectionView!
     private let quickLookController = QLPreviewController()
     private var realNumberOfFiles: Int = 0
+    private var realNumberOfFolders: Int = 0
     private var files: [OfflineFile] = []
+    private var folders: [OfflineFolder] = []
+    private var currentPath: String = "/"
     private let refreshControl = UIRefreshControl()
+    private let backView = UIView()
+    private var backButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,21 +27,28 @@ class DownloadViewController: BaseViewController {
         let collectionViewFlowLayout = UICollectionViewFlowLayout()
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewFlowLayout)
         setupCollectionView()
+        setupBackButton()
         self.quickLookController.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
-        self.files = DeviceFileManager.loadFiles() ?? []
-        collectionView.reloadData()
-        quickLookController.reloadData()
+        loadContent()
     }
     
     private func setupCollectionView() {
+        self.view.addSubview(backView)
+        backView.translatesAutoresizingMaskIntoConstraints = false
+        backView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        backView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor).isActive = true
+        backView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor).isActive = true
+        backView.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        backView.backgroundColor = .clear
+        
         self.view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        collectionView.topAnchor.constraint(equalTo: self.backView.bottomAnchor).isActive = true
         collectionView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor).isActive = true
         collectionView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
@@ -46,32 +58,115 @@ class DownloadViewController: BaseViewController {
         collectionView.backgroundColor = .clear
         collectionView.register(OfflineFileCollectionViewCell.self, forCellWithReuseIdentifier: "fileCell")
         collectionView.register(GenericCollectionViewCell.self, forCellWithReuseIdentifier: "genericCell")
+        collectionView.register(OfflineFolderCollectionViewCell.self, forCellWithReuseIdentifier: "folderCell")
+        collectionView.register(SectionTitleCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "titleView")
         collectionView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(didAskRefresh), for: .valueChanged)
         refreshControl.tintColor = .primary.withAlphaComponent(0.5)
+        let longPressedGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecognizer:)))
+        longPressedGesture.minimumPressDuration = 0.5
+        longPressedGesture.delaysTouchesBegan = true
+        collectionView.addGestureRecognizer(longPressedGesture)
+    }
+    
+    private func setupBackButton() {
+        backView.addSubview(backButton)
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        backButton.leftAnchor.constraint(equalTo: backView.leftAnchor, constant: 10).isActive = true
+        backButton.topAnchor.constraint(equalTo: backView.topAnchor, constant: 5).isActive = true
+        backButton.bottomAnchor.constraint(equalTo: backView.bottomAnchor, constant: -5).isActive = true
+        backButton.setTitleColor(.primary, for: .normal)
+        backButton.isEnabled = false
+        backButton.setTitle("Main directory", for: .normal)
+        backButton.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
+    }
+    
+    @objc private func didTapBackButton() {
+        let calculatedPath = managePaths(forCurrentPath: self.currentPath)
+        self.currentPath = calculatedPath
+        if(calculatedPath == "/") {
+            self.backButton.setTitle("Main directory", for: .normal)
+            self.backButton.isEnabled = false
+        }
+        self.loadContent()
     }
     
     @objc private func didAskRefresh() {
-        self.files = DeviceFileManager.loadFiles() ?? []
+        print(self.currentPath)
+        loadContent()
+        
+        refreshControl.endRefreshing()
+    }
+    
+    @objc func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
+        if (gestureRecognizer.state != .began) {
+            return
+        }
+
+        let p = gestureRecognizer.location(in: collectionView)
+
+        if let indexPath = collectionView.indexPathForItem(at: p) {
+            let section = indexPath.section
+            let item = indexPath.item
+            if(section==0 && !(self.realNumberOfFolders==0)){
+                let folder = folders[item]
+                
+            } else if (section==1 && !(self.realNumberOfFiles==0)){
+                let file = files[item]
+                
+            }
+            
+        }
+    }
+    
+    private func loadContent() {
+        guard let loaded = DeviceFileManager.loadFiles(forDirectoryPath: self.currentPath) else {return}
+        self.files = loaded["files"] as? [OfflineFile] ?? []
+        self.folders = loaded["folders"] as? [OfflineFolder] ?? []
         collectionView.reloadData()
         quickLookController.reloadData()
-        refreshControl.endRefreshing()
+    }
+    
+    private func managePaths(forCurrentPath path: String) -> String{
+        var parts = path.split(separator: "/")
+        parts = parts.dropLast()
+        var path: String = "/"
+        if parts.count == 0 {return "/"}
+        for part in parts {
+            path = path + "/" + part
+        }
+        return path
     }
 }
 
 extension DownloadViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if section == 0 {
+            realNumberOfFolders = self.folders.count
+            return realNumberOfFolders == 0 ? 1 : realNumberOfFolders
+        }
         realNumberOfFiles = self.files.count
         return realNumberOfFiles == 0 ? 1 : realNumberOfFiles
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    
+        if indexPath.section == 0{
+            if(realNumberOfFolders == 0){
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "genericCell", for: indexPath) as! GenericCollectionViewCell
+                cell.text = "No folder available"
+                cell.backgroundColor = .clear
+                return cell
+            }
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "folderCell", for: indexPath) as!OfflineFolderCollectionViewCell
+            cell.folder = folders[indexPath.item]
+            cell.layer.cornerRadius = 15
+            return cell
+        }
         if(realNumberOfFiles == 0){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "genericCell", for: indexPath) as! GenericCollectionViewCell
             cell.text = "No files available"
@@ -90,8 +185,15 @@ extension DownloadViewController: UICollectionViewDelegate, UICollectionViewData
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.section == 0{
+            if(realNumberOfFolders == 0){
+                return CGSize(width: collectionView.frame.width-20, height: 15)
+            }
+            return CGSize(width: collectionView.frame.width-20, height: 62)
+        }
+        
         if(realNumberOfFiles == 0){
-            return CGSize(width: collectionView.frame.width-20, height: collectionView.frame.height-20)
+            return CGSize(width: collectionView.frame.width-20, height: 15)
         }
         return CGSize(width: collectionView.frame.width-20, height: 62)
     }
@@ -99,9 +201,19 @@ extension DownloadViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+        if indexPath.section == 0 {
+            if (realNumberOfFolders==0){return}
+            self.backButton.setTitle("< Back", for: .normal)
+            self.backButton.isEnabled = true
+            self.currentPath = folders[indexPath.item].folderURL
+            loadContent()
+            self.collectionView.reloadData()
+            self.quickLookController.reloadData()
+            return
+        }
         if(realNumberOfFiles==0){return}
         let selectedFile = self.files[indexPath.item]
-        let file = DeviceFileManager.getFileUrl(forFile: selectedFile)
+        let file = DeviceFileManager.getFileUrl(forFile: selectedFile, inCourseFolder: self.currentPath)
         if let fileToDisplay = file {
             if QLPreviewController.canPreview(fileToDisplay as QLPreviewItem) {
                 quickLookController.currentPreviewItemIndex = indexPath.item
@@ -120,6 +232,20 @@ extension DownloadViewController: UICollectionViewDelegate, UICollectionViewData
             self.present(errorVC, animated: true, completion: nil)
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let myView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "titleView", for: indexPath) as! SectionTitleCollectionReusableView
+        if(indexPath.section == 0) {
+            myView.sectionTitle = "Folders"
+        } else {
+            myView.sectionTitle = "Files"
+        }
+        return myView
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 40)
+    }
 }
 
 extension DownloadViewController: QLPreviewControllerDataSource{
@@ -129,7 +255,7 @@ extension DownloadViewController: QLPreviewControllerDataSource{
     }
        
     func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
-        let fileURL = DeviceFileManager.getFileUrl(forFile: self.files[index])
+        let fileURL = DeviceFileManager.getFileUrl(forFile: self.files[index], inCourseFolder: self.currentPath)
         if let fURL = fileURL {
             return fURL as QLPreviewItem
         }

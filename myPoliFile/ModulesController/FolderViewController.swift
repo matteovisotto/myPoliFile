@@ -87,20 +87,6 @@ class FolderViewController: BaseViewController {
         self.navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
     }
-
-    private func downloadFile(selectedFile: FolderContent) {
-        loader = CircleLoader.createGeometricLoader()
-        loader.startAnimation()
-        let downloader = Downloader(file: selectedFile)
-        downloader.delegate = self
-        downloader.startDownload()
-    }
-    
-    private func openFile(selectedFile: FolderContent) {
-        let fileViewerController = FileViewerViewController()
-        fileViewerController.file = selectedFile
-        self.navigationController?.pushViewController(fileViewerController, animated: true)
-    }
     
 }
 
@@ -188,58 +174,8 @@ extension FolderViewController: UICollectionViewDelegate, UICollectionViewDataSo
             return
         }
         let selectedFile = folderContents[indexPath.item]
-        if(selectedFile.isOpenable){
-            let pref = PreferenceManager.getFileDefaultAction() ?? 2
-            switch pref {
-            case 0:
-                //Open
-                openFile(selectedFile: selectedFile)
-                break
-            case 1:
-                downloadFile(selectedFile: selectedFile)
-                break
-            default:
-                //Ask
-                let bottomSheet = FileOptionBottomSheet()
-                bottomSheet.completion = {result, option in
-                    if(result){
-                        if (option! == 0){
-                            //Open
-                            self.openFile(selectedFile: selectedFile)
-                        } else {
-                            //Download
-                            self.downloadFile(selectedFile: selectedFile)
-                        }
-                    }
-                }
-                bottomSheet.modalPresentationStyle = .overFullScreen
-                self.present(bottomSheet, animated: true, completion: nil)
-                break
-            }
-        } else {
-            //Download
-            downloadFile(selectedFile: selectedFile)
-        }
+        let fileAction = FileAction(target: self, moduleContent: selectedFile, loader: self.loader)
+        fileAction.displayActions()
     }
 }
 
-extension FolderViewController: DownloaderDelegate {
-    func didDownloaded(result: Bool, url: URL?) {
-        DispatchQueue.main.async {
-            self.loader.stopAnimation()
-            if(result){
-                
-                let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [url!], applicationActivities: nil)
-                activityViewController.popoverPresentationController?.sourceView=self.view
-                self.present(activityViewController, animated: true, completion: nil)
-            } else {
-                //File error
-                let alert = UIAlertController(title: "Error", message: "An error occured while downloading the file.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: {action in
-                        return
-                }))
-                self.present(alert, animated: true)
-            }
-        }
-    }
-}

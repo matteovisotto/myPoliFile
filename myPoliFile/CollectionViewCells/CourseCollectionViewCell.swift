@@ -16,7 +16,7 @@ class CourseCollectionViewCell: UICollectionViewCell {
     
     open var text: String = "" {
         didSet {
-            let courseName = parseText(text)
+            let courseName = CourseParser.parseCourseName(text)
             numberLabel.text = courseName.courseNumber
             label.text = courseName.courseName
             profLabel.text = courseName.courseProf
@@ -94,42 +94,4 @@ class CourseCollectionViewCell: UICollectionViewCell {
         return contentView.systemLayoutSizeFitting(CGSize(width: targetSize.width, height: 1))
     }
     
-    private func parseText(_ text: String) -> CourseName{
-        let cName = CourseName()
-        if (text.contains("{mlang}")){
-            var regex = "\\{mlang\\}\\{mlang [a-z]{2}\\}"
-            var repl = "\n"
-            let txt = text.replacingOccurrences(of: regex, with: repl, options: [.regularExpression])
-            regex = "\\{mlang[ ]?[a-z]*\\}"
-            repl = ""
-            cName.courseName = txt.replacingOccurrences(of: regex, with: repl, options: [.regularExpression])
-            return cName
-        } else if (text.range(of: "^[0-9]{4}", options: .regularExpression) != nil && text.contains("-")){
-            var divided = text.split(separator: "-")
-            cName.courseNumber = divided[0].replacingOccurrences(of: " ", with: "")
-            divided.remove(at: 0)
-            var fullCourseName = ""
-            for s in divided {
-                fullCourseName = fullCourseName + s
-            }
-            let secondDivision = fullCourseName.split(separator: "(")
-            if secondDivision.count >= 2 {
-                let courseName = secondDivision[0]
-                let courseProf = secondDivision[1].replacingOccurrences(of: ")", with: "")
-                cName.courseName = String(courseName).trimmingCharacters(in: .whitespacesAndNewlines)
-                cName.courseProf = courseProf.trimmingCharacters(in: .whitespacesAndNewlines)
-                return cName
-            }
-            cName.courseName = String(fullCourseName).trimmingCharacters(in: .whitespacesAndNewlines)
-            return cName
-        }
-        cName.courseName = text
-        return cName
-    }
-    
-    private class CourseName {
-        var courseNumber: String = ""
-        var courseName: String = ""
-        var courseProf: String = ""
-    }
 }

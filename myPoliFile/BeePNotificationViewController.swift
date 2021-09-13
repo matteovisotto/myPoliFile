@@ -12,10 +12,17 @@ class BeePNotificationViewController: BaseViewController {
     private var loader = Loader()
     private let navigationBar = BackHeader()
     private var newsTask: TaskManager!
+    private var collectionView: UICollectionView!
+    private var realNumberOfItems: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
         
+        let collectionViewFlowLayout = UICollectionViewFlowLayout()
+        collectionViewFlowLayout.estimatedItemSize = CGSize(width: UIScreen.main.bounds.width-20, height: 10)
+        self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewFlowLayout)
+        setupCollectionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,16 +39,30 @@ class BeePNotificationViewController: BaseViewController {
         navigationBar.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor).isActive = true
         navigationBar.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
         navigationBar.backButton.addTarget(self, action: #selector(didTapBack), for: .touchUpInside)
-        navigationBar.titleLabel.text = ""
+        navigationBar.titleLabel.text = "Notifications"
        
     }
     
+    private func setupCollectionView() {
+        self.view.addSubview(collectionView)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor).isActive = true
+        collectionView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor).isActive = true
+        collectionView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        collectionView.register(GenericCollectionViewCell.self, forCellWithReuseIdentifier: "genericCell")
+        collectionView.register(NotificationCollectionViewCell.self, forCellWithReuseIdentifier: "notificationCell")
+        collectionView.backgroundColor = .clear
+        collectionView.delegate = self
+        collectionView.dataSource = self
+    }
+    
     private func downloadNews() {
-        Discussion.beepDiscussions.removeAll()
+        Notification.notifications.removeAll()
         loader = CircleLoader.createGeometricLoader()
         loader.startAnimation()
-        let parameters: [String: Any] = ["forumid": 5]
-        let url = LinkBuilder.build(serviceName: "mod_forum_get_forum_discussions", withParameters: LinkBuilder.prepareParameters(params: parameters))
+        let parameters: [String: Any] = ["useridto": User.mySelf.userId]
+        let url = LinkBuilder.build(serviceName: "message_popup_get_popup_notifications", withParameters: LinkBuilder.prepareParameters(params: parameters))
         self.newsTask = TaskManager(url: URL(string: url)!)
         self.newsTask.delegate = self
         self.newsTask.execute()
@@ -62,11 +83,9 @@ extension BeePNotificationViewController: TaskManagerDelegate {
             self.loader.stopAnimation()
         }
         if result {
-            let discParser = DiscussionParser(target: self, stringData: stringContent)
-            discParser.globalBeepParse {
-                for d in Discussion.beepDiscussions {
-                    print(d.name + " (" + d.subject + ") " + d.content + " - by " + d.sender + " at " + d.date)
-                }
+            let notificationParser = NotificationParser(target: self, stringData: stringContent)
+            notificationParser.parse {
+                self.collectionView.reloadData()
             }
         } else {
             //Show error
@@ -78,5 +97,43 @@ extension BeePNotificationViewController: TaskManagerDelegate {
                 self.present(errorVC, animated: true, completion: nil)
             }
         }
+    }
+}
+
+extension BeePNotificationViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        realNumberOfItems = Notification.notifications.count
+        return (realNumberOfItems==0) ? 1 : realNumberOfItems
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if(realNumberOfItems == 0){
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "genericCell", for: indexPath) as! GenericCollectionViewCell
+            cell.backgroundColor = .clear
+            cell.text = "Nothing to show"
+            return cell
+        }
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "notificationCell", for: indexPath) as! NotificationCollectionViewCell
+        cell.notification = Notification.notifications[indexPath.item]
+        cell.layer.cornerRadius = 15
+        return cell
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 15
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        if (realNumberOfItems == 0) {return}
+        let notificationVC = NotificationViewController()
+        notificationVC.notification = Notification.notifications[indexPath.item]
+        self.navigationController?.pushViewController(notificationVC, animated: true)
     }
 }

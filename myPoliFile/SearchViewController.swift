@@ -121,6 +121,7 @@ extension SearchViewController: UISearchBarDelegate {
             self.courses.removeAll()
             collectionView.reloadData()
         } else {
+            searchBar.resignFirstResponder()
             loader = CircleLoader.createGeometricLoader()
             loader.startAnimation()
             let parameters: [String: Any] = ["criterianame": "search", "criteriavalue": searchBar.text!]

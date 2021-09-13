@@ -35,7 +35,12 @@ class Downloader {
                                             in: .userDomainMask,
                                             appropriateFor: nil,
                                             create: false)
-                let savedURL = documentsURL.appendingPathComponent(fileName)
+                let folderURL = documentsURL.appendingPathComponent(AppGlobal.currentCourseFolder+"/"+AppGlobal.currentModuleFolder+self.file.contentPath)
+                if !FileManager.default.fileExists(atPath: folderURL.absoluteString) {
+                    try! FileManager.default.createDirectory(at: folderURL, withIntermediateDirectories: true, attributes: nil)
+                }
+                
+                let savedURL = folderURL.appendingPathComponent(fileName)
                 try? FileManager.default.removeItem(at: savedURL)
                 try FileManager.default.moveItem(at: downloadedURL, to: savedURL)
                 self.delegate?.didDownloaded(result: true, url: savedURL)

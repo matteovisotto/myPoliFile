@@ -11,13 +11,12 @@ import UIKit
 class FolderContent: ModuleContent {
     var mimetype: String = ""
     var author: String = ""
-    var isOpenable: Bool = false
     var fileExtension: String = ""
     
     init(content: [String: Any]) {
         super.init()
         self.type = content["type"] as! String
-        self.contentName = content["filename"] as! String
+        self.contentName = validateFileName(fileName: content["filename"] as! String) 
         if(self.type == "file" && (content["fileurl"] as! String).contains("forcedownload")){
             self.contentURL = (content["fileurl"] as! String) + "&token=" + User.mySelf.token
         } else if (self.type == "file" && !(content["fileurl"] as! String).contains("?")) {
@@ -32,9 +31,6 @@ class FolderContent: ModuleContent {
         self.isOpenable = isFileOpenable(fileExtension: self.fileExtension)
     }
     
-    private func isFileOpenable(fileExtension: String) -> Bool {
-        let allowedInWebView = ["pdf", "docx", "doc", "ppt", "pptx", "xls", "xlsx", "txt", "png", "gif", "jpg", "jpeg"]
-        return allowedInWebView.contains(fileExtension)
-    }
+    
     
 }

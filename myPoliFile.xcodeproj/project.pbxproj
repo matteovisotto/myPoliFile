@@ -55,6 +55,7 @@
 		663478B926EE01BB00B63527 /* ModuleResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663478B826EE01BB00B63527 /* ModuleResource.swift */; };
 		663478BB26EE03EF00B63527 /* ResourceContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663478BA26EE03EF00B63527 /* ResourceContent.swift */; };
 		663478BD26EE06F200B63527 /* ModuleContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663478BC26EE06F200B63527 /* ModuleContent.swift */; };
+		663478BF26EE2EDD00B63527 /* FileAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663478BE26EE2EDD00B63527 /* FileAction.swift */; };
 		6641909B26EA378100A08308 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641909A26EA378100A08308 /* SettingsViewController.swift */; };
 		6641909D26EA38EA00A08308 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641909C26EA38EA00A08308 /* UserInfoView.swift */; };
 		6641909F26EA4F5500A08308 /* SquareImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6641909E26EA4F5500A08308 /* SquareImageButton.swift */; };
@@ -67,6 +68,11 @@
 		664190AF26EA8C7B00A08308 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664190AE26EA8C7B00A08308 /* TagView.swift */; };
 		664190B126EA8DBE00A08308 /* CourseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664190B026EA8DBE00A08308 /* CourseCollectionViewCell.swift */; };
 		664190B526EA9FFF00A08308 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664190B426EA9FFF00A08308 /* UIViewControllerExtension.swift */; };
+		66623A3626EF8376000B94B9 /* OfflineFolderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66623A3526EF8376000B94B9 /* OfflineFolderCollectionViewCell.swift */; };
+		66623A3826EFA02A000B94B9 /* NotificationParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66623A3726EFA02A000B94B9 /* NotificationParser.swift */; };
+		66623A3A26EFA1AB000B94B9 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66623A3926EFA1AB000B94B9 /* Notification.swift */; };
+		66623A3C26EFA396000B94B9 /* NotificationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66623A3B26EFA396000B94B9 /* NotificationCollectionViewCell.swift */; };
+		66623A3E26EFA591000B94B9 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66623A3D26EFA591000B94B9 /* NotificationViewController.swift */; };
 		66D4602826EBE141003C4682 /* BeePNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4602726EBE141003C4682 /* BeePNotificationViewController.swift */; };
 		66D4602A26EBE43A003C4682 /* DiscussionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4602926EBE43A003C4682 /* DiscussionParser.swift */; };
 		66D4602C26EBE574003C4682 /* Discussion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4602B26EBE574003C4682 /* Discussion.swift */; };
@@ -86,6 +92,9 @@
 		66DE702426EB8CA000D8380E /* MVTopMenuProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE702126EB8CA000D8380E /* MVTopMenuProtocols.swift */; };
 		66DE702526EB8CA000D8380E /* MVTopMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE702226EB8CA000D8380E /* MVTopMenuView.swift */; };
 		66DE702726EB90A900D8380E /* GenericCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE702626EB90A900D8380E /* GenericCollectionViewCell.swift */; };
+		66F2CE1526EF5A42003B1868 /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F2CE1426EF5A42003B1868 /* AppGlobal.swift */; };
+		66F2CE1726EF5CB5003B1868 /* CourseName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F2CE1626EF5CB5003B1868 /* CourseName.swift */; };
+		66F2CE1926EF5DF7003B1868 /* OfflineFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F2CE1826EF5DF7003B1868 /* OfflineFolder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -139,6 +148,7 @@
 		663478B826EE01BB00B63527 /* ModuleResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleResource.swift; sourceTree = "<group>"; };
 		663478BA26EE03EF00B63527 /* ResourceContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceContent.swift; sourceTree = "<group>"; };
 		663478BC26EE06F200B63527 /* ModuleContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleContent.swift; sourceTree = "<group>"; };
+		663478BE26EE2EDD00B63527 /* FileAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FileAction.swift; path = ../../../../../Documents/FileAction.swift; sourceTree = "<group>"; };
 		6641909A26EA378100A08308 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		6641909C26EA38EA00A08308 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		6641909E26EA4F5500A08308 /* SquareImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareImageButton.swift; sourceTree = "<group>"; };
@@ -151,6 +161,11 @@
 		664190AE26EA8C7B00A08308 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		664190B026EA8DBE00A08308 /* CourseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCollectionViewCell.swift; sourceTree = "<group>"; };
 		664190B426EA9FFF00A08308 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		66623A3526EF8376000B94B9 /* OfflineFolderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineFolderCollectionViewCell.swift; sourceTree = "<group>"; };
+		66623A3726EFA02A000B94B9 /* NotificationParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationParser.swift; sourceTree = "<group>"; };
+		66623A3926EFA1AB000B94B9 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		66623A3B26EFA396000B94B9 /* NotificationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCollectionViewCell.swift; sourceTree = "<group>"; };
+		66623A3D26EFA591000B94B9 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		66D4602726EBE141003C4682 /* BeePNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeePNotificationViewController.swift; sourceTree = "<group>"; };
 		66D4602926EBE43A003C4682 /* DiscussionParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionParser.swift; sourceTree = "<group>"; };
 		66D4602B26EBE574003C4682 /* Discussion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discussion.swift; sourceTree = "<group>"; };
@@ -170,6 +185,9 @@
 		66DE702126EB8CA000D8380E /* MVTopMenuProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVTopMenuProtocols.swift; sourceTree = "<group>"; };
 		66DE702226EB8CA000D8380E /* MVTopMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVTopMenuView.swift; sourceTree = "<group>"; };
 		66DE702626EB90A900D8380E /* GenericCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCollectionViewCell.swift; sourceTree = "<group>"; };
+		66F2CE1426EF5A42003B1868 /* AppGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGlobal.swift; sourceTree = "<group>"; };
+		66F2CE1626EF5CB5003B1868 /* CourseName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseName.swift; sourceTree = "<group>"; };
+		66F2CE1826EF5DF7003B1868 /* OfflineFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineFolder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +248,7 @@
 				66DE6FFD26EB3D2500D8380E /* CourseContentViewController.swift */,
 				66D4602726EBE141003C4682 /* BeePNotificationViewController.swift */,
 				663478A626ED233700B63527 /* FileViewerViewController.swift */,
+				66F2CE1426EF5A42003B1868 /* AppGlobal.swift */,
 			);
 			path = myPoliFile;
 			sourceTree = "<group>";
@@ -295,6 +314,9 @@
 				66DE700726EB5DAE00D8380E /* Forum.swift */,
 				66DE701826EB789500D8380E /* Section.swift */,
 				66D4602B26EBE574003C4682 /* Discussion.swift */,
+				66F2CE1626EF5CB5003B1868 /* CourseName.swift */,
+				66F2CE1826EF5DF7003B1868 /* OfflineFolder.swift */,
+				66623A3926EFA1AB000B94B9 /* Notification.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -317,6 +339,7 @@
 				66DE700126EB462800D8380E /* CourseDetailParser.swift */,
 				66D4602926EBE43A003C4682 /* DiscussionParser.swift */,
 				663478A826ED275500B63527 /* SearchCourseParser.swift */,
+				66623A3726EFA02A000B94B9 /* NotificationParser.swift */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -334,6 +357,7 @@
 			children = (
 				6634789926ECACB600B63527 /* FolderViewController.swift */,
 				663478A426ED176300B63527 /* ForumViewController.swift */,
+				66623A3D26EFA591000B94B9 /* NotificationViewController.swift */,
 			);
 			path = ModulesController;
 			sourceTree = "<group>";
@@ -351,6 +375,7 @@
 			isa = PBXGroup;
 			children = (
 				663478B126ED438E00B63527 /* DeviceFileManager.swift */,
+				663478BE26EE2EDD00B63527 /* FileAction.swift */,
 			);
 			path = Files;
 			sourceTree = "<group>";
@@ -374,6 +399,8 @@
 				663478A026ED059C00B63527 /* FolderCollectionViewCell.swift */,
 				663478A226ED05B000B63527 /* FileCollectionViewCell.swift */,
 				663478AC26ED40F400B63527 /* OfflineFileCollectionViewCell.swift */,
+				66623A3526EF8376000B94B9 /* OfflineFolderCollectionViewCell.swift */,
+				66623A3B26EFA396000B94B9 /* NotificationCollectionViewCell.swift */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -515,6 +542,7 @@
 				66230C9626E8ADE2003DFD41 /* WebLoginViewController.swift in Sources */,
 				66DE700D26EB72E400D8380E /* Module.swift in Sources */,
 				664190A526EA68E900A08308 /* SearchViewController.swift in Sources */,
+				66623A3626EF8376000B94B9 /* OfflineFolderCollectionViewCell.swift in Sources */,
 				66230CC326EA2625003DFD41 /* UserParser.swift in Sources */,
 				663478B226ED438E00B63527 /* DeviceFileManager.swift in Sources */,
 				664190A126EA53DD00A08308 /* HomeHeader.swift in Sources */,
@@ -524,9 +552,11 @@
 				66DE702326EB8CA000D8380E /* MVTopMenuCell.swift in Sources */,
 				661FC5C226E890E200B33983 /* WelcomeViewController.swift in Sources */,
 				663478B926EE01BB00B63527 /* ModuleResource.swift in Sources */,
+				663478BF26EE2EDD00B63527 /* FileAction.swift in Sources */,
 				66DE6FFE26EB3D2500D8380E /* CourseContentViewController.swift in Sources */,
 				66230C9426E8ABA6003DFD41 /* PreferenceManager.swift in Sources */,
 				66230CA726E8FFAF003DFD41 /* Course.swift in Sources */,
+				66F2CE1726EF5CB5003B1868 /* CourseName.swift in Sources */,
 				6634789726EC989200B63527 /* SectionTitleCollectionReusableView.swift in Sources */,
 				66230CB526E9E513003DFD41 /* CircleLoader.swift in Sources */,
 				66D4602826EBE141003C4682 /* BeePNotificationViewController.swift in Sources */,
@@ -537,12 +567,16 @@
 				66230C9E26E8DB93003DFD41 /* AlertViewController.swift in Sources */,
 				66DE700826EB5DAE00D8380E /* Forum.swift in Sources */,
 				6641909F26EA4F5500A08308 /* SquareImageButton.swift in Sources */,
+				66623A3C26EFA396000B94B9 /* NotificationCollectionViewCell.swift in Sources */,
 				66230CA426E8EA25003DFD41 /* MainViewController.swift in Sources */,
 				66DE702526EB8CA000D8380E /* MVTopMenuView.swift in Sources */,
 				66DE700B26EB72C900D8380E /* ModuleURL.swift in Sources */,
 				66D4602C26EBE574003C4682 /* Discussion.swift in Sources */,
 				661FC5BE26E890E200B33983 /* AppDelegate.swift in Sources */,
+				66F2CE1526EF5A42003B1868 /* AppGlobal.swift in Sources */,
+				66623A3E26EFA591000B94B9 /* NotificationViewController.swift in Sources */,
 				66DE701026EB750200D8380E /* URLContent.swift in Sources */,
+				66F2CE1926EF5DF7003B1868 /* OfflineFolder.swift in Sources */,
 				663478AB26ED372700B63527 /* FileOptionBottomSheet.swift in Sources */,
 				6634789426EC973400B63527 /* ModuleCollectionViewCell.swift in Sources */,
 				66230CAB26E9E171003DFD41 /* LoadingLoginView.swift in Sources */,
@@ -564,6 +598,7 @@
 				663478BD26EE06F200B63527 /* ModuleContent.swift in Sources */,
 				66230CBA26E9E513003DFD41 /* Loader.swift in Sources */,
 				663478A926ED275500B63527 /* SearchCourseParser.swift in Sources */,
+				66623A3826EFA02A000B94B9 /* NotificationParser.swift in Sources */,
 				66DE702726EB90A900D8380E /* GenericCollectionViewCell.swift in Sources */,
 				66230C8E26E8A32C003DFD41 /* BaseViewController.swift in Sources */,
 				66DE702426EB8CA000D8380E /* MVTopMenuProtocols.swift in Sources */,
@@ -573,6 +608,7 @@
 				66230CBF26E9FBD9003DFD41 /* CourseParser.swift in Sources */,
 				664190A326EA67E800A08308 /* CoursesViewController.swift in Sources */,
 				663478A126ED059C00B63527 /* FolderCollectionViewCell.swift in Sources */,
+				66623A3A26EFA1AB000B94B9 /* Notification.swift in Sources */,
 				66DE700426EB5B2B00D8380E /* Recording.swift in Sources */,
 				66DE701226EB76D100D8380E /* ModuleForum.swift in Sources */,
 				66DE701526EB772300D8380E /* ModuleFolder.swift in Sources */,
