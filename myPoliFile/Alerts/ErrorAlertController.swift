@@ -9,7 +9,7 @@ import UIKit
 
 class ErrorAlertController: AlertViewController {
     
-    private let titleLable = UILabel()
+    private let titleLabel = UILabel()
     private let messageLable = UILabel()
     private let dismissButton = UIButton()
 
@@ -35,18 +35,18 @@ class ErrorAlertController: AlertViewController {
         dismissButton.addTarget(self, action: #selector(didTapDismiss), for: .touchUpInside)
         
         
-        alertView.addSubview(titleLable)
-        titleLable.translatesAutoresizingMaskIntoConstraints = false
-        titleLable.topAnchor.constraint(equalTo: alertView.topAnchor, constant: 15).isActive = true
-        titleLable.leftAnchor.constraint(equalTo: alertView.leftAnchor, constant: 15).isActive = true
-        titleLable.rightAnchor.constraint(equalTo: alertView.rightAnchor, constant: -15).isActive = true
-        titleLable.font = .boldSystemFont(ofSize: 25)
-        titleLable.textAlignment = .center
-        titleLable.text = self.alertTitle
+        alertView.addSubview(titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.topAnchor.constraint(equalTo: alertView.topAnchor, constant: 15).isActive = true
+        titleLabel.leftAnchor.constraint(equalTo: alertView.leftAnchor, constant: 15).isActive = true
+        titleLabel.rightAnchor.constraint(equalTo: alertView.rightAnchor, constant: -15).isActive = true
+        titleLabel.font = .boldSystemFont(ofSize: 25)
+        titleLabel.textAlignment = .center
+        titleLabel.text = self.alertTitle
         
         alertView.addSubview(messageLable)
         messageLable.translatesAutoresizingMaskIntoConstraints = false
-        messageLable.topAnchor.constraint(equalTo: titleLable.bottomAnchor, constant: 15).isActive = true
+        messageLable.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 15).isActive = true
         messageLable.leftAnchor.constraint(equalTo: alertView.leftAnchor, constant: 15).isActive = true
         messageLable.rightAnchor.constraint(equalTo: alertView.rightAnchor, constant: -15).isActive = true
         messageLable.bottomAnchor.constraint(equalTo: alertView.bottomAnchor, constant: -15).isActive = true
@@ -62,7 +62,6 @@ class ErrorAlertController: AlertViewController {
     }
     
     @objc private func didTapDismiss() {
-        self.dismiss(animated: true, completion: nil)
         if isLoadingPhase {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let window = appDelegate.window
@@ -70,6 +69,7 @@ class ErrorAlertController: AlertViewController {
             window?.makeKeyAndVisible()
             
         }
+        self.dismiss(animated: true, completion: nil)
     }
 
 }

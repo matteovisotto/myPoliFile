@@ -158,7 +158,7 @@ extension CourseContentViewController: UICollectionViewDelegate, UICollectionVie
             AppGlobal.currentModule = module.name
             let folderController = FolderViewController()
             folderController.module = module
-            folderController.files = FolderViewController.prepareFiles(myFiles: (module as! ModuleFolder).contents)
+            folderController.folder = FolderViewController.prepareFiles(myFiles: (module as! ModuleFolder).contents, forCurrentPath: "/")
             self.navigationController?.pushViewController(folderController, animated: true)
             break
         case .resource:

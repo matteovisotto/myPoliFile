@@ -73,6 +73,8 @@
 		66623A3A26EFA1AB000B94B9 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66623A3926EFA1AB000B94B9 /* Notification.swift */; };
 		66623A3C26EFA396000B94B9 /* NotificationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66623A3B26EFA396000B94B9 /* NotificationCollectionViewCell.swift */; };
 		66623A3E26EFA591000B94B9 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66623A3D26EFA591000B94B9 /* NotificationViewController.swift */; };
+		6666D85C26F1CB210078BCE2 /* TokenAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6666D85B26F1CB210078BCE2 /* TokenAlertViewController.swift */; };
+		6686440926F1456C00C0EB3C /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6686440826F1456C00C0EB3C /* DividerView.swift */; };
 		66D4602826EBE141003C4682 /* BeePNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4602726EBE141003C4682 /* BeePNotificationViewController.swift */; };
 		66D4602A26EBE43A003C4682 /* DiscussionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4602926EBE43A003C4682 /* DiscussionParser.swift */; };
 		66D4602C26EBE574003C4682 /* Discussion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4602B26EBE574003C4682 /* Discussion.swift */; };
@@ -167,6 +169,8 @@
 		66623A3926EFA1AB000B94B9 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		66623A3B26EFA396000B94B9 /* NotificationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCollectionViewCell.swift; sourceTree = "<group>"; };
 		66623A3D26EFA591000B94B9 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		6666D85B26F1CB210078BCE2 /* TokenAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenAlertViewController.swift; sourceTree = "<group>"; };
+		6686440826F1456C00C0EB3C /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
 		66D4602726EBE141003C4682 /* BeePNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeePNotificationViewController.swift; sourceTree = "<group>"; };
 		66D4602926EBE43A003C4682 /* DiscussionParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionParser.swift; sourceTree = "<group>"; };
 		66D4602B26EBE574003C4682 /* Discussion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discussion.swift; sourceTree = "<group>"; };
@@ -260,6 +264,7 @@
 			children = (
 				661FC5C126E890E200B33983 /* WelcomeViewController.swift */,
 				66230C9526E8ADE2003DFD41 /* WebLoginViewController.swift */,
+				6666D85B26F1CB210078BCE2 /* TokenAlertViewController.swift */,
 			);
 			path = "Welcome&Login";
 			sourceTree = "<group>";
@@ -278,6 +283,7 @@
 				664190A026EA53DD00A08308 /* HomeHeader.swift */,
 				664190AE26EA8C7B00A08308 /* TagView.swift */,
 				6634789126EC889A00B63527 /* FloatingTextField.swift */,
+				6686440826F1456C00C0EB3C /* DividerView.swift */,
 			);
 			path = UIElements;
 			sourceTree = "<group>";
@@ -559,6 +565,7 @@
 				663478B226ED438E00B63527 /* DeviceFileManager.swift in Sources */,
 				664190A126EA53DD00A08308 /* HomeHeader.swift in Sources */,
 				664190AF26EA8C7B00A08308 /* TagView.swift in Sources */,
+				6686440926F1456C00C0EB3C /* DividerView.swift in Sources */,
 				66DE700626EB5D9300D8380E /* Announcement.swift in Sources */,
 				6634789F26ECEE5000B63527 /* SegmentTableViewCell.swift in Sources */,
 				66DE702326EB8CA000D8380E /* MVTopMenuCell.swift in Sources */,
@@ -584,6 +591,7 @@
 				66DE702526EB8CA000D8380E /* MVTopMenuView.swift in Sources */,
 				66DE700B26EB72C900D8380E /* ModuleURL.swift in Sources */,
 				66D4602C26EBE574003C4682 /* Discussion.swift in Sources */,
+				6666D85C26F1CB210078BCE2 /* TokenAlertViewController.swift in Sources */,
 				661FC5BE26E890E200B33983 /* AppDelegate.swift in Sources */,
 				66F2CE1526EF5A42003B1868 /* AppGlobal.swift in Sources */,
 				66623A3E26EFA591000B94B9 /* NotificationViewController.swift in Sources */,

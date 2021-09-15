@@ -9,24 +9,49 @@ import UIKit
 
 class FolderViewController: BaseViewController {
     
-    public static func prepareFiles(myFiles: [FolderContent]) -> [String: [FolderContent]] {
-        var dic: [String: [FolderContent]] = [:]
+    public class DisplayableFolder {
+        var name: String = ""
+        var path: String = ""
+        var subfolders: [DisplayableFolder] = []
+        var files: [FolderContent] = []
+    }
+    
+    
+    public static func prepareFiles(myFiles: [FolderContent], forCurrentPath path: String) -> DisplayableFolder {
+        var fileOk: Bool = false
+        let displayableFolder = DisplayableFolder()
+        displayableFolder.path = path
+        displayableFolder.name = ""
         for f in myFiles {
-            if var arr = dic[f.contentPath]{
-                arr.append(f)
+            fileOk = false
+            let filePath = f.contentPath
+            if(filePath == "/"){
+                displayableFolder.files.append(f)
             } else {
-                var arr: [FolderContent] = []
-                arr.append(f)
-                dic[f.contentPath] = arr
+                //The file is not in the root
+                for s in displayableFolder.subfolders {
+                    if(s.path == filePath){
+                        s.files.append(f)
+                        fileOk = true
+                        break
+                    }
+                }
+                if(!fileOk){
+                    let newDF = DisplayableFolder()
+                    newDF.files.append(f)
+                    newDF.name = filePath.replacingOccurrences(of: "/", with: "")
+                    newDF.path = filePath
+                    displayableFolder.subfolders.append(newDF)
+                    fileOk = true
+                }
             }
         }
-        return dic
+        return displayableFolder
     }
     
     open var module: Module! {
         didSet{
             self.folderModule = module as! ModuleFolder
-            
         }
     }
     
@@ -38,8 +63,7 @@ class FolderViewController: BaseViewController {
     private var realNumberOfFiles: Int = 0
     
     open var viewPath: String = "/"
-    open var files: [String: [FolderContent]] = [:]
-    private var folderContents: [FolderContent]!
+    open var folder: DisplayableFolder!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,12 +71,7 @@ class FolderViewController: BaseViewController {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewFlowLayout)
         setupNavigationBar()
         setupCollectionView()
-        if let c = files[viewPath]{
-            folderContents = c
-        } else {
-            folderContents = []
-        }
-        files.removeValue(forKey: viewPath)
+        
     }
     
     private func setupNavigationBar() {
@@ -98,17 +117,17 @@ extension FolderViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if (section == 0){
-            realNumberOfFolders = self.files.keys.count
+            realNumberOfFolders = self.folder.subfolders.count
             if(realNumberOfFolders == 0){
                 return 1
             }
             return realNumberOfFolders
         }
-        realNumberOfFiles = self.folderContents.count
+        realNumberOfFiles = self.folder.files.count
         if(realNumberOfFiles == 0){
             return 1
         }
-        return self.folderContents.count
+        return realNumberOfFiles
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -123,7 +142,7 @@ extension FolderViewController: UICollectionViewDelegate, UICollectionViewDataSo
             //One or more folder exists
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "folderCell", for: indexPath) as! FolderCollectionViewCell
             cell.layer.cornerRadius = 15
-            cell.folderName = (Array(self.files.keys))[indexPath.item].replacingOccurrences(of: "/", with: "")
+            cell.folderName = self.folder.subfolders[indexPath.item].name
             return cell
         }
         //Files
@@ -134,7 +153,7 @@ extension FolderViewController: UICollectionViewDelegate, UICollectionViewDataSo
             return cell
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "fileCell", for: indexPath) as! FileCollectionViewCell
-        cell.file = folderContents[indexPath.item]
+        cell.file = self.folder.files[indexPath.item]
         cell.layer.cornerRadius = 15
         return cell
     }
@@ -166,14 +185,16 @@ extension FolderViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if (indexPath.section == 0){
+            if(realNumberOfFolders==0){return}
             let newFolderVC = FolderViewController()
             newFolderVC.module = self.module
-            newFolderVC.viewPath = (Array(self.files.keys))[indexPath.item]
-            newFolderVC.files = [(Array(self.files.keys))[indexPath.item]: self.files[(Array(self.files.keys))[indexPath.item]]!]
+            newFolderVC.viewPath = self.folder.subfolders[indexPath.item].path
+            newFolderVC.folder = self.folder.subfolders[indexPath.item]
             self.navigationController?.pushViewController(newFolderVC, animated: true)
             return
         }
-        let selectedFile = folderContents[indexPath.item]
+        if(realNumberOfFiles==0){return}
+        let selectedFile = self.folderModule.contents[indexPath.item]
         let fileAction = FileOpenAction(target: self, moduleContent: selectedFile, loader: self.loader)
         fileAction.displayActions()
     }

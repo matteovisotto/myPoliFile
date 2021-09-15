@@ -10,6 +10,7 @@ import UIKit
 class WelcomeViewController: BaseViewController {
     
     private let startButton = AppButton()
+    private let tokenButton = UIButton()
     private let personalCodeTF = FloatingTextField()
     private let welcomeLabel = UILabel()
 
@@ -33,9 +34,29 @@ class WelcomeViewController: BaseViewController {
     }
     
     private func addStartButton() {
+        self.view.addSubview(tokenButton)
+        tokenButton.translatesAutoresizingMaskIntoConstraints = false
+        tokenButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -10).isActive = true
+        tokenButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        tokenButton.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: 15).isActive = true
+        tokenButton.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: -15).isActive = true
+        tokenButton.heightAnchor.constraint(equalToConstant: 33).isActive = true
+        tokenButton.setTitle("Login with token", for: .normal)
+        tokenButton.setTitleColor(.primary, for: .normal)
+        tokenButton.addTarget(self, action: #selector(didTapTokenButton), for: .touchUpInside)
+        tokenButton.isEnabled = false
+        
+        let divider = DividerView()
+        self.view.addSubview(divider)
+        divider.translatesAutoresizingMaskIntoConstraints = false
+        divider.bottomAnchor.constraint(equalTo: tokenButton.topAnchor, constant: 5).isActive = true
+        divider.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: 20).isActive = true
+        divider.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: -20).isActive = true
+        divider.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
         self.view.addSubview(startButton)
         startButton.translatesAutoresizingMaskIntoConstraints = false
-        startButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
+        startButton.bottomAnchor.constraint(equalTo: divider.topAnchor, constant: -5).isActive = true
         startButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         startButton.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: 15).isActive = true
         startButton.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: -15).isActive = true
@@ -96,10 +117,67 @@ class WelcomeViewController: BaseViewController {
     @objc private func didTextFieldChanged() {
         if(self.personalCodeTF.text?.count == 8 && self.personalCodeTF.text!.isNumeric) {
             self.startButton.isEnabled = true
+            self.tokenButton.isEnabled = true
         } else {
+            self.startButton.isEnabled = false
             self.startButton.isEnabled = false
         }
     }
     
+    @objc private func didTapTokenButton() {
+        PreferenceManager.setPersonalCode(personalCode: self.personalCodeTF.text!)
+        User.mySelf.username = self.personalCodeTF.text! + "@polimi.it"
+        let tokenVC = TokenAlertViewController()
+        tokenVC.modalPresentationStyle = .overFullScreen
+        tokenVC.callback = {token in
+            print(token)
+            PreferenceManager.setToken(token: token)
+            User.mySelf.token = token
+            let parameter: [String:Any] = ["field":"username", "values[0]":User.mySelf.username]
+            let p = LinkBuilder.prepareParameters(params: parameter)
+            let url = LinkBuilder.build(serviceName: "core_user_get_users_by_field", withParameters: p)
+            let userTask = TaskManager(url: URL(string: url)!)
+            userTask.delegate = self
+            userTask.execute()
+        }
+        self.present(tokenVC, animated: true, completion: nil)
+    }
 }
 
+extension WelcomeViewController: TaskManagerDelegate {
+    func taskManager(taskManager: TaskManager, didFinishWith result: Bool, stringContent: String) {
+        if result {
+            if let data = stringContent.data(using: .utf8) {
+                do {
+                    let people = try JSONSerialization.jsonObject(with: data, options: []) as? [AnyObject]
+                    if let p = people {
+                        if (p.count == 1) {
+                            let person = p[0] as? [String:Any]
+                            if let _ = person {
+                                DispatchQueue.main.async {
+                                    let loadignVC = LoadingViewController()
+                                    loadignVC.modalPresentationStyle = .fullScreen
+                                    self.present(loadignVC, animated: true, completion: nil)
+                                }
+                                return
+                            }
+                        }
+                    }
+                } catch {
+                    
+                }
+            }
+        }
+            //Show error
+            PreferenceManager.removeToken()
+            PreferenceManager.removePersonalCode()
+            DispatchQueue.main.async {
+                let errorVC = ErrorAlertController()
+                errorVC.isLoadingPhase = false
+                errorVC.setContent(title: "Error", message: "Personal code or token wrong")
+                errorVC.modalPresentationStyle = .overFullScreen
+                self.present(errorVC, animated: true, completion: nil)
+            }
+        }
+    
+}

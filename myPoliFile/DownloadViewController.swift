@@ -157,6 +157,7 @@ class DownloadViewController: BaseViewController {
     }
 }
 
+//MARK:- CollectionView Delegates and Data Source
 extension DownloadViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -266,6 +267,7 @@ extension DownloadViewController: UICollectionViewDelegate, UICollectionViewData
     }
 }
 
+//MARK:- QLPreview Data Source
 extension DownloadViewController: QLPreviewControllerDataSource{
     
     func numberOfPreviewItems(in controller: QLPreviewController) -> Int {

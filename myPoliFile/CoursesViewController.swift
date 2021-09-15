@@ -35,7 +35,7 @@ class CoursesViewController: BaseViewController {
     private let refreshControl = UIRefreshControl()
     private var courseTask: TaskManager!
     private let topMenu = TopMenu()
-    private let menuItems: [String] = ["All", "Favourire", "Hidden"]
+    private let menuItems: [String] = ["All", "Favourite", "Hidden"]
     private var selectedMenuIndex = 0
     private var realNumberOfItems = 0
     private var collectionView: UICollectionView!
