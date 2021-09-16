@@ -17,4 +17,5 @@ class Discussion {
     var content: String = ""
     var sender: String = ""
     var date: String = ""
+    var discussionId: Int = 0
 }

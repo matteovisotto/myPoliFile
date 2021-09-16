@@ -22,15 +22,6 @@ class BackHeader: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        titleLabel.font = .boldSystemFont(ofSize: 18)
-        titleLabel.textAlignment = .center
-        addSubview(titleLabel)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        
         backButton.setImage(UIImage(named: "arrowBack"), for: .normal)
         backButton.imageView?.tintColor = labelColor
         backButton.imageView?.contentMode = .scaleAspectFit
@@ -41,6 +32,16 @@ class BackHeader: UIView {
         backButton.widthAnchor.constraint(equalToConstant: 25).isActive = true //25
         backButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
         backButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        
+        titleLabel.font = .boldSystemFont(ofSize: 18)
+        titleLabel.textAlignment = .center
+        addSubview(titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -50).isActive = true
+        titleLabel.leftAnchor.constraint(equalTo: backButton.rightAnchor,constant: 5).isActive = true
+        
     }
     
     required init?(coder: NSCoder) {

@@ -130,7 +130,6 @@ class WelcomeViewController: BaseViewController {
         let tokenVC = TokenAlertViewController()
         tokenVC.modalPresentationStyle = .overFullScreen
         tokenVC.callback = {token in
-            print(token)
             PreferenceManager.setToken(token: token)
             User.mySelf.token = token
             let parameter: [String:Any] = ["field":"username", "values[0]":User.mySelf.username]

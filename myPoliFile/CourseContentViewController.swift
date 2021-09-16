@@ -40,7 +40,8 @@ class CourseContentViewController: BaseViewController {
         navigationBar.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor).isActive = true
         navigationBar.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
         navigationBar.backButton.addTarget(self, action: #selector(didTapBack), for: .touchUpInside)
-        navigationBar.titleLabel.text = "Detail"
+        navigationBar.titleLabel.text = self.course.displayName
+        
     }
     
     private func setupCollectionView() {
@@ -151,6 +152,7 @@ extension CourseContentViewController: UICollectionViewDelegate, UICollectionVie
             break
         case .forum:
             let forumController = ForumViewController()
+            forumController.forum = (module as! ModuleForum)
             self.navigationController?.pushViewController(forumController, animated: true)
             break
         case .folder:

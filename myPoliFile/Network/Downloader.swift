@@ -29,13 +29,14 @@ class Downloader {
         let fileName = file.contentName
         let downloadTask = urlSession.downloadTask(with: fileURL) { url, response, error in
             guard let downloadedURL = url else { return }
+            let filePath = self.file.contentPath.replacingOccurrences(of: " ", with: "_")
             do {
                 let documentsURL = try
                     FileManager.default.url(for: .documentDirectory,
                                             in: .userDomainMask,
                                             appropriateFor: nil,
                                             create: false)
-                let folderURL = documentsURL.appendingPathComponent(AppGlobal.currentCourseFolder+"/"+AppGlobal.currentModuleFolder+self.file.contentPath)
+                let folderURL = documentsURL.appendingPathComponent(AppGlobal.currentCourseFolder+"/"+AppGlobal.currentModuleFolder+filePath)
                 if !FileManager.default.fileExists(atPath: folderURL.absoluteString) {
                     try! FileManager.default.createDirectory(at: folderURL, withIntermediateDirectories: true, attributes: nil)
                 }

@@ -8,70 +8,13 @@
 import Foundation
 import UIKit
 
-class DiscussionParser {
+class ForumParser {
     private var targetVC: UIViewController!
     private var stringData: String!
     
     init(target: UIViewController, stringData: String) {
         self.stringData = stringData
         self.targetVC = target
-    }
-    
-    func globalBeepParse(completionHandler: @escaping ()->()) {
-        if let data = stringData.data(using: .utf8) {
-            do {
-                let result = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                if let p = result {
-                    let d = p["discussions"] as? [[String:Any]]
-                    if let discussions = d {
-                        for discussion in discussions {
-                            let name = fixLangTag(string: discussion["name"] as! String)
-                            let subject = fixLangTag(string: discussion["subject"] as! String)
-                            let content = fixLangTag(string: discussion["message"] as! String)
-                            let sender = discussion["userfullname"] as! String
-                            let date = timestampToString(timestamp: discussion["modified"] as! Double)
-                            let disc = Discussion()
-                            disc.name = name
-                            disc.subject = subject
-                            disc.content = content
-                            disc.sender = sender
-                            disc.date = date
-                            Discussion.beepDiscussions.append(disc)
-                        }
-                        DispatchQueue.main.async {
-                            completionHandler()
-                        }
-                    } else {
-                        DispatchQueue.main.async {
-                            let errorVC = ErrorAlertController()
-                            errorVC.setContent(title: "Error", message: "Unable to find content")
-                            errorVC.modalPresentationStyle = .overFullScreen
-                            self.targetVC.present(errorVC, animated: true, completion: nil)
-                        }
-                        return
-                    }
-                    
-                } else {
-                    
-                    DispatchQueue.main.async {
-                        let errorVC = ErrorAlertController()
-                        errorVC.setContent(title: "Error", message: "Unable to convert the received data")
-                        errorVC.modalPresentationStyle = .overFullScreen
-                        self.targetVC.present(errorVC, animated: true, completion: nil)
-                    }
-                    return
-                }
-            } catch {
-                
-                DispatchQueue.main.async {
-                    let errorVC = ErrorAlertController()
-                    errorVC.setContent(title: "Error", message: error.localizedDescription)
-                    errorVC.modalPresentationStyle = .overFullScreen
-                    self.targetVC.present(errorVC, animated: true, completion: nil)
-                }
-                return
-            }
-        }
     }
     
     func parse(completionHandler: @escaping (_ discussion: [Discussion])->()) {
@@ -85,8 +28,9 @@ class DiscussionParser {
                         for discussion in discussions {
                             let name = fixLangTag(string: discussion["name"] as! String)
                             let subject = fixLangTag(string: discussion["subject"] as! String)
-                            let content = fixLangTag(string: removeHTML(from: discussion["message"] as! String))
+                            let content = fixLangTag(string: discussion["message"] as! String)
                             let sender = discussion["userfullname"] as! String
+                            let discussionId = discussion["discussion"] as! Int
                             let date = timestampToString(timestamp: discussion["modified"] as! Double)
                             let disc = Discussion()
                             disc.name = name
@@ -94,6 +38,7 @@ class DiscussionParser {
                             disc.content = content
                             disc.sender = sender
                             disc.date = date
+                            disc.discussionId = discussionId
                             parsedDiscussion.append(disc)
                         }
                         DispatchQueue.main.async {
@@ -143,12 +88,7 @@ class DiscussionParser {
         }
         return string
     }
-    // NON VA!!!
-    private func removeHTML(from htmlString: String) -> String{
-        let htmlStringData = htmlString.data(using: .utf8)!
-        let attributedHTMLString = try! NSAttributedString(data: htmlStringData, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8], documentAttributes: nil)
-       return attributedHTMLString.string
-    }
+    
     
     private func timestampToString(timestamp: Double) -> String {
         let date = Date(timeIntervalSince1970: timestamp)

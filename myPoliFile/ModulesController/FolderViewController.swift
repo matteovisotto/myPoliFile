@@ -194,7 +194,7 @@ extension FolderViewController: UICollectionViewDelegate, UICollectionViewDataSo
             return
         }
         if(realNumberOfFiles==0){return}
-        let selectedFile = self.folderModule.contents[indexPath.item]
+        let selectedFile = self.folder.files[indexPath.item]
         let fileAction = FileOpenAction(target: self, moduleContent: selectedFile, loader: self.loader)
         fileAction.displayActions()
     }
