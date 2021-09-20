@@ -67,6 +67,11 @@ class DownloadViewController: BaseViewController {
         longPressedGesture.minimumPressDuration = 0.5
         longPressedGesture.delaysTouchesBegan = true
         collectionView.addGestureRecognizer(longPressedGesture)
+        
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeHandler))
+        swipeGesture.direction = .right
+        
+        collectionView.addGestureRecognizer(swipeGesture)
     }
     
     private func setupBackButton() {
@@ -154,6 +159,10 @@ class DownloadViewController: BaseViewController {
             path = path + "/" + part
         }
         return path
+    }
+    
+    @objc private func swipeHandler() {
+        didTapBackButton()
     }
 }
 

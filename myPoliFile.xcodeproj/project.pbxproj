@@ -99,6 +99,8 @@
 		66DE702526EB8CA000D8380E /* MVTopMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE702226EB8CA000D8380E /* MVTopMenuView.swift */; };
 		66DE702726EB90A900D8380E /* GenericCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE702626EB90A900D8380E /* GenericCollectionViewCell.swift */; };
 		66E59AE326EFE2A300EC1CAD /* FileDeleteBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E59AE226EFE2A300EC1CAD /* FileDeleteBottomSheet.swift */; };
+		66EAF1B426F86B20009D3F03 /* TitleDescriptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EAF1B326F86B20009D3F03 /* TitleDescriptionButton.swift */; };
+		66EAF1B626F87149009D3F03 /* FeedbackAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EAF1B526F87149009D3F03 /* FeedbackAlert.swift */; };
 		66F2CE1526EF5A42003B1868 /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F2CE1426EF5A42003B1868 /* AppGlobal.swift */; };
 		66F2CE1726EF5CB5003B1868 /* CourseName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F2CE1626EF5CB5003B1868 /* CourseName.swift */; };
 		66F2CE1926EF5DF7003B1868 /* OfflineFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F2CE1826EF5DF7003B1868 /* OfflineFolder.swift */; };
@@ -199,6 +201,8 @@
 		66DE702226EB8CA000D8380E /* MVTopMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVTopMenuView.swift; sourceTree = "<group>"; };
 		66DE702626EB90A900D8380E /* GenericCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCollectionViewCell.swift; sourceTree = "<group>"; };
 		66E59AE226EFE2A300EC1CAD /* FileDeleteBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDeleteBottomSheet.swift; sourceTree = "<group>"; };
+		66EAF1B326F86B20009D3F03 /* TitleDescriptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleDescriptionButton.swift; sourceTree = "<group>"; };
+		66EAF1B526F87149009D3F03 /* FeedbackAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackAlert.swift; sourceTree = "<group>"; };
 		66F2CE1426EF5A42003B1868 /* AppGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGlobal.swift; sourceTree = "<group>"; };
 		66F2CE1626EF5CB5003B1868 /* CourseName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseName.swift; sourceTree = "<group>"; };
 		66F2CE1826EF5DF7003B1868 /* OfflineFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineFolder.swift; sourceTree = "<group>"; };
@@ -292,6 +296,7 @@
 				664190AE26EA8C7B00A08308 /* TagView.swift */,
 				6634789126EC889A00B63527 /* FloatingTextField.swift */,
 				6686440826F1456C00C0EB3C /* DividerView.swift */,
+				66EAF1B326F86B20009D3F03 /* TitleDescriptionButton.swift */,
 			);
 			path = UIElements;
 			sourceTree = "<group>";
@@ -314,6 +319,7 @@
 				66230CC426EA2974003DFD41 /* FatalErrorViewController.swift */,
 				663478AA26ED372700B63527 /* FileOptionBottomSheet.swift */,
 				66E59AE226EFE2A300EC1CAD /* FileDeleteBottomSheet.swift */,
+				66EAF1B526F87149009D3F03 /* FeedbackAlert.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -562,6 +568,7 @@
 				6634789A26ECACB600B63527 /* FolderViewController.swift in Sources */,
 				66DE700226EB462800D8380E /* CourseDetailParser.swift in Sources */,
 				66230C9026E8A3F7003DFD41 /* AppButton.swift in Sources */,
+				66EAF1B426F86B20009D3F03 /* TitleDescriptionButton.swift in Sources */,
 				663478AD26ED40F400B63527 /* OfflineFileCollectionViewCell.swift in Sources */,
 				663478BB26EE03EF00B63527 /* ResourceContent.swift in Sources */,
 				663478A726ED233700B63527 /* FileViewerViewController.swift in Sources */,
@@ -582,6 +589,7 @@
 				66DE700626EB5D9300D8380E /* Announcement.swift in Sources */,
 				6634789F26ECEE5000B63527 /* SegmentTableViewCell.swift in Sources */,
 				66DE702326EB8CA000D8380E /* MVTopMenuCell.swift in Sources */,
+				66EAF1B626F87149009D3F03 /* FeedbackAlert.swift in Sources */,
 				661FC5C226E890E200B33983 /* WelcomeViewController.swift in Sources */,
 				663478B926EE01BB00B63527 /* ModuleResource.swift in Sources */,
 				663478BF26EE2EDD00B63527 /* FileOpenAction.swift in Sources */,
