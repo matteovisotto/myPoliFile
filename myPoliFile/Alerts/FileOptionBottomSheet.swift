@@ -14,6 +14,20 @@ class FileOptionBottomSheet: BaseViewController {
     private var openButton = TitleDescriptionButton()
     private var downloadButton = TitleDescriptionButton()
     
+    private var alertTitle: UILabel = {
+       let l = UILabel()
+        l.text = "File action"
+        l.font = .boldSystemFont(ofSize: 20)
+        return l
+    }()
+    
+    private lazy var alertDescription: UILabel = {
+       var l = UILabel()
+        l.text = "Please, select an action for this file"
+        l.textColor = secondaryLabelColor
+        return l
+    }()
+    
     var completion: (_ result: Bool, _ option: Int?)->() = {_,_ in }
     
     override func viewDidLoad() {
@@ -32,6 +46,18 @@ class FileOptionBottomSheet: BaseViewController {
         alertView.widthAnchor.constraint(equalToConstant: getWidth()).isActive = true
         alertView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         alertView.layer.cornerRadius = 15
+        alertView.addSubview(alertTitle)
+        alertTitle.translatesAutoresizingMaskIntoConstraints = false
+        alertTitle.topAnchor.constraint(equalTo: alertView.topAnchor, constant: 10).isActive = true
+        alertTitle.leftAnchor.constraint(equalTo: alertView.leftAnchor, constant: 10).isActive = true
+        alertTitle.rightAnchor.constraint(equalTo: alertView.rightAnchor, constant: -10).isActive = true
+        
+        alertView.addSubview(alertDescription)
+        alertDescription.translatesAutoresizingMaskIntoConstraints = false
+        alertDescription.topAnchor.constraint(equalTo: alertTitle.bottomAnchor, constant: 5).isActive = true
+        alertDescription.leftAnchor.constraint(equalTo: alertView.leftAnchor, constant: 10).isActive = true
+        alertDescription.rightAnchor.constraint(equalTo: alertView.rightAnchor, constant: -10).isActive = true
+        alertDescription.numberOfLines = .zero
     }
     
     private func setupButtons() {
@@ -50,7 +76,7 @@ class FileOptionBottomSheet: BaseViewController {
         openButton.bottomAnchor.constraint(equalTo: downloadButton.topAnchor, constant: -10).isActive = true
         openButton.leftAnchor.constraint(equalTo: alertView.leftAnchor).isActive = true
         openButton.rightAnchor.constraint(equalTo: alertView.rightAnchor).isActive = true
-        openButton.topAnchor.constraint(equalTo: alertView.topAnchor, constant: 20).isActive = true
+        openButton.topAnchor.constraint(equalTo: alertDescription.bottomAnchor, constant: 20).isActive = true
         openButton.addTarget(self, action: #selector(didTapOpen), for: .touchUpInside)
         openButton.titleText = "Open"
         openButton.descriptionText = "Directly open a file preview in the app. A further download is possible"
@@ -58,8 +84,8 @@ class FileOptionBottomSheet: BaseViewController {
         
         alertView.addSubview(cancelButton)
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
-        cancelButton.topAnchor.constraint(equalTo: alertView.topAnchor, constant: 8).isActive = true
-        cancelButton.rightAnchor.constraint(equalTo: alertView.rightAnchor, constant: -8).isActive = true
+        cancelButton.topAnchor.constraint(equalTo: alertView.topAnchor, constant: 10).isActive = true
+        cancelButton.rightAnchor.constraint(equalTo: alertView.rightAnchor, constant: -10).isActive = true
         cancelButton.widthAnchor.constraint(equalToConstant: 18).isActive = true
         cancelButton.heightAnchor.constraint(equalToConstant: 18).isActive = true
         cancelButton.setImage(UIImage(named: "cross")!, for: .normal)
