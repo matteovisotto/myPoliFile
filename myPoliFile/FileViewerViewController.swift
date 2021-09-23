@@ -12,6 +12,7 @@ class FileViewerViewController: BaseViewController {
 
     private var webView = WKWebView()
     private var navigationBar = BackHeader()
+    private var shareButton = UIButton()
     
     open var file: ModuleContent!
 
@@ -34,6 +35,17 @@ class FileViewerViewController: BaseViewController {
         navigationBar.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
         navigationBar.backButton.addTarget(self, action: #selector(didTapback), for: .touchUpInside)
         navigationBar.titleLabel.text = file.contentName
+        shareButton.setImage(UIImage(named: "iconShare"), for: .normal)
+        shareButton.imageView?.tintColor = labelColor
+        shareButton.imageView?.contentMode = .scaleAspectFit
+        
+        navigationBar.addSubview(shareButton)
+        shareButton.translatesAutoresizingMaskIntoConstraints = false
+        shareButton.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: -10).isActive = true
+        shareButton.widthAnchor.constraint(equalToConstant: 25).isActive = true //25
+        shareButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        shareButton.centerYAnchor.constraint(equalTo: navigationBar.centerYAnchor).isActive = true
+        shareButton.addTarget(self, action: #selector(didTapShare), for: .touchUpInside)
         
         self.view.addSubview(webView)
         webView.translatesAutoresizingMaskIntoConstraints = false
@@ -49,4 +61,33 @@ class FileViewerViewController: BaseViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
+    @objc private func didTapShare() {
+        let downloader = Downloader(file: self.file)
+        downloader.delegate = self
+        downloader.startDownload()
+    }
+}
+
+extension FileViewerViewController: DownloaderDelegate {
+    func didDownloaded(result: Bool, url: URL?) {
+        if(result){
+            DispatchQueue.main.async {
+                let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [url!], applicationActivities: nil)
+                activityViewController.popoverPresentationController?.sourceView=self.view
+                activityViewController.completionWithItemsHandler = { (activityType, completed, returnedItems, error) in
+                    try? FileManager.default.removeItem(at: url!)
+                }
+                self.present(activityViewController, animated: true, completion: nil)
+            }
+        } else {
+            DispatchQueue.main.async {
+                let errorVC = ErrorAlertController()
+                errorVC.setContent(title: "Error", message: "Unable to prepare the file")
+                errorVC.modalPresentationStyle = .overFullScreen
+                errorVC.isLoadingPhase = false
+                errorVC.modalTransitionStyle = .coverVertical
+                self.present(errorVC, animated: true, completion: nil)
+            }
+        }
+    }
 }

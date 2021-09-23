@@ -27,8 +27,13 @@ class CourseContentViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        downloadCourse()
-        
+        if(self.course.sections.count == 0){
+            downloadCourse()
+        } else {
+            if (PreferenceManager.getCoursesReloading()){
+                downloadCourse()
+            }
+        }
     }
     
     private func setupNavigationBar() {
