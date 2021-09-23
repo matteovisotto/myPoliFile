@@ -70,7 +70,7 @@ class SettingsViewController: BaseViewController {
         let footerLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 20))
         let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
         let appBundle = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? ""
-        footerLabel.text = "Version " + appVersion + " ("+appBundle+")"
+        footerLabel.text = NSLocalizedString("settings.version", comment: "Version") + " " + appVersion + " ("+appBundle+")"
         footerLabel.textAlignment = .center
         footerLabel.font = .systemFont(ofSize: 12)
         tableView.tableFooterView = footerLabel
@@ -119,7 +119,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else if (indexPath.section == 1){
             let cell = SwitchTableViewCell()
-            cell.text = "Always reload"
+            cell.text = NSLocalizedString("settings.reload", comment: "Always reload")
             cell.switchStatus = PreferenceManager.getCoursesReloading()
             cell.switchControl.addTarget(self, action: #selector(switchValueChange(_:)), for: .valueChanged)
             return cell
@@ -127,14 +127,14 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             if(indexPath.row == 0){
                 let cell = UITableViewCell()
                 cell.accessoryType = .disclosureIndicator
-                cell.textLabel?.text = "Contact app developer"
+                cell.textLabel?.text = NSLocalizedString("settings.contactdeveloper", comment: "Contact app developer")
                 return cell
             }
             return UITableViewCell()
         } else {
             let cell = UITableViewCell()
             cell.accessoryType = .none
-            cell.textLabel?.text = "Logout"
+            cell.textLabel?.text = NSLocalizedString("settings.logout", comment: "Logout")
             cell.textLabel?.textColor = .red
             return cell
         }
@@ -143,11 +143,11 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "Default file action"
+            return NSLocalizedString("settings.header.fileaction", comment: "Default file action")
         case 1:
-            return "Courses"
+            return NSLocalizedString("settings.header.courses", comment: "Courses")
         case 2:
-            return "Information"
+            return NSLocalizedString("settings.header.informations", comment: "Informations")
         default:
             return ""
         }
@@ -156,9 +156,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "Set the default action for a file that can be opended in preview. If it can't it will always be downloaded"
+            return NSLocalizedString("settings.footer.fileaction", comment: "File action description")
         case 1:
-            return "If active courses will be reloaded each time the screen is shown. This action could take long time"
+            return NSLocalizedString("settings.footer.courses", comment: "Reload courses description")
         default:
             return ""
         }
@@ -173,7 +173,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                     self.present(mailComposeViewController, animated: true, completion: nil)
                 } else {
                     let errorVC = ErrorAlertController()
-                    errorVC.setContent(title: "Error", message: "Unable to open mail app")
+                    errorVC.setContent(title: NSLocalizedString("global.error", comment: "error"), message: NSLocalizedString("error.noemailapp", comment: "No email app"))
                     errorVC.modalPresentationStyle = .overFullScreen
                     self.present(errorVC, animated: true, completion: nil)
                 }

@@ -1,0 +1,83 @@
+/* 
+  Localization.strings
+  myPoliFile
+
+  Created by Matteo Visotto on 23/09/21.
+  
+*/
+
+//Global
+"global.error" = "Errore";
+"global.cancel" = "Annulla";
+"global.delete" = "Elimina";
+"global.or" = "O";
+"global.loading" = "Caricamento...";
+"global.nocontent" = "Nulla da mostrare";
+"global.open" = "Apri";
+"global.download" = "Scarica";
+"global.ask" = "Chiedi";
+"global.nofolder" = "Nessuna cartella";
+"global.nofile" = "Nessun file";
+"global.back" = "Indietro";
+"global.folders" = "Cartelle";
+"global.files" = "Files";
+"global.maindirectory" = "Cartella principale";
+"global.notifications" = "Notifiche";
+"global.noresult" = "Nessun risultato";
+"global.done" = "Fatto!";
+"global.fatalerror" = "Errore fatale";
+
+//File
+"file.documenttype" = "Documento: %@";
+
+//WelcomeViewController
+"welcome.welcome" = "Benvenuto\nin myPoliFile";
+"welcome.personalcode" = "Codice Persona PoliMi";
+"welcome.polimilogin" = "Accedi con PoliMi";
+"welcome.tokenlogin" = "Accedi con token";
+
+//Token alert
+"token.message" = "Inserire il proprio token personale. Se non lo hai, accedi al sito e copialo dalle impostazioni relative alla chiave di sicurezza.";
+
+
+//Home
+"home.courses" = "Corsi";
+"home.search" = "Ricerca";
+"home.all" = "Tutti";
+"home.favourite" = "Preferiti";
+"home.hidden" = "Nascosti";
+
+
+//Settings
+"settings.version" = "Versione";
+"settings.reload" = "Ricarica sempre";
+"settings.contactdeveloper" = "Contatta lo sviluppatore";
+"settings.logout" = "Esci";
+"settings.header.fileaction" = "Azione predefinita files";
+"settings.header.courses" = "Corsi";
+"settings.header.informations" = "Informazioni";
+"settings.footer.fileaction" = "Imposta l'azione predefinita per i file che possono essere aperti in anteprima. Se un file non può essere visualizzato verrà sempre scaricato";
+"settings.footer.courses" = "Se attiva i corsi e il loro contenuto verrà ricaricato ogni volta che la schermata torna visibile. Questa azione può richiedere molto tempo";
+
+
+//Errors
+"error.nottoken" = "Impossibile trovare il token personale. Controlla dal sito web se la chiave di accesso è impostata e attiva.";
+"error.wrongcode" = "Codice persona o token errato";
+"error.noemailapp" = "Non è possibile aprire l'app email";
+"error.filepath" = "Impossibile trovare il percorso del file";
+"error.filepreparation" = "Impossibile preparare il file";
+"error.dataconversion" = "Si è verificato un errore nella conversione dei dati";
+"error.datareading" = "Si è verificato un errore nella lettura dei dati";
+"error.download" = "Si è verificato un errore nel download del file";
+"error.userdata" = "Impossibile trovare i tuoi dati personali";
+"error.unablestart" = "L'errore verificatosi non permette l'avvio dell'applicazione";
+
+//Alerts
+"alert.deletefoldertext" = "Sicuro di voler eliminare la cartella %@ e tutti i fale in essa contenuti?";
+"alert.deletefoldertitle" = "Eliminare cartella?";
+"alert.deletefiletext" = "Sei sicuro di voler eliminare %@?";
+"alert.deletefiletitle" = "Eliminare file?";
+"alert.fileactiontitle" = "Azione per il file";
+"alert.fileactiontext" = "Scegli un azione per questo file";
+"alert.downloaddescription" = "Scarica il file direttamente nel tuo device";
+"alert.opendescription" = "Apri in preview nell'app, successivamente puoi sempre scaricarlo";

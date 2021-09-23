@@ -69,7 +69,7 @@ extension ForumContentViewController: TaskManagerDelegate {
             })
         } else {
             DispatchQueue.main.async {
-                self.webView.loadHTMLString("<h1>Error</h1>", baseURL: nil)
+                self.webView.loadHTMLString("<h1>"+NSLocalizedString("global.error", comment: "Error")+"</h1>", baseURL: nil)
             }
         }
     }

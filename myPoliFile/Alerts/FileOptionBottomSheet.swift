@@ -16,14 +16,14 @@ class FileOptionBottomSheet: BaseViewController {
     
     private var alertTitle: UILabel = {
        let l = UILabel()
-        l.text = "File action"
+        l.text = NSLocalizedString("alert.fileactiontitle", comment: "File action")
         l.font = .boldSystemFont(ofSize: 20)
         return l
     }()
     
     private lazy var alertDescription: UILabel = {
        var l = UILabel()
-        l.text = "Please, select an action for this file"
+        l.text = NSLocalizedString("alert.fileactiontext", comment: "File action description")
         l.textColor = secondaryLabelColor
         return l
     }()
@@ -68,8 +68,8 @@ class FileOptionBottomSheet: BaseViewController {
         downloadButton.leftAnchor.constraint(equalTo: alertView.leftAnchor).isActive = true
         downloadButton.rightAnchor.constraint(equalTo: alertView.rightAnchor).isActive = true
         downloadButton.addTarget(self, action: #selector(didTapDownload), for: .touchUpInside)
-        downloadButton.titleText = "Download"
-        downloadButton.descriptionText = "Directly download file in your device"
+        downloadButton.titleText = NSLocalizedString("global.download", comment: "Download")
+        downloadButton.descriptionText = NSLocalizedString("alert.downloaddescription", comment: "Download description")
         
         alertView.addSubview(openButton)
         openButton.translatesAutoresizingMaskIntoConstraints = false
@@ -78,8 +78,8 @@ class FileOptionBottomSheet: BaseViewController {
         openButton.rightAnchor.constraint(equalTo: alertView.rightAnchor).isActive = true
         openButton.topAnchor.constraint(equalTo: alertDescription.bottomAnchor, constant: 20).isActive = true
         openButton.addTarget(self, action: #selector(didTapOpen), for: .touchUpInside)
-        openButton.titleText = "Open"
-        openButton.descriptionText = "Directly open a file preview in the app. A further download is possible"
+        openButton.titleText = NSLocalizedString("global.open", comment: "Open")
+        openButton.descriptionText = NSLocalizedString("alert.opendescription", comment: "Open description")
         openButton.hasDividerAtPosition = .bottom
         
         alertView.addSubview(cancelButton)

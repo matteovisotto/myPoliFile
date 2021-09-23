@@ -29,7 +29,7 @@ class FatalErrorViewController: BaseViewController {
         imageView.contentMode = .scaleAspectFit
         
         self.view.addSubview(textLabel)
-        textLabel.text = "Fatal error"
+        textLabel.text = NSLocalizedString("global.fatalerror", comment: "Fatal error")
         textLabel.translatesAutoresizingMaskIntoConstraints = false
         textLabel.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: 15).isActive = true
         textLabel.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: -15).isActive = true
@@ -39,7 +39,7 @@ class FatalErrorViewController: BaseViewController {
         textLabel.textColor = secondaryLabelColor
         
         self.view.addSubview(detailLabel)
-        detailLabel.text = "The error that occurred did not allow the application to start"
+        detailLabel.text = NSLocalizedString("error.unablestart", comment: "Unable to start")
         detailLabel.translatesAutoresizingMaskIntoConstraints = false
         detailLabel.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: 15).isActive = true
         detailLabel.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: -15).isActive = true

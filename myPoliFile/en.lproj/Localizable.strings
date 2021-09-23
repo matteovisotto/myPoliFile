@@ -1,0 +1,79 @@
+/* 
+  Localization.strings
+  myPoliFile
+
+  Created by Matteo Visotto on 23/09/21.
+  
+*/
+"global.error" = "Error";
+"global.cancel" = "Cancel";
+"global.delete" = "Delete";
+"global.or" = "OR";
+"global.loading" = "Loading...";
+"global.nocontent" = "Nothing to show";
+"global.open" = "Open";
+"global.download" = "Download";
+"global.ask" = "Ask";
+"global.nofolder" = "No folder available";
+"global.nofile" = "No file available";
+"global.back" = "Back";
+"global.folders" = "Folders";
+"global.files" = "Files";
+"global.maindirectory" = "Main directory";
+"global.notifications" = "Notifications";
+"global.noresult" = "No results found";
+"global.done" = "Done!";
+"global.fatalerror" = "Fatal error"
+
+//File
+"file.documenttype" = "Document type: %@";
+
+//Welcome
+"welcome.personalcode" = "PoliMi Personal Code";
+"welcome.welcome" = "Welcome\nto myPoliFile";
+"welcome.polimilogin" = "Login with PoliMi";
+"welcome.tokenlogin" = "Login with token";
+
+"token.message" = "Please insert your personal mobile token. If you don't have it, login in the website first, then from setting find and copy your security key for mobile servicies";
+
+//Home
+"home.courses" = "My Courses";
+"home.search" = "Search";
+"home.all" = "All";
+"home.favourite" = "Favourite";
+"home.hidden" = "Hidden";
+
+
+//Settings
+"settings.version" = "Version";
+"settings.reload" = "Always reload";
+"settings.contactdeveloper" = "Contact app developer";
+"settings.logout" = "Logout";
+"settings.header.fileaction" = "Default file action";
+"settings.header.courses" = "Courses";
+"settings.header.informations" = "Informations";
+"settings.footer.fileaction" = "Set the default action for a file that can be opended in preview. If it can't it will always be downloaded";
+"settings.footer.courses" = "If active courses will be reloaded each time the screen is shown. This action could take long time";
+
+
+//Errors
+"error.nottoken" = "Unable to find your personal token. Please check from the webpage if the access key is configured";
+"error.wrongcode" = "Personal code or token wrong";
+"error.noemailapp" = "Unable to open email";
+"error.filepath" = "Unable to find the file path";
+"error.filepreparation" = "Unable to prepare the file";
+"error.dataconversion" = "Data conversion error";
+"error.datareading" = "Data reading error";
+"error.download" = "An error occured while downloading the file.";
+"error.userdata" = "Unable to find your personal data";
+"error.unablestart" = "The error that occurred did not allow the application to start";
+
+//Alerts
+"alert.deletefoldertext" = "Are you sure you want to delete folder %@ and all the files it contains?";
+"alert.deletefoldertitle" = "Delete folder?";
+"alert.deletefiletext" = "Are you sure you want to delete %@?";
+"alert.deletefiletitle" = "Delete file?";
+"alert.fileactiontitle" = "File action";
+"alert.fileactiontext" = "Please, select an action for this file";
+"alert.downloaddescription" = "Directly download file in your device";
+"alert.opendescription" = "Directly open a file preview in the app. A further download is possible";

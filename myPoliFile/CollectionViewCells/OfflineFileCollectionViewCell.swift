@@ -12,7 +12,7 @@ class OfflineFileCollectionViewCell: UICollectionViewCell {
     var file: OfflineFile! {
         didSet {
             fileName.text = file.fileName
-            fileInfo.text = "Document type: " + file.fileExtension
+            fileInfo.text = String(format: NSLocalizedString("file.documenttype", comment: "Document type"), file.fileExtension)
             if let fileImage = UIImage(named: file.fileExtension) {
                 imageView.image = fileImage
             } else {

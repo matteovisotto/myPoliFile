@@ -95,7 +95,7 @@ extension CourseContentViewController: TaskManagerDelegate {
                 self.loader.stopAnimation()
                 let errorVC = ErrorAlertController()
                 errorVC.isLoadingPhase = false
-                errorVC.setContent(title: "Error", message: stringContent)
+                errorVC.setContent(title: NSLocalizedString("global.error", comment: "Error"), message: stringContent)
                 errorVC.modalPresentationStyle = .overFullScreen
                 self.present(errorVC, animated: true, completion: nil)
             }

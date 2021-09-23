@@ -47,7 +47,7 @@ class ForumParser {
                     } else {
                         DispatchQueue.main.async {
                             let errorVC = ErrorAlertController()
-                            errorVC.setContent(title: "Error", message: "Unable to find content")
+                            errorVC.setContent(title: NSLocalizedString("global.error", comment: "Error"), message: NSLocalizedString("error.datareading", comment: "Data reading error"))
                             errorVC.modalPresentationStyle = .overFullScreen
                             self.targetVC.present(errorVC, animated: true, completion: nil)
                         }
@@ -58,7 +58,7 @@ class ForumParser {
                     
                     DispatchQueue.main.async {
                         let errorVC = ErrorAlertController()
-                        errorVC.setContent(title: "Error", message: "Unable to convert the received data")
+                        errorVC.setContent(title: NSLocalizedString("global.error", comment: "Error"), message: NSLocalizedString("error.dataconversion", comment: "Data conversion error"))
                         errorVC.modalPresentationStyle = .overFullScreen
                         self.targetVC.present(errorVC, animated: true, completion: nil)
                     }
@@ -68,7 +68,7 @@ class ForumParser {
                 
                 DispatchQueue.main.async {
                     let errorVC = ErrorAlertController()
-                    errorVC.setContent(title: "Error", message: error.localizedDescription)
+                    errorVC.setContent(title: NSLocalizedString("global.error", comment: "Error"), message: error.localizedDescription)
                     errorVC.modalPresentationStyle = .overFullScreen
                     self.targetVC.present(errorVC, animated: true, completion: nil)
                 }

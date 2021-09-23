@@ -56,7 +56,7 @@ class FileDeleteBottomSheet: BaseViewController {
         cancelButton.leftAnchor.constraint(equalTo: alertView.leftAnchor, constant: 10).isActive = true
         cancelButton.rightAnchor.constraint(equalTo: alertView.rightAnchor, constant: -10).isActive = true
         cancelButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        cancelButton.setTitle("Cancel", for: .normal)
+        cancelButton.setTitle(NSLocalizedString("global.cancel", comment: "Cancel"), for: .normal)
         cancelButton.setTitleColor(.systemRed, for: .normal)
         cancelButton.addTarget(self, action: #selector(dismissAlert), for: .touchUpInside)
         
@@ -76,7 +76,7 @@ class FileDeleteBottomSheet: BaseViewController {
         deleteButton.leftAnchor.constraint(equalTo: alertView.leftAnchor, constant: 10).isActive = true
         deleteButton.rightAnchor.constraint(equalTo: alertView.rightAnchor, constant: -10).isActive = true
         deleteButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        deleteButton.setTitle("Delete", for: .normal)
+        deleteButton.setTitle(NSLocalizedString("global.delete", comment: "Delete"), for: .normal)
         deleteButton.addTarget(self, action: #selector(didTapDelete), for: .touchUpInside)
         
         alertView.addSubview(descriptionLabel)

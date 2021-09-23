@@ -37,10 +37,10 @@ class TaskManager: NSObject {
                 if let s = String(data: d, encoding: .utf8) {
                     self.delegate?.taskManager(taskManager: self, didFinishWith: true, stringContent: s)
                 } else {
-                    self.delegate?.taskManager(taskManager: self, didFinishWith: false, stringContent: "Data conversion error")
+                    self.delegate?.taskManager(taskManager: self, didFinishWith: false, stringContent: NSLocalizedString("error.dataconversion", comment: "Data conversion error"))
                 }
             } else {
-                self.delegate?.taskManager(taskManager: self, didFinishWith: false, stringContent: "Data reading error")
+                self.delegate?.taskManager(taskManager: self, didFinishWith: false, stringContent: NSLocalizedString("error.datareading", comment: "Data reading error"))
             }
         }
         task.resume()

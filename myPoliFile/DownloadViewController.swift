@@ -82,7 +82,7 @@ class DownloadViewController: BaseViewController {
         backButton.bottomAnchor.constraint(equalTo: backView.bottomAnchor, constant: -5).isActive = true
         backButton.setTitleColor(.primary, for: .normal)
         backButton.isEnabled = false
-        backButton.setTitle("Main directory", for: .normal)
+        backButton.setTitle(NSLocalizedString("global.maindirectory", comment: "Main Directory"), for: .normal)
         backButton.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
     }
     
@@ -90,7 +90,7 @@ class DownloadViewController: BaseViewController {
         let calculatedPath = managePaths(forCurrentPath: self.currentPath)
         self.currentPath = calculatedPath
         if(calculatedPath == "/") {
-            self.backButton.setTitle("Main directory", for: .normal)
+            self.backButton.setTitle(NSLocalizedString("global.maindirectory", comment: "Main Directory"), for: .normal)
             self.backButton.isEnabled = false
         }
         self.loadContent()
@@ -117,8 +117,8 @@ class DownloadViewController: BaseViewController {
             if(section==0 && !(self.realNumberOfFolders==0)){
                 UINotificationFeedbackGenerator().notificationOccurred(.warning)
                 let folder = folders[item]
-                deleteAlert.alertTitle = "Delete folder?"
-                deleteAlert.alertDescription = "Are you sure you want to delete folder " + folder.folderName + " and all the files it contains?"
+                deleteAlert.alertTitle = NSLocalizedString("alert.deletefoldertitle", comment: "Delete folder?")
+                deleteAlert.alertDescription = String(format: NSLocalizedString("alert.deletefoldertext", comment: "Delete folder description"), folder.folderName)
                 deleteAlert.completion = {result in
                     if result {
                         let _ = DeviceFileManager.deleteFolder(using: folder)
@@ -128,8 +128,8 @@ class DownloadViewController: BaseViewController {
             } else if (section==1 && !(self.realNumberOfFiles==0)){
                 UINotificationFeedbackGenerator().notificationOccurred(.warning)
                 let file = files[item]
-                deleteAlert.alertTitle = "Delete file?"
-                deleteAlert.alertDescription = "Are you sure you want to delete " + file.fileName
+                deleteAlert.alertTitle = NSLocalizedString("alert.deletefiletitle", comment: "Delete file?")
+                deleteAlert.alertDescription = String(format: NSLocalizedString("alert.deletefiletext", comment: "Delete file description"), file.fileName)
                 deleteAlert.completion = {result in
                     if result {
                         let _ = DeviceFileManager.deleteFile(using: file, inCourseFolder: self.currentPath)
@@ -186,7 +186,7 @@ extension DownloadViewController: UICollectionViewDelegate, UICollectionViewData
         if indexPath.section == 0{
             if(realNumberOfFolders == 0){
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "genericCell", for: indexPath) as! GenericCollectionViewCell
-                cell.text = "No folder available"
+                cell.text = NSLocalizedString("global.nofolder", comment: "No folder")
                 cell.backgroundColor = .clear
                 return cell
             }
@@ -197,7 +197,7 @@ extension DownloadViewController: UICollectionViewDelegate, UICollectionViewData
         }
         if(realNumberOfFiles == 0){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "genericCell", for: indexPath) as! GenericCollectionViewCell
-            cell.text = "No files available"
+            cell.text = NSLocalizedString("global.nofile", comment: "No file")
             cell.backgroundColor = .clear
             return cell
         }
@@ -231,7 +231,7 @@ extension DownloadViewController: UICollectionViewDelegate, UICollectionViewData
         collectionView.deselectItem(at: indexPath, animated: true)
         if indexPath.section == 0 {
             if (realNumberOfFolders==0){return}
-            self.backButton.setTitle("< Back", for: .normal)
+            self.backButton.setTitle("< " + NSLocalizedString("global.back", comment: "Back"), for: .normal)
             self.backButton.isEnabled = true
             self.currentPath = folders[indexPath.item].folderURL
             loadContent()
@@ -255,7 +255,7 @@ extension DownloadViewController: UICollectionViewDelegate, UICollectionViewData
         } else {
             let errorVC = ErrorAlertController()
             errorVC.isLoadingPhase = false
-            errorVC.setContent(title: "Error", message: "Unable to find the file path")
+            errorVC.setContent(title: NSLocalizedString("global.error", comment: "Error"), message: NSLocalizedString("error.filepath", comment: "No file path"))
             errorVC.modalPresentationStyle = .overFullScreen
             self.present(errorVC, animated: true, completion: nil)
         }
@@ -264,9 +264,9 @@ extension DownloadViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let myView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "titleView", for: indexPath) as! SectionTitleCollectionReusableView
         if(indexPath.section == 0) {
-            myView.sectionTitle = "Folders"
+            myView.sectionTitle = NSLocalizedString("global.folders", comment: "Folders")
         } else {
-            myView.sectionTitle = "Files"
+            myView.sectionTitle = NSLocalizedString("global.files", comment: "Files")
         }
         return myView
     }

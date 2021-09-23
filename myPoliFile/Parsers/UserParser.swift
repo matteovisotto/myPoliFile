@@ -39,7 +39,7 @@ class UserParser {
                             
                             DispatchQueue.main.async {
                                 let errorVC = ErrorAlertController()
-                                errorVC.setContent(title: "Error", message: "Unable to parse your personal data")
+                                errorVC.setContent(title: NSLocalizedString("global.error", comment: "Error"), message: NSLocalizedString("error.datareading", comment: "Data reading error"))
                                 errorVC.modalPresentationStyle = .overFullScreen
                                 self.targetVC.present(errorVC, animated: true, completion: nil)
                             }
@@ -49,7 +49,7 @@ class UserParser {
                         
                         DispatchQueue.main.async {
                             let errorVC = ErrorAlertController()
-                            errorVC.setContent(title: "Error", message: "Unable to find your personal data")
+                            errorVC.setContent(title: NSLocalizedString("global.error", comment: "Error"), message: NSLocalizedString("error.userdata", comment: "User data error"))
                             errorVC.modalPresentationStyle = .overFullScreen
                             self.targetVC.present(errorVC, animated: true, completion: nil)
                         }
@@ -59,7 +59,7 @@ class UserParser {
                     
                     DispatchQueue.main.async {
                         let errorVC = ErrorAlertController()
-                        errorVC.setContent(title: "Error", message: "Unable to convert the received data")
+                        errorVC.setContent(title: NSLocalizedString("global.error", comment: "Error"), message: NSLocalizedString("error.dataconversion", comment: "Data conversion error"))
                         errorVC.modalPresentationStyle = .overFullScreen
                         self.targetVC.present(errorVC, animated: true, completion: nil)
                     }
@@ -69,7 +69,7 @@ class UserParser {
                 
                 DispatchQueue.main.async {
                     let errorVC = ErrorAlertController()
-                    errorVC.setContent(title: "Error", message: error.localizedDescription)
+                    errorVC.setContent(title: NSLocalizedString("global.error", comment: "Error"), message: error.localizedDescription)
                     errorVC.modalPresentationStyle = .overFullScreen
                     self.targetVC.present(errorVC, animated: true, completion: nil)
                 }

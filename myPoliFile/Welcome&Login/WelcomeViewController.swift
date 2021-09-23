@@ -23,7 +23,7 @@ class WelcomeViewController: BaseViewController {
     
     private func addWelcomeLabel() {
         self.view.addSubview(welcomeLabel)
-        welcomeLabel.text = "Welcome \nto myPoliFile"
+        welcomeLabel.text = NSLocalizedString("welcome.welcome", comment: "Welcome \nto myPoliFile")
         welcomeLabel.numberOfLines = .zero
         welcomeLabel.textColor = .primary
         welcomeLabel.font = .systemFont(ofSize: 40, weight: .black)
@@ -41,7 +41,7 @@ class WelcomeViewController: BaseViewController {
         tokenButton.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: 15).isActive = true
         tokenButton.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: -15).isActive = true
         tokenButton.heightAnchor.constraint(equalToConstant: 33).isActive = true
-        tokenButton.setTitle("Login with token", for: .normal)
+        tokenButton.setTitle(NSLocalizedString("welcome.tokenlogin", comment: "Token Login"), for: .normal)
         tokenButton.setTitleColor(.primary, for: .normal)
         tokenButton.addTarget(self, action: #selector(didTapTokenButton), for: .touchUpInside)
         tokenButton.isEnabled = false
@@ -61,7 +61,7 @@ class WelcomeViewController: BaseViewController {
         startButton.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: 15).isActive = true
         startButton.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: -15).isActive = true
         startButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        startButton.setTitle("Login with PoliMi", for: .normal)
+        startButton.setTitle(NSLocalizedString("welcome.polimilogin", comment: "PoliMi Login"), for: .normal)
         startButton.addTarget(self, action: #selector(didTapStartButton), for: .touchUpInside)
         startButton.isEnabled = false
     }
@@ -73,7 +73,7 @@ class WelcomeViewController: BaseViewController {
         personalCodeTF.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: -15).isActive = true
         personalCodeTF.heightAnchor.constraint(equalToConstant: 44).isActive = true
         personalCodeTF.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        personalCodeTF._placeholder = "PoliMi Personal Code"
+        personalCodeTF._placeholder = NSLocalizedString("welcome.personalcode", comment: "Personal Code")
         personalCodeTF.keyboardType = .numberPad
         personalCodeTF.addTarget(self, action: #selector(didTextFieldChanged), for: .editingChanged)
         
@@ -99,13 +99,13 @@ class WelcomeViewController: BaseViewController {
                         self.present(loadignVC, animated: true, completion: nil)
                     } else {
                         let errorVC = ErrorAlertController()
-                        errorVC.setContent(title: "Error", message: "Unable to find your personal token. Please check from the webpage if the access key is configured")
+                        errorVC.setContent(title: NSLocalizedString("global.error", comment: "Error"), message: NSLocalizedString("error.nottoken", comment: "No Token"))
                         errorVC.modalPresentationStyle = .overFullScreen
                         self.present(errorVC, animated: true, completion: nil)
                     }
                 } catch {
                     let errorVC = ErrorAlertController()
-                    errorVC.setContent(title: "Error", message: error.localizedDescription)
+                    errorVC.setContent(title: NSLocalizedString("global.error", comment: "Error"), message: error.localizedDescription)
                     errorVC.modalPresentationStyle = .overFullScreen
                     self.present(errorVC, animated: true, completion: nil)
                 }
@@ -173,7 +173,7 @@ extension WelcomeViewController: TaskManagerDelegate {
             DispatchQueue.main.async {
                 let errorVC = ErrorAlertController()
                 errorVC.isLoadingPhase = false
-                errorVC.setContent(title: "Error", message: "Personal code or token wrong")
+                errorVC.setContent(title: NSLocalizedString("global.error", comment: "Error"), message: NSLocalizedString("error.wrongcode", comment: "Invalid code"))
                 errorVC.modalPresentationStyle = .overFullScreen
                 self.present(errorVC, animated: true, completion: nil)
             }

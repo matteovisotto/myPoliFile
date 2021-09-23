@@ -135,7 +135,7 @@ extension FolderViewController: UICollectionViewDelegate, UICollectionViewDataSo
             if(realNumberOfFolders == 0){
                 //No folder, load empty
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "genericCVCell", for: indexPath) as! GenericCollectionViewCell
-                cell.text = "No folder available"
+                cell.text = NSLocalizedString("global.nofolder", comment: "No folder")
                 cell.backgroundColor = .clear
                 return cell
             }
@@ -148,7 +148,7 @@ extension FolderViewController: UICollectionViewDelegate, UICollectionViewDataSo
         //Files
         if(realNumberOfFiles == 0){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "genericCVCell", for: indexPath) as! GenericCollectionViewCell
-            cell.text = "No files available"
+            cell.text = NSLocalizedString("global.nofile", comment: "No file")
             cell.backgroundColor = .clear
             return cell
         }
@@ -165,9 +165,9 @@ extension FolderViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let myView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "titleView", for: indexPath) as! SectionTitleCollectionReusableView
         if(indexPath.section == 0) {
-            myView.sectionTitle = "Folders"
+            myView.sectionTitle = NSLocalizedString("global.folders", comment: "Folders")
         } else {
-            myView.sectionTitle = "Files"
+            myView.sectionTitle = NSLocalizedString("global.files", comment: "Files")
         }
         return myView
     }

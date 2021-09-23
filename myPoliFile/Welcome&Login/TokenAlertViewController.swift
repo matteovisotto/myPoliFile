@@ -37,7 +37,7 @@ class TokenAlertViewController: AlertViewController {
         messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
         messageLabel.leftAnchor.constraint(equalTo: alertView.leftAnchor, constant: 10).isActive = true
         messageLabel.rightAnchor.constraint(equalTo: alertView.rightAnchor, constant: -10).isActive = true
-        messageLabel.text = "Please insert your personal mobile token. If you don't have it, login in the website first, then from setting find and copy your security key for mobile servicies"
+        messageLabel.text = NSLocalizedString("token.message", comment: "Insert token")
         messageLabel.numberOfLines = .zero
         
         alertView.addSubview(textArea)
@@ -62,7 +62,7 @@ class TokenAlertViewController: AlertViewController {
         cancelButton.normalColor = .systemRed
         cancelButton.highlightedColor = .systemOrange
         
-        cancelButton.setTitle("Cancel", for: .normal)
+        cancelButton.setTitle(NSLocalizedString("global.cancel", comment: "Cancel"), for: .normal)
         confirmButton.setTitle("Login", for: .normal)
         
         stackView.addArrangedSubview(cancelButton)

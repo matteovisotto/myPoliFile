@@ -19,7 +19,7 @@ class MainViewController: BaseViewController {
     private var selectedItem: Int = 0
     
     private let viewControllers: [UIViewController] = [CoursesViewController(), SearchViewController(), DownloadViewController()]
-    private let titles: [String] = ["My Courses", "Search", "Download"]
+    private let titles: [String] = [NSLocalizedString("home.courses", comment: ""), NSLocalizedString("home.search", comment: ""), "Download"]
     private let imageNames: [String] = ["courses", "search", "download"]
     
     override func viewDidLoad() {
@@ -56,7 +56,7 @@ class MainViewController: BaseViewController {
         headerView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor).isActive = true
         
         //headerView.logoImage = UIImage(named: "logo")!
-        headerView.headerTitle = "My Courses"
+        headerView.headerTitle = NSLocalizedString("home.courses", comment: "")
         headerView.settingsButton.addTarget(self, action: #selector(didTapSettingBtn), for: .touchUpInside)
         headerView.notificationButton.addTarget(self, action: #selector(didTapNotificationBtn), for: .touchUpInside)
     }

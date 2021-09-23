@@ -11,7 +11,7 @@ class FileCollectionViewCell: UICollectionViewCell {
     var file: FolderContent! {
         didSet {
             fileName.text = file.contentName
-            fileInfo.text = "Document type: " + file.mimetype
+            fileInfo.text = String(format: NSLocalizedString("file.documenttype", comment: "Document type"), file.mimetype)
             if let fileImage = UIImage(named: file.fileExtension) {
                 imageView.image = fileImage
             } else {

@@ -9,7 +9,7 @@ import UIKit
 
 class SegmentTableViewCell: UITableViewCell {
     
-    var segmentedControl = UISegmentedControl(items: ["Open", "Download", "Ask"])
+    var segmentedControl = UISegmentedControl(items: [NSLocalizedString("global.open", comment: "Open"), NSLocalizedString("global.download", comment: "Download"), NSLocalizedString("global.ask", comment: "Ask")])
     open var selectedIndex: Int  = 0 {
         didSet{
             segmentedControl.selectedSegmentIndex = selectedIndex

@@ -94,7 +94,7 @@ extension ForumViewController: TaskManagerDelegate {
                 self.loader.stopAnimation()
                 let errorVC = ErrorAlertController()
                 errorVC.isLoadingPhase = false
-                errorVC.setContent(title: "Error", message: stringContent)
+                errorVC.setContent(title: NSLocalizedString("global.error", comment: "Error"), message: stringContent)
                 errorVC.modalPresentationStyle = .overFullScreen
                 self.present(errorVC, animated: true, completion: nil)
             }
@@ -112,7 +112,7 @@ extension ForumViewController: UICollectionViewDataSource, UICollectionViewDeleg
         if(realNumberOfItems == 0){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "genericCell", for: indexPath) as! GenericCollectionViewCell
             cell.backgroundColor = .clear
-            cell.text = "Nothing to show"
+            cell.text = NSLocalizedString("global.nocontent", comment: "No content")
             return cell
         }
         

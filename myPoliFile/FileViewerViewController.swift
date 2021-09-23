@@ -82,7 +82,7 @@ extension FileViewerViewController: DownloaderDelegate {
         } else {
             DispatchQueue.main.async {
                 let errorVC = ErrorAlertController()
-                errorVC.setContent(title: "Error", message: "Unable to prepare the file")
+                errorVC.setContent(title:NSLocalizedString("global.error", comment: "Error"), message: NSLocalizedString("error.filepreparation", comment: "Error file preparation"))
                 errorVC.modalPresentationStyle = .overFullScreen
                 errorVC.isLoadingPhase = false
                 errorVC.modalTransitionStyle = .coverVertical

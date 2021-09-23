@@ -39,7 +39,7 @@ class BeePNotificationViewController: BaseViewController {
         navigationBar.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor).isActive = true
         navigationBar.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
         navigationBar.backButton.addTarget(self, action: #selector(didTapBack), for: .touchUpInside)
-        navigationBar.titleLabel.text = "Notifications"
+        navigationBar.titleLabel.text = NSLocalizedString("global.notifications", comment: "Notifications")
        
     }
     
@@ -92,7 +92,7 @@ extension BeePNotificationViewController: TaskManagerDelegate {
             DispatchQueue.main.async {
                 let errorVC = ErrorAlertController()
                 errorVC.isLoadingPhase = false
-                errorVC.setContent(title: "Error", message: stringContent)
+                errorVC.setContent(title: NSLocalizedString("global.error", comment: "Error"), message: stringContent)
                 errorVC.modalPresentationStyle = .overFullScreen
                 self.present(errorVC, animated: true, completion: nil)
             }
@@ -110,7 +110,7 @@ extension BeePNotificationViewController: UICollectionViewDataSource, UICollecti
         if(realNumberOfItems == 0){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "genericCell", for: indexPath) as! GenericCollectionViewCell
             cell.backgroundColor = .clear
-            cell.text = "Nothing to show"
+            cell.text = NSLocalizedString("global.nocontent", comment: "No content")
             return cell
         }
         

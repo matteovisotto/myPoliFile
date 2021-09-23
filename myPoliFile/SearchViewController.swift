@@ -67,7 +67,7 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         if(realNumberOfItems == 0){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "genericCell", for: indexPath) as! GenericCollectionViewCell
             cell.backgroundColor = .clear
-            cell.text = "No result found"
+            cell.text = NSLocalizedString("global.noresult", comment: "No result")
             return cell
         }
         
@@ -149,7 +149,7 @@ extension SearchViewController: TaskManagerDelegate {
             DispatchQueue.main.async {
                 let errorVC = ErrorAlertController()
                 errorVC.isLoadingPhase = false
-                errorVC.setContent(title: "Error", message: stringContent)
+                errorVC.setContent(title: NSLocalizedString("global.error", comment: "Error"), message: stringContent)
                 errorVC.modalPresentationStyle = .overFullScreen
                 self.present(errorVC, animated: true, completion: nil)
             }

@@ -22,7 +22,7 @@ class DividerView: UIView {
         super.init(frame: frame)
         
         let lb = UILabel()
-        lb.text = "OR"
+        lb.text = NSLocalizedString("global.or", comment: "OR")
         lb.textColor = secondaryLabelColor
         lb.textAlignment = .center
         addSubview(lb)

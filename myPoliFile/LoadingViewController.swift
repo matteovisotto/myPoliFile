@@ -47,7 +47,7 @@ class LoadingViewController: BaseViewController {
         appName.textColor = UIColor(named: "titlePrimary")
         
         let label = UILabel()
-        label.text = "Loading..."
+        label.text = NSLocalizedString("global.loading", comment: "Loading")
         label.textAlignment = .center
         self.view.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -85,7 +85,7 @@ extension LoadingViewController: TaskManagerDelegate {
                 
                 DispatchQueue.main.async {
                     let errorVC = ErrorAlertController()
-                    errorVC.setContent(title: "Error", message: stringContent)
+                    errorVC.setContent(title: NSLocalizedString("global.error", comment: "Error"), message: stringContent)
                     errorVC.modalPresentationStyle = .overFullScreen
                     self.present(errorVC, animated: true, completion: nil)
                 }
