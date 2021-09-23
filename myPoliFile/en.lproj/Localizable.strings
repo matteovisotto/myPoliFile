@@ -23,7 +23,7 @@
 "global.notifications" = "Notifications";
 "global.noresult" = "No results found";
 "global.done" = "Done!";
-"global.fatalerror" = "Fatal error"
+"global.fatalerror" = "Fatal error";
 
 //File
 "file.documenttype" = "Document type: %@";

@@ -27,6 +27,7 @@
 "global.done" = "Fatto!";
 "global.fatalerror" = "Errore fatale";
 
+
 //File
 "file.documenttype" = "Documento: %@";
 
@@ -53,7 +54,7 @@
 "settings.reload" = "Ricarica sempre";
 "settings.contactdeveloper" = "Contatta lo sviluppatore";
 "settings.logout" = "Esci";
-"settings.header.fileaction" = "Azione predefinita files";
+"settings.header.fileaction" = "Azione predefinita file";
 "settings.header.courses" = "Corsi";
 "settings.header.informations" = "Informazioni";
 "settings.footer.fileaction" = "Imposta l'azione predefinita per i file che possono essere aperti in anteprima. Se un file non può essere visualizzato verrà sempre scaricato";
@@ -73,7 +74,7 @@
 "error.unablestart" = "L'errore verificatosi non permette l'avvio dell'applicazione";
 
 //Alerts
-"alert.deletefoldertext" = "Sicuro di voler eliminare la cartella %@ e tutti i fale in essa contenuti?";
+"alert.deletefoldertext" = "Sicuro di voler eliminare la cartella %@ e tutti i file in essa contenuti?";
 "alert.deletefoldertitle" = "Eliminare cartella?";
 "alert.deletefiletext" = "Sei sicuro di voler eliminare %@?";
 "alert.deletefiletitle" = "Eliminare file?";

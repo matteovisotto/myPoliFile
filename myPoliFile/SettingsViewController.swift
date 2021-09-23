@@ -175,6 +175,8 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                     let errorVC = ErrorAlertController()
                     errorVC.setContent(title: NSLocalizedString("global.error", comment: "error"), message: NSLocalizedString("error.noemailapp", comment: "No email app"))
                     errorVC.modalPresentationStyle = .overFullScreen
+                    errorVC.modalTransitionStyle = .crossDissolve
+                    errorVC.isLoadingPhase = false
                     self.present(errorVC, animated: true, completion: nil)
                 }
             }
