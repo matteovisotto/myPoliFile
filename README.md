@@ -1,6 +1,6 @@
 # myPoliFile
 ### Unofficial application to access PoliMi WeBeep platform from your device
-This application has been written in Swift for iOS devices, supporting iPhones with iOS 11 or higher.
+This application has been written in Swift for iOS devices, supporting iPhones with iOS 12 or higher.
 
 ## Features
 - Load and list your courses
