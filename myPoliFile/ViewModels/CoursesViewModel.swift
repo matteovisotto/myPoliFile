@@ -17,6 +17,7 @@ class CoursesViewModel {
     
     let menuItems: [String] = [NSLocalizedString("home.all", comment: "All"), NSLocalizedString("home.favourite", comment: "Favourite"), NSLocalizedString("home.hidden", comment: "Hidden")]
     var selectedMenuIndex = 0
+    
     var realNumberOfItems = 0 {
         didSet{
             if realNumberOfItems==0 {

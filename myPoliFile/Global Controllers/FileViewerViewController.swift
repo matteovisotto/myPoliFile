@@ -73,11 +73,14 @@ extension FileViewerViewController: DownloaderDelegate {
         if(result){
             DispatchQueue.main.async {
                 let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [url!], applicationActivities: nil)
-                activityViewController.popoverPresentationController?.sourceView=self.view
                 activityViewController.completionWithItemsHandler = { (activityType, completed, returnedItems, error) in
                     try? FileManager.default.removeItem(at: url!)
                 }
                 self.present(activityViewController, animated: true, completion: nil)
+                if let popOver = activityViewController.popoverPresentationController {
+                    popOver.sourceView = self.view
+                    popOver.sourceRect = self.shareButton.frame
+                }
             }
         } else {
             DispatchQueue.main.async {
