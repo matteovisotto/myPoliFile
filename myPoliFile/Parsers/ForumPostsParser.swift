@@ -26,8 +26,8 @@ class ForumPostsParser {
                     let d = p["posts"] as? [[String:Any]]
                     if let discussions = d {
                         for discussion in discussions {
-                            let subject = fixLangTag(string: discussion["subject"] as! String)
-                            let content = fixLangTag(string: discussion["message"] as! String)
+                            let subject = StringParser.getTranslationFromTag(text: discussion["subject"] as! String)
+                            let content = StringParser.getTranslationFromTag(text: discussion["message"] as! String)
                             let date = timestampToString(timestamp: discussion["timemodified"] as! Double)
                             let author = (discussion["author"] as! [String: Any])["fullname"] as! String
                             let disc = Discussion()
@@ -71,18 +71,6 @@ class ForumPostsParser {
                 return
             }
         }
-    }
-    
-    private func fixLangTag(string: String) -> String {
-        if (string.contains("{mlang}")){
-            var regex = "\\{mlang [a-z]{2}\\}(.*)\\{mlang\\}\\{mlang [a-z]{2}\\}"
-            var repl = ""
-            let txt = string.replacingOccurrences(of: regex, with: repl, options: [.regularExpression])
-            regex = "\\{mlang\\}"
-            repl = ""
-            return txt.replacingOccurrences(of: regex, with: repl, options: [.regularExpression])
-        }
-        return string
     }
     
     

@@ -45,7 +45,7 @@ class CourseContentViewController: BaseViewController {
         navigationBar.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor).isActive = true
         navigationBar.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
         navigationBar.backButton.addTarget(self, action: #selector(didTapBack), for: .touchUpInside)
-        navigationBar.titleLabel.text = self.course.displayName
+        navigationBar.titleLabel.text = StringParser.parseCourseName(self.course.displayName).courseName
         
     }
     

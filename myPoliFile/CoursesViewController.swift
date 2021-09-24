@@ -214,7 +214,7 @@ extension CoursesViewController: UICollectionViewDataSource, UICollectionViewDel
         }
         let detailVC = CourseContentViewController()
         detailVC.course = course
-        AppGlobal.currentCourse = CourseParser.parseCourseName(course.fullname).courseName
+        AppGlobal.currentCourse = StringParser.parseCourseName(course.fullname).courseName
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }

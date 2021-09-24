@@ -25,7 +25,7 @@ class CourseDetailParser {
                 if let sections = s {
                     for s in sections {
                         if let section = s as? [String: Any]{
-                            let sectionName = fixLangTag(string: section["name"] as! String)
+                            let sectionName = StringParser.getTranslationFromTag(text: section["name"] as! String)
                             let sectionType = Section.defineSectionType(name: sectionName)
                             let sectionModules = section["modules"] as! [[String: Any]]
                             let newSection = Section()
@@ -35,7 +35,7 @@ class CourseDetailParser {
                                 let modname = m["modname"] as! String
                                 let modnameEnum = Module.defineModname(modname: modname)
                                 let instance = m["instance"] as! Int
-                                let name = fixLangTag(string: m["name"] as! String)
+                                let name = StringParser.getTranslationFromTag(text: m["name"] as! String)
                                 var module: Module!
                                 
                                 switch modnameEnum {
@@ -113,16 +113,5 @@ class CourseDetailParser {
         }
     }
     
-    private func fixLangTag(string: String) -> String {
-        if (string.contains("{mlang}")){
-            var regex = "\\{mlang [a-z]{2}\\}(.*)\\{mlang\\}\\{mlang [a-z]{2}\\}"
-            var repl = ""
-            let txt = string.replacingOccurrences(of: regex, with: repl, options: [.regularExpression])
-            regex = "\\{mlang\\}"
-            repl = ""
-            return txt.replacingOccurrences(of: regex, with: repl, options: [.regularExpression])
-        }
-        return string
-    }
     
 }

@@ -73,19 +73,6 @@ class NotificationParser {
     }
 
     
-    private func fixLangTag(string: String) -> String {
-        if (string.contains("{mlang}")){
-            var regex = "\\{mlang [a-z]{2}\\}(.*)\\{mlang\\}\\{mlang [a-z]{2}\\}"
-            var repl = ""
-            let txt = string.replacingOccurrences(of: regex, with: repl, options: [.regularExpression])
-            regex = "\\{mlang\\}"
-            repl = ""
-            return txt.replacingOccurrences(of: regex, with: repl, options: [.regularExpression])
-        }
-        return string
-    }
-    
-    
     private func timestampToString(timestamp: Double) -> String {
         let date = Date(timeIntervalSince1970: timestamp)
         let formatter = DateFormatter()

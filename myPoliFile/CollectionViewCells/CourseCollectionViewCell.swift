@@ -16,7 +16,7 @@ class CourseCollectionViewCell: UICollectionViewCell {
     
     open var text: String = "" {
         didSet {
-            let courseName = CourseParser.parseCourseName(text)
+            let courseName = StringParser.parseCourseName(text)
             numberLabel.text = courseName.courseNumber
             label.text = courseName.courseName
             profLabel.text = courseName.courseProf

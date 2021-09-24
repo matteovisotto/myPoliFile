@@ -13,6 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        AppGlobal.setAppRunningType()
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         var rootVC: UIViewController!
         
