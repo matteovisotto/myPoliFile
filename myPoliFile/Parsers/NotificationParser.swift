@@ -34,7 +34,7 @@ class NotificationParser {
                             newN.title = title
                             newN.htmlContent = contentHTML
                             newN.timeCreated = timeCreated
-                            Notification.notifications.append(newN)
+                            AppData.notifications.append(newN)
                         }
                         DispatchQueue.main.async {
                             completionHandler()

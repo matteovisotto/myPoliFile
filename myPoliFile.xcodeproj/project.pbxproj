@@ -80,6 +80,9 @@
 		6686440926F1456C00C0EB3C /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6686440826F1456C00C0EB3C /* DividerView.swift */; };
 		66BF8E0426FC7BB4005D902D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 66BF8E0626FC7BB4005D902D /* Localizable.strings */; };
 		66D18E0A26FE25BC00CCD183 /* StringParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D18E0926FE25BC00CCD183 /* StringParser.swift */; };
+		66D18E0F26FE3A5500CCD183 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D18E0E26FE3A5500CCD183 /* AppData.swift */; };
+		66D18E1226FE3E1800CCD183 /* CoursesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D18E1126FE3E1800CCD183 /* CoursesViewModel.swift */; };
+		66D18E1426FE502D00CCD183 /* CourseContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D18E1326FE502D00CCD183 /* CourseContentViewModel.swift */; };
 		66D4602826EBE141003C4682 /* BeePNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4602726EBE141003C4682 /* BeePNotificationViewController.swift */; };
 		66D4602A26EBE43A003C4682 /* ForumParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4602926EBE43A003C4682 /* ForumParser.swift */; };
 		66D4602C26EBE574003C4682 /* Discussion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4602B26EBE574003C4682 /* Discussion.swift */; };
@@ -185,6 +188,9 @@
 		66BF8E0926FC7EEF005D902D /* it */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = it; path = it.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		66BF8E0B26FC97B8005D902D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		66D18E0926FE25BC00CCD183 /* StringParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringParser.swift; sourceTree = "<group>"; };
+		66D18E0E26FE3A5500CCD183 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
+		66D18E1126FE3E1800CCD183 /* CoursesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesViewModel.swift; sourceTree = "<group>"; };
+		66D18E1326FE502D00CCD183 /* CourseContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseContentViewModel.swift; sourceTree = "<group>"; };
 		66D4602726EBE141003C4682 /* BeePNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeePNotificationViewController.swift; sourceTree = "<group>"; };
 		66D4602926EBE43A003C4682 /* ForumParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumParser.swift; sourceTree = "<group>"; };
 		66D4602B26EBE574003C4682 /* Discussion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discussion.swift; sourceTree = "<group>"; };
@@ -242,6 +248,10 @@
 		661FC5BC26E890E200B33983 /* myPoliFile */ = {
 			isa = PBXGroup;
 			children = (
+				66D18E1026FE3DFE00CCD183 /* ViewModels */,
+				66D18E0D26FE341F00CCD183 /* Global Controllers */,
+				66D18E0C26FE341500CCD183 /* iPad Controllers */,
+				66D18E0B26FE340800CCD183 /* iPhone Controllers */,
 				663478B026ED438200B63527 /* Files */,
 				6634789D26ECEE3900B63527 /* TableViewCells */,
 				6634789826ECAC9700B63527 /* ModulesController */,
@@ -260,16 +270,8 @@
 				661FC5C826E890E300B33983 /* LaunchScreen.storyboard */,
 				661FC5CB26E890E300B33983 /* Info.plist */,
 				66230C9326E8ABA6003DFD41 /* PreferenceManager.swift */,
-				66230C9726E8BFB5003DFD41 /* LoadingViewController.swift */,
-				66230CA326E8EA25003DFD41 /* MainViewController.swift */,
-				6641909A26EA378100A08308 /* SettingsViewController.swift */,
-				664190A226EA67E800A08308 /* CoursesViewController.swift */,
-				664190A426EA68E900A08308 /* SearchViewController.swift */,
-				664190A626EA68FD00A08308 /* DownloadViewController.swift */,
-				66DE6FFD26EB3D2500D8380E /* CourseContentViewController.swift */,
-				66D4602726EBE141003C4682 /* BeePNotificationViewController.swift */,
-				663478A626ED233700B63527 /* FileViewerViewController.swift */,
 				66F2CE1426EF5A42003B1868 /* AppGlobal.swift */,
+				66D18E0E26FE3A5500CCD183 /* AppData.swift */,
 				66BF8E0626FC7BB4005D902D /* Localizable.strings */,
 			);
 			path = myPoliFile;
@@ -279,8 +281,6 @@
 			isa = PBXGroup;
 			children = (
 				661FC5C126E890E200B33983 /* WelcomeViewController.swift */,
-				66230C9526E8ADE2003DFD41 /* WebLoginViewController.swift */,
-				6666D85B26F1CB210078BCE2 /* TokenAlertViewController.swift */,
 			);
 			path = "Welcome&Login";
 			sourceTree = "<group>";
@@ -446,6 +446,47 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		66D18E0B26FE340800CCD183 /* iPhone Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				66230CA326E8EA25003DFD41 /* MainViewController.swift */,
+				6641909A26EA378100A08308 /* SettingsViewController.swift */,
+				664190A226EA67E800A08308 /* CoursesViewController.swift */,
+				664190A426EA68E900A08308 /* SearchViewController.swift */,
+				664190A626EA68FD00A08308 /* DownloadViewController.swift */,
+				66DE6FFD26EB3D2500D8380E /* CourseContentViewController.swift */,
+				66D4602726EBE141003C4682 /* BeePNotificationViewController.swift */,
+				663478A626ED233700B63527 /* FileViewerViewController.swift */,
+			);
+			path = "iPhone Controllers";
+			sourceTree = "<group>";
+		};
+		66D18E0C26FE341500CCD183 /* iPad Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "iPad Controllers";
+			sourceTree = "<group>";
+		};
+		66D18E0D26FE341F00CCD183 /* Global Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				66230C9726E8BFB5003DFD41 /* LoadingViewController.swift */,
+				66230C9526E8ADE2003DFD41 /* WebLoginViewController.swift */,
+				6666D85B26F1CB210078BCE2 /* TokenAlertViewController.swift */,
+			);
+			path = "Global Controllers";
+			sourceTree = "<group>";
+		};
+		66D18E1026FE3DFE00CCD183 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				66D18E1126FE3E1800CCD183 /* CoursesViewModel.swift */,
+				66D18E1326FE502D00CCD183 /* CourseContentViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		66DE700926EB72B500D8380E /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -603,6 +644,7 @@
 				66230C9426E8ABA6003DFD41 /* PreferenceManager.swift in Sources */,
 				66230CA726E8FFAF003DFD41 /* Course.swift in Sources */,
 				66D18E0A26FE25BC00CCD183 /* StringParser.swift in Sources */,
+				66D18E0F26FE3A5500CCD183 /* AppData.swift in Sources */,
 				66F2CE1726EF5CB5003B1868 /* CourseName.swift in Sources */,
 				6634789726EC989200B63527 /* SectionTitleCollectionReusableView.swift in Sources */,
 				66230CB526E9E513003DFD41 /* CircleLoader.swift in Sources */,
@@ -618,6 +660,7 @@
 				66230CA426E8EA25003DFD41 /* MainViewController.swift in Sources */,
 				66DE702526EB8CA000D8380E /* MVTopMenuView.swift in Sources */,
 				66DE700B26EB72C900D8380E /* ModuleURL.swift in Sources */,
+				66D18E1426FE502D00CCD183 /* CourseContentViewModel.swift in Sources */,
 				66D4602C26EBE574003C4682 /* Discussion.swift in Sources */,
 				6666D85C26F1CB210078BCE2 /* TokenAlertViewController.swift in Sources */,
 				661FC5BE26E890E200B33983 /* AppDelegate.swift in Sources */,
@@ -647,6 +690,7 @@
 				663478BD26EE06F200B63527 /* ModuleContent.swift in Sources */,
 				66230CBA26E9E513003DFD41 /* Loader.swift in Sources */,
 				664744B326F2476000815030 /* ForumCollectionViewCell.swift in Sources */,
+				66D18E1226FE3E1800CCD183 /* CoursesViewModel.swift in Sources */,
 				663478A926ED275500B63527 /* SearchCourseParser.swift in Sources */,
 				66623A3826EFA02A000B94B9 /* NotificationParser.swift in Sources */,
 				66DE702726EB90A900D8380E /* GenericCollectionViewCell.swift in Sources */,

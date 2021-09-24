@@ -8,8 +8,7 @@
 import Foundation
 
 class User: NSObject {
-    public static var mySelf = User()
-        
+           
     public var token: String = ""
     public var userId: Int = 0
     public var fullname: String = ""

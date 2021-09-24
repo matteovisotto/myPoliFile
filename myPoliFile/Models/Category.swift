@@ -10,13 +10,11 @@ import Foundation
 
 class Category {
     
-    public static var categories: [Category] = []
-    
     var categoryId: Int = 0
     var categoryName: String = ""
     
     public static func getCategoryById(categoryId: Int) -> Category?{
-        for c in self.categories {
+        for c in AppData.categories {
             if(c.categoryId == categoryId){
                 return c
             }

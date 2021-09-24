@@ -31,7 +31,7 @@ class LinkBuilder {
     
     public static func build(serviceName: String, withParameters params: String?, returnMethod: LinkBuilder.OutputFormat) -> String {
         var url: String = siteURL
-        url = url + webserver + "?moodlewsrestformat="+returnMethod.rawValue+"&wstoken="+User.mySelf.token+"&wsfunction="+serviceName+"&"+(params ?? "")
+        url = url + webserver + "?moodlewsrestformat="+returnMethod.rawValue+"&wstoken="+AppData.mySelf.token+"&wsfunction="+serviceName+"&"+(params ?? "")
         return url
     }
     

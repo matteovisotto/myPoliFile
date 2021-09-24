@@ -18,9 +18,9 @@ class FolderContent: ModuleContent {
         self.type = content["type"] as! String
         self.contentName = validateFileName(fileName: content["filename"] as! String) 
         if(self.type == "file" && (content["fileurl"] as! String).contains("forcedownload")){
-            self.contentURL = (content["fileurl"] as! String) + "&token=" + User.mySelf.token
+            self.contentURL = (content["fileurl"] as! String) + "&token=" + AppData.mySelf.token
         } else if (self.type == "file" && !(content["fileurl"] as! String).contains("?")) {
-            self.contentURL = (content["fileurl"] as! String) + "?token=" + User.mySelf.token
+            self.contentURL = (content["fileurl"] as! String) + "?token=" + AppData.mySelf.token
         } else {
             self.contentURL = content["fileurl"] as! String
         }

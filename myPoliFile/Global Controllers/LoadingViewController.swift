@@ -17,7 +17,7 @@ class LoadingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
-        let parameter: [String:Any] = ["field":"username", "values[0]":User.mySelf.username]
+        let parameter: [String:Any] = ["field":"username", "values[0]":AppData.mySelf.username]
         let p = LinkBuilder.prepareParameters(params: parameter)
         self.userInfoURL = LinkBuilder.build(serviceName: "core_user_get_users_by_field", withParameters: p)
         loadUserInfo()

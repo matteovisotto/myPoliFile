@@ -31,7 +31,7 @@ class CategoryParser {
                             let ct = Category()
                             ct.categoryId = categoryId
                             ct.categoryName = categoryName
-                            Category.categories.append(ct)
+                            AppData.categories.append(ct)
                         } else {
                             DispatchQueue.main.async {
                                 let errorVC = ErrorAlertController()

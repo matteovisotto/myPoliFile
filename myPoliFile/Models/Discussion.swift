@@ -10,8 +10,6 @@ import UIKit
 
 class Discussion {
     
-    public static var beepDiscussions: [Discussion] = []
-    
     var name: String = ""
     var subject: String = ""
     var content: String = ""

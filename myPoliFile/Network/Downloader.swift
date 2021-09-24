@@ -36,7 +36,7 @@ class Downloader {
                                             in: .userDomainMask,
                                             appropriateFor: nil,
                                             create: false)
-                let folderURL = documentsURL.appendingPathComponent(AppGlobal.currentCourseFolder+"/"+AppGlobal.currentModuleFolder+filePath)
+                let folderURL = documentsURL.appendingPathComponent(AppData.currentCourseFolder+"/"+AppData.currentModuleFolder+filePath)
                 if !FileManager.default.fileExists(atPath: folderURL.absoluteString) {
                     try! FileManager.default.createDirectory(at: folderURL, withIntermediateDirectories: true, attributes: nil)
                 }

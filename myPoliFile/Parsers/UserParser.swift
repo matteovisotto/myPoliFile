@@ -29,10 +29,10 @@ class UserParser {
                             let fullname: String = pr["fullname"] as! String
                             let email: String = pr["email"] as! String
                             let profileImageURL = pr["profileimageurl"] as! String
-                            User.mySelf.email = email
-                            User.mySelf.fullname = fullname
-                            User.mySelf.userId = userId
-                            User.mySelf.profileImageURL = profileImageURL
+                            AppData.mySelf.email = email
+                            AppData.mySelf.fullname = fullname
+                            AppData.mySelf.userId = userId
+                            AppData.mySelf.profileImageURL = profileImageURL
                             completionHandler()
                             return
                         } else {

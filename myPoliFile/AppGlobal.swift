@@ -16,25 +16,21 @@ class AppGlobal {
         case debug = "Debug"
     }
     
+    enum DeviceType: String {
+        case iPhone = "iPhone"
+        case iPad = "iPad"
+    }
+    
+    enum DeviceOrientation: String {
+        case portrait
+        case landscape
+    }
+    
     public static var runningType: AppGlobal.RunningType = .debug
     
     public static var appLanguage: String = Locale.current.identifier //Return value is like EN_en
     
-    public static var currentCourse: String = "" {
-        didSet{
-            AppGlobal.currentCourseFolder = currentCourse.replacingOccurrences(of: " ", with: "_").replacingOccurrences(of: "\n", with: "__")
-        }
-    }
     
-    public static var currentCourseFolder:String = ""
-    
-    public static var currentModule: String = "" {
-        didSet {
-            AppGlobal.currentModuleFolder = currentModule.replacingOccurrences(of: " ", with: "_")
-        }
-    }
-    
-    public static var currentModuleFolder: String = ""
     
     public static func setAppRunningType() -> Void {
         #if DEBUG

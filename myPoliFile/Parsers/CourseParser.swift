@@ -40,11 +40,11 @@ class CourseParser {
                             newCourse.isHidden = isHidden
                             newCourse.isFavourite = isFavourite
                             if(isHidden){
-                                Course.hidden.append(newCourse)
+                                AppData.hiddenCourses.append(newCourse)
                             } else {
-                                Course.courses.append(newCourse)
+                                AppData.courses.append(newCourse)
                                 if(isFavourite){
-                                    Course.favourite.append(newCourse)
+                                    AppData.favouriteCourses.append(newCourse)
                                 }
                             }
                         } else {

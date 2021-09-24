@@ -60,8 +60,8 @@ class WebLoginViewController: BaseViewController, WKNavigationDelegate {
         if (currentUrl.starts(with: "https://shibidp.polimi.it")) {
             prepareLoadingView()
         } else if(currentUrl == WebManager.homeUrl) {
-            webView.load(URLRequest(url: URL(string: "https://webeep.polimi.it/login/token.php?username=" + User.mySelf.username + "&password=&service=moodle_mobile_app")!))
-        } else if (currentUrl == "https://webeep.polimi.it/login/token.php?username=" + User.mySelf.username + "&password=&service=moodle_mobile_app") {
+            webView.load(URLRequest(url: URL(string: "https://webeep.polimi.it/login/token.php?username=" + AppData.mySelf.username + "&password=&service=moodle_mobile_app")!))
+        } else if (currentUrl == "https://webeep.polimi.it/login/token.php?username=" + AppData.mySelf.username + "&password=&service=moodle_mobile_app") {
             webView.evaluateJavaScript("document.documentElement.innerText.toString()",
                                        completionHandler: { (html: Any?, error: Error?) in
                                         self.navigationController?.popViewController(animated: true)

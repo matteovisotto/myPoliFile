@@ -9,10 +9,6 @@ import Foundation
 
 class Course: NSObject {
     
-    public static var courses: [Course] = []
-    public static var hidden: [Course] = []
-    public static var favourite: [Course] = []
-    
     var courseId: Int = 0
     var fullname: String = ""
     var displayName: String = ""
@@ -22,9 +18,4 @@ class Course: NSObject {
     
     var sections: [Section] = []
     
-    public static func clear() {
-        self.courses.removeAll()
-        self.hidden.removeAll()
-        self.favourite.removeAll()
-    }
 }

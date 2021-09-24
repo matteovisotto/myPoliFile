@@ -81,7 +81,7 @@ class WelcomeViewController: BaseViewController {
     
     @objc private func didTapStartButton() {
         PreferenceManager.setPersonalCode(personalCode: self.personalCodeTF.text!)
-        User.mySelf.username = self.personalCodeTF.text! + "@polimi.it"
+        AppData.mySelf.username = self.personalCodeTF.text! + "@polimi.it"
         let loginVC = WebLoginViewController()
         navigationController?.pushViewController(loginVC, animated: true)
         loginVC.callback = { content in
@@ -93,7 +93,7 @@ class WelcomeViewController: BaseViewController {
                         self.personalCodeTF.isHidden = true
                         self.welcomeLabel.isHidden = true
                         PreferenceManager.setToken(token: token)
-                        User.mySelf.token = token
+                        AppData.mySelf.token = token
                         let loadignVC = LoadingViewController()
                         loadignVC.modalPresentationStyle = .fullScreen
                         self.present(loadignVC, animated: true, completion: nil)
@@ -126,13 +126,13 @@ class WelcomeViewController: BaseViewController {
     
     @objc private func didTapTokenButton() {
         PreferenceManager.setPersonalCode(personalCode: self.personalCodeTF.text!)
-        User.mySelf.username = self.personalCodeTF.text! + "@polimi.it"
+        AppData.mySelf.username = self.personalCodeTF.text! + "@polimi.it"
         let tokenVC = TokenAlertViewController()
         tokenVC.modalPresentationStyle = .overFullScreen
         tokenVC.callback = {token in
             PreferenceManager.setToken(token: token)
-            User.mySelf.token = token
-            let parameter: [String:Any] = ["field":"username", "values[0]":User.mySelf.username]
+            AppData.mySelf.token = token
+            let parameter: [String:Any] = ["field":"username", "values[0]":AppData.mySelf.username]
             let p = LinkBuilder.prepareParameters(params: parameter)
             let url = LinkBuilder.build(serviceName: "core_user_get_users_by_field", withParameters: p)
             let userTask = TaskManager(url: URL(string: url)!)
