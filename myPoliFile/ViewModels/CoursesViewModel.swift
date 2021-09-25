@@ -112,7 +112,7 @@ class CoursesViewModel {
         return cell
     }
     
-    func performActionForCell(atIndexPath indexPath: IndexPath) -> Void {
+    func performActionForCell(atIndexPath indexPath: IndexPath, completion: (_ course: Course)->()) -> Void {
         if isEmpty {return}
         var course: Course!
         if(self.selectedMenuIndex == 0){
@@ -122,10 +122,10 @@ class CoursesViewModel {
         } else {
             course = AppData.hiddenCourses[indexPath.item]
         }
-        let detailVC = CourseContentViewController()
-        detailVC.course = course
+        
         AppData.currentCourse = StringParser.parseCourseName(course.fullname).courseName
-        target.navigationController?.pushViewController(detailVC, animated: true)
+        completion(course)
+        return
     }
     
 }

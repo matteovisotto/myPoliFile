@@ -100,7 +100,26 @@ extension CourseContentViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        model.performActionForCell(atIndexPath: indexPath)
+        model.performActionForCell(atIndexPath: indexPath){module in
+            switch module.modname {
+            case .forum:
+                let forumController = ForumViewController()
+                forumController.forum = (module as! ModuleForum)
+                self.navigationController?.pushViewController(forumController, animated: true)
+                break
+            case .folder:
+                //Open folder controller
+                AppData.currentModule = module.name
+                let folderController = FolderViewController()
+                folderController.module = module
+                folderController.folder = FolderViewModel.prepareFiles(myFiles: (module as! ModuleFolder).contents, forCurrentPath: "/")
+                self.navigationController?.pushViewController(folderController, animated: true)
+                break
+            default:
+                return
+            }
+            
+        }
     }
     
 }

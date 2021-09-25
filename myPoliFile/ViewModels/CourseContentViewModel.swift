@@ -73,7 +73,7 @@ class CourseContentViewModel {
         return header
     }
     
-    func performActionForCell(atIndexPath indexPath: IndexPath) -> Void {
+    func performActionForCell(atIndexPath indexPath: IndexPath, completion: (_ module: Module)->()) -> Void {
         let module = self.course.sections[indexPath.section].content[indexPath.item]
         switch module.modname {
         case .url:
@@ -84,19 +84,6 @@ class CourseContentViewModel {
                 //Load a menù
             }
             break
-        case .forum:
-            let forumController = ForumViewController()
-            forumController.forum = (module as! ModuleForum)
-            target.navigationController?.pushViewController(forumController, animated: true)
-            break
-        case .folder:
-            //Open folder controller
-            AppData.currentModule = module.name
-            let folderController = FolderViewController()
-            folderController.module = module
-            folderController.folder = FolderViewController.prepareFiles(myFiles: (module as! ModuleFolder).contents, forCurrentPath: "/")
-            target.navigationController?.pushViewController(folderController, animated: true)
-            break
         case .resource:
             AppData.currentModule = ""
             let m = module as! ModuleResource
@@ -105,7 +92,7 @@ class CourseContentViewModel {
             fileAction.displayActions()
             break
         default:
-            return
+            completion(module)
         }
     }
     

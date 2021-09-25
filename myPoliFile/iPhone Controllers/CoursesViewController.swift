@@ -117,7 +117,11 @@ extension CoursesViewController: UICollectionViewDataSource, UICollectionViewDel
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        model.performActionForCell(atIndexPath: indexPath)
+        model.performActionForCell(atIndexPath: indexPath){ course in
+            let detailVC = CourseContentViewController()
+            detailVC.course = course
+            self.navigationController?.pushViewController(detailVC, animated: true)
+        }
     }
 }
 

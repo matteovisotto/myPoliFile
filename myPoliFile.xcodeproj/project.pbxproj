@@ -78,6 +78,7 @@
 		66623A3E26EFA591000B94B9 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66623A3D26EFA591000B94B9 /* NotificationViewController.swift */; };
 		6666D85C26F1CB210078BCE2 /* TokenAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6666D85B26F1CB210078BCE2 /* TokenAlertViewController.swift */; };
 		6686440926F1456C00C0EB3C /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6686440826F1456C00C0EB3C /* DividerView.swift */; };
+		669FC4BB26FF254300E195C7 /* FolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669FC4BA26FF254300E195C7 /* FolderViewModel.swift */; };
 		66BF8E0426FC7BB4005D902D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 66BF8E0626FC7BB4005D902D /* Localizable.strings */; };
 		66D18E0A26FE25BC00CCD183 /* StringParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D18E0926FE25BC00CCD183 /* StringParser.swift */; };
 		66D18E0F26FE3A5500CCD183 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D18E0E26FE3A5500CCD183 /* AppData.swift */; };
@@ -185,6 +186,7 @@
 		66623A3D26EFA591000B94B9 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		6666D85B26F1CB210078BCE2 /* TokenAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenAlertViewController.swift; sourceTree = "<group>"; };
 		6686440826F1456C00C0EB3C /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
+		669FC4BA26FF254300E195C7 /* FolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderViewModel.swift; sourceTree = "<group>"; };
 		66BF8E0526FC7BB4005D902D /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		66BF8E0826FC7C6A005D902D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		66BF8E0926FC7EEF005D902D /* it */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = it; path = it.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -441,6 +443,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		669FC4B926FF252D00E195C7 /* ModulesViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				669FC4BA26FF254300E195C7 /* FolderViewModel.swift */,
+			);
+			path = ModulesViewModels;
+			sourceTree = "<group>";
+		};
 		66D18E0B26FE340800CCD183 /* iPhone Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -478,6 +488,7 @@
 		66D18E1026FE3DFE00CCD183 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				669FC4B926FF252D00E195C7 /* ModulesViewModels */,
 				66D18E1126FE3E1800CCD183 /* CoursesViewModel.swift */,
 				66D18E1326FE502D00CCD183 /* CourseContentViewModel.swift */,
 				66D18E1726FE62CC00CCD183 /* BeePNotificationViewModel.swift */,
@@ -700,6 +711,7 @@
 				6641909B26EA378100A08308 /* SettingsViewController.swift in Sources */,
 				66230CBC26E9F8F1003DFD41 /* Category.swift in Sources */,
 				664190B126EA8DBE00A08308 /* CourseCollectionViewCell.swift in Sources */,
+				669FC4BB26FF254300E195C7 /* FolderViewModel.swift in Sources */,
 				66230CBF26E9FBD9003DFD41 /* CourseParser.swift in Sources */,
 				664190A326EA67E800A08308 /* CoursesViewController.swift in Sources */,
 				663478A126ED059C00B63527 /* FolderCollectionViewCell.swift in Sources */,
@@ -871,7 +883,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = it.matteovisotto.myPoliFile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -892,7 +904,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = it.matteovisotto.myPoliFile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
