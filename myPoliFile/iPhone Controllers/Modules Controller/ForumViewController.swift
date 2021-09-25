@@ -12,13 +12,13 @@ class ForumViewController: BaseViewController {
     private var collectionView: UICollectionView!
     private var navigationBar = BackHeader()
     private var loader = Loader()
+    private var model: ForumViewModel!
     public var forum: ModuleForum! {
         didSet {
             navigationBar.titleLabel.text = forum.name
         }
     }
-    private var realNumberOfItems: Int = 0
-    private var content: [Discussion] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,12 +26,13 @@ class ForumViewController: BaseViewController {
         let collectionViewFlowLayout = UICollectionViewFlowLayout()
         collectionViewFlowLayout.estimatedItemSize = CGSize(width: UIScreen.main.bounds.width-20, height: 10)
         self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewFlowLayout)
+        self.model = ForumViewModel(target: self, collectionView: collectionView, forum: forum, loader: loader)
         setupCollectionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadContent()
+        model.downloadData()
     }
     
     private func setupNavigationBar() {
@@ -52,8 +53,7 @@ class ForumViewController: BaseViewController {
         collectionView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor).isActive = true
         collectionView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        collectionView.register(GenericCollectionViewCell.self, forCellWithReuseIdentifier: "genericCell")
-        collectionView.register(ForumCollectionViewCell.self, forCellWithReuseIdentifier: "forumCell")
+        model.registerCollectionViewElements()
         collectionView.backgroundColor = .clear
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -64,62 +64,18 @@ class ForumViewController: BaseViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    private func loadContent() {
-        self.loader = CircleLoader.createGeometricLoader()
-        self.loader.startAnimation()
-        self.content.removeAll()
-        let parameters: [String: Any] = ["forumid": forum.instance]
-        let urlStr = LinkBuilder.build(serviceName: "mod_forum_get_forum_discussions", withParameters: LinkBuilder.prepareParameters(params: parameters))
-        let forumTask = TaskManager(url: URL(string: urlStr)!)
-        forumTask.delegate = self
-        forumTask.execute()
-    }
 
 }
 
-extension ForumViewController: TaskManagerDelegate {
-    func taskManager(taskManager: TaskManager, didFinishWith result: Bool, stringContent: String) {
-        DispatchQueue.main.async {
-            self.loader.stopAnimation()
-        }
-        if result{
-            let discParser = ForumParser(target: self, stringData: stringContent)
-            discParser.parse(completionHandler: { discussions in
-                self.content = discussions
-                self.collectionView.reloadData()
-            })
-        } else {
-            //Show error
-            DispatchQueue.main.async {
-                self.loader.stopAnimation()
-                let errorVC = ErrorAlertController()
-                errorVC.isLoadingPhase = false
-                errorVC.setContent(title: NSLocalizedString("global.error", comment: "Error"), message: stringContent)
-                errorVC.modalPresentationStyle = .overFullScreen
-                self.present(errorVC, animated: true, completion: nil)
-            }
-        }
-    }
-}
+
 
 extension ForumViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        realNumberOfItems = self.content.count
-        return (realNumberOfItems==0) ? 1 : realNumberOfItems
+        return model.getNumberOfElements()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if(realNumberOfItems == 0){
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "genericCell", for: indexPath) as! GenericCollectionViewCell
-            cell.backgroundColor = .clear
-            cell.text = NSLocalizedString("global.nocontent", comment: "No content")
-            return cell
-        }
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "forumCell", for: indexPath) as! ForumCollectionViewCell
-        cell.discussion = self.content[indexPath.item]
-        cell.layer.cornerRadius = 15
-        return cell
+        return model.getCollectionViewCell(atIndexPath: indexPath)
         
     }
     
@@ -133,9 +89,6 @@ extension ForumViewController: UICollectionViewDataSource, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        if (realNumberOfItems == 0) {return}
-        let forumContentVC = ForumContentViewController()
-        forumContentVC.discussion = self.content[indexPath.item]
-        self.navigationController?.pushViewController(forumContentVC, animated: true)
+        model.performActionForCell(atIndexPath: indexPath)
     }
 }

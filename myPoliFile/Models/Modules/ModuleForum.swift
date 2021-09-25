@@ -9,6 +9,9 @@ import Foundation
 import UIKit
 
 class ModuleForum: Module {
+    
+    open var content: [Discussion] = []
+    
     required init() {
         super.init(modname: .forum, icon: UIImage(named: "icon-forum")!)
     }
