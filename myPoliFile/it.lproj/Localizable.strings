@@ -82,3 +82,7 @@
 "alert.fileactiontext" = "Scegli un azione per questo file";
 "alert.downloaddescription" = "Scarica il file direttamente nel tuo device";
 "alert.opendescription" = "Apri in preview nell'app, successivamente puoi sempre scaricarlo";
+
+//Enroll
+"enroll.enroll" = "Iscriviti";
+"enroll.message" = "Devi iscriverti al corso per vedere il suo contentuto";

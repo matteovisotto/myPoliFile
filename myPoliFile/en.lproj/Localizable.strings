@@ -77,3 +77,7 @@
 "alert.fileactiontext" = "Please, select an action for this file";
 "alert.downloaddescription" = "Directly download file in your device";
 "alert.opendescription" = "Directly open a file preview in the app. A further download is possible";
+
+//Enroll
+"enroll.enroll" = "Enroll";
+"enroll.message" = "You have to enroll this course to see its content";

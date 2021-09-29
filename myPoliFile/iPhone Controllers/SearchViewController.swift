@@ -102,7 +102,29 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         if (realNumberOfItems == 0) {return}
-        //TODO:- Course enrol
+        let course = self.courses[indexPath.item]
+        let enrollAlert = EnrollAlertController()
+        enrollAlert.course = course
+        enrollAlert.callback = { result in
+            if(result){
+                let feedback = FeedbackAlert()
+                feedback.setIcon(icon: UIImage(named: "doneIcon")!)
+                feedback.setText(title: NSLocalizedString("global.done", comment: "Done"))
+                feedback.modalPresentationStyle = .overFullScreen
+                feedback.modalTransitionStyle = .crossDissolve
+                self.present(feedback, animated: true, completion: nil)
+            } else {
+                let feedback = FeedbackAlert()
+                feedback.setIcon(icon: UIImage(named: "cross")!)
+                feedback.setText(title: NSLocalizedString("global.error", comment: "Error"))
+                feedback.modalPresentationStyle = .overFullScreen
+                feedback.modalTransitionStyle = .crossDissolve
+                self.present(feedback, animated: true, completion: nil)
+            }
+        }
+        enrollAlert.modalPresentationStyle = .overFullScreen
+        enrollAlert.modalTransitionStyle = .crossDissolve
+        self.present(enrollAlert, animated: true, completion: nil)
     }
 }
 

@@ -209,7 +209,7 @@ extension SettingsViewController: MFMailComposeViewControllerDelegate {
         mailComposerVC.mailComposeDelegate = self
         
         mailComposerVC.setToRecipients(["matteo.visotto@mail.polimi.it"])
-        mailComposerVC.setSubject("[myPoliFile]")
+        mailComposerVC.setSubject("[myPoliFile - " + AppGlobal.runningType.rawValue + "]")
         mailComposerVC.setMessageBody("", isHTML: true)
         
         return mailComposerVC
