@@ -13,6 +13,7 @@ class FileViewerViewController: BaseViewController {
     private var webView = WKWebView()
     private var navigationBar = BackHeader()
     private var shareButton = UIButton()
+    private let loaderView = HorizontalProgressBar()
     
     open var file: ModuleContent!
 
@@ -20,6 +21,7 @@ class FileViewerViewController: BaseViewController {
         super.viewDidLoad()
         self.view.backgroundColor = backgroundColor
         setupLayout()
+        createLoaderView()
         let url = URL(string: file.contentURL)!
         let request = URLRequest(url: url)
         webView.load(request)
@@ -53,8 +55,24 @@ class FileViewerViewController: BaseViewController {
         webView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor).isActive = true
         webView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor).isActive = true
         webView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        webView.navigationDelegate = self
+        webView.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil);
     }
     
+    private func createLoaderView() {
+        self.view.addSubview(loaderView)
+        loaderView.progress = 0
+        loaderView.translatesAutoresizingMaskIntoConstraints = false
+        loaderView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor).isActive = true
+        loaderView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: 5).isActive = true
+        loaderView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: -5).isActive = true
+        loaderView.heightAnchor.constraint(equalToConstant: 5).isActive = true
+        loaderView.color = .buttonPrimary
+    }
+    
+    private func removeLoaderView() {
+        loaderView.removeFromSuperview()
+    }
     
     @objc private func didTapback(){
         self.navigationController?.popViewController(animated: true)
@@ -65,6 +83,13 @@ class FileViewerViewController: BaseViewController {
         let downloader = Downloader(file: self.file, fileDirectory: .itemReplacementDirectory)
         downloader.delegate = self
         downloader.startDownload()
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "estimatedProgress" {
+            let progressValue = Float(webView.estimatedProgress)
+            loaderView.progress = CGFloat(progressValue)
+        }
     }
 }
 
@@ -92,5 +117,11 @@ extension FileViewerViewController: DownloaderDelegate {
                 self.present(errorVC, animated: true, completion: nil)
             }
         }
+    }
+}
+
+extension FileViewerViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        removeLoaderView()
     }
 }

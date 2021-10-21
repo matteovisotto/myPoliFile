@@ -71,6 +71,7 @@
 		664CFBD026F33DCF0066CC08 /* WebpageBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664CFBCF26F33DCF0066CC08 /* WebpageBuilder.swift */; };
 		664CFBD226F33FB90066CC08 /* ForumContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664CFBD126F33FB90066CC08 /* ForumContentViewController.swift */; };
 		664CFBD426F345D50066CC08 /* ForumPostsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664CFBD326F345D50066CC08 /* ForumPostsParser.swift */; };
+		665E0A9B272147E900D605A8 /* HorizontalProgressrBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665E0A9A272147E900D605A8 /* HorizontalProgressrBar.swift */; };
 		66623A3626EF8376000B94B9 /* OfflineFolderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66623A3526EF8376000B94B9 /* OfflineFolderCollectionViewCell.swift */; };
 		66623A3826EFA02A000B94B9 /* NotificationParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66623A3726EFA02A000B94B9 /* NotificationParser.swift */; };
 		66623A3A26EFA1AB000B94B9 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66623A3926EFA1AB000B94B9 /* Notification.swift */; };
@@ -182,6 +183,7 @@
 		664CFBCF26F33DCF0066CC08 /* WebpageBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebpageBuilder.swift; sourceTree = "<group>"; };
 		664CFBD126F33FB90066CC08 /* ForumContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumContentViewController.swift; sourceTree = "<group>"; };
 		664CFBD326F345D50066CC08 /* ForumPostsParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumPostsParser.swift; sourceTree = "<group>"; };
+		665E0A9A272147E900D605A8 /* HorizontalProgressrBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalProgressrBar.swift; sourceTree = "<group>"; };
 		66623A3526EF8376000B94B9 /* OfflineFolderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineFolderCollectionViewCell.swift; sourceTree = "<group>"; };
 		66623A3726EFA02A000B94B9 /* NotificationParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationParser.swift; sourceTree = "<group>"; };
 		66623A3926EFA1AB000B94B9 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 			children = (
 				66230CAE26E9E512003DFD41 /* CircleLoader.swift */,
 				66230CB326E9E513003DFD41 /* Loader.swift */,
+				665E0A9A272147E900D605A8 /* HorizontalProgressrBar.swift */,
 			);
 			path = Loaders;
 			sourceTree = "<group>";
@@ -681,6 +684,7 @@
 				664190A726EA68FD00A08308 /* DownloadViewController.swift in Sources */,
 				66230CC126E9FD9A003DFD41 /* CategoryParser.swift in Sources */,
 				663478A326ED05B000B63527 /* FileCollectionViewCell.swift in Sources */,
+				665E0A9B272147E900D605A8 /* HorizontalProgressrBar.swift in Sources */,
 				664190AD26EA77C200A08308 /* UIColorExtension.swift in Sources */,
 				66230C9E26E8DB93003DFD41 /* AlertViewController.swift in Sources */,
 				66DE700826EB5DAE00D8380E /* Forum.swift in Sources */,
