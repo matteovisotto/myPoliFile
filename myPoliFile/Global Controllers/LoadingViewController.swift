@@ -71,7 +71,14 @@ extension LoadingViewController: TaskManagerDelegate {
                 } else if (taskManager == categoryTask) {
                     let cParser = CategoryParser(target: self, stringData: stringContent)
                     cParser.parse {
-                        let mainVC = UINavigationController(rootViewController: MainViewController())
+                        var rootVC: UIViewController!
+                        if(AppGlobal.deviceType == .iPad){
+                            rootVC = MainViewController() //TODO:- Change this with iPad Main!
+                        } else {
+                            rootVC = MainViewController()
+                        }
+                        
+                        let mainVC = UINavigationController(rootViewController: rootVC)
                         mainVC.navigationBar.isHidden = true
                         let ad = UIApplication.shared.delegate as! AppDelegate
                         let window = ad.window

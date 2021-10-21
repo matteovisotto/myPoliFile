@@ -19,9 +19,12 @@ protocol DownloaderDelegate {
 class Downloader {
     private let urlSession = URLSession.shared
     private var file: ModuleContent!
+    private var directoryPath: FileManager.SearchPathDirectory = .documentDirectory
     var delegate: DownloaderDelegate? = nil
-    init(file: ModuleContent) {
+    
+    init(file: ModuleContent, fileDirectory: FileManager.SearchPathDirectory = .documentDirectory) {
         self.file = file
+        self.directoryPath = fileDirectory
     }
     
     func startDownload () -> Void {
@@ -31,12 +34,17 @@ class Downloader {
             guard let downloadedURL = url else { return }
             let filePath = self.file.contentPath.replacingOccurrences(of: " ", with: "_")
             do {
-                let documentsURL = try
-                    FileManager.default.url(for: .documentDirectory,
-                                            in: .userDomainMask,
-                                            appropriateFor: nil,
-                                            create: false)
-                let folderURL = documentsURL.appendingPathComponent(AppData.currentCourseFolder+"/"+AppData.currentModuleFolder+filePath)
+                var documentsURL: URL? = nil
+                if(self.directoryPath == .documentDirectory){
+                    documentsURL = try
+                        FileManager.default.url(for: .documentDirectory,
+                                                in: .userDomainMask,
+                                                appropriateFor: nil,
+                                                create: false)
+                } else {
+                    documentsURL = FileManager.default.temporaryDirectory
+                }
+                let folderURL = documentsURL!.appendingPathComponent(AppData.currentCourseFolder+"/"+AppData.currentModuleFolder+filePath)
                 if !FileManager.default.fileExists(atPath: folderURL.absoluteString) {
                     try! FileManager.default.createDirectory(at: folderURL, withIntermediateDirectories: true, attributes: nil)
                 }

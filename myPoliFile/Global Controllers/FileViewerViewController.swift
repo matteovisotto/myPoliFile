@@ -62,7 +62,7 @@ class FileViewerViewController: BaseViewController {
     }
 
     @objc private func didTapShare() {
-        let downloader = Downloader(file: self.file)
+        let downloader = Downloader(file: self.file, fileDirectory: .itemReplacementDirectory)
         downloader.delegate = self
         downloader.startDownload()
     }

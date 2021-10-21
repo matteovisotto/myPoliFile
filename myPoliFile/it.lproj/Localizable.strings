@@ -33,6 +33,7 @@
 
 //WelcomeViewController
 "welcome.welcome" = "Benvenuto\nin myPoliFile";
+"welcome.welcome2" = "Benvenuto in myPoliFile";
 "welcome.personalcode" = "Codice Persona PoliMi";
 "welcome.polimilogin" = "Accedi con PoliMi";
 "welcome.tokenlogin" = "Accedi con token";

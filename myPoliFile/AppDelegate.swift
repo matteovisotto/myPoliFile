@@ -44,8 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let vc: UIViewController
         switch type{
         case .iPad:
-            //vc = WelcomeIPadViewController()
-            vc = WelcomeViewController()
+            vc = WelcomeIPadViewController()
+            //vc = WelcomeViewController()
         case .iPhone:
             vc = WelcomeViewController()
         }

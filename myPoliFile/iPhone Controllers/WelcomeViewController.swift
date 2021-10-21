@@ -90,7 +90,7 @@ class WelcomeViewController: BaseViewController {
             self.tokenButton.isEnabled = true
         } else {
             self.poliMiButton.isEnabled = false
-            self.poliMiButton.isEnabled = false
+            self.tokenButton.isEnabled = false
         }
     }
     
