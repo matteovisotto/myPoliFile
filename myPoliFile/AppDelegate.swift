@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import QuickLook
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -52,6 +53,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navController = UINavigationController(rootViewController: vc)
         navController.navigationBar.isHidden = true
         return navController
+    }
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        if let navigationController = self.window?.rootViewController as? UINavigationController {
+
+               // If the visible view controller is the
+               // view controller you'd like to rotate, allow
+               // that window to support all orientations
+            let currentVC = navigationController.visibleViewController
+               if (currentVC is FileViewerViewController || currentVC is AppQLPreviewController ){
+                   return .all
+               }
+
+               // Else only allow the window to support portrait orientation
+               else {
+                   return .portrait
+               }
+           }
+
+           // If the root view controller hasn't been set yet, just
+           // return anything
+        return .portrait
     }
 
 }

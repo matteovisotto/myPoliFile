@@ -72,6 +72,7 @@
 		664CFBD226F33FB90066CC08 /* ForumContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664CFBD126F33FB90066CC08 /* ForumContentViewController.swift */; };
 		664CFBD426F345D50066CC08 /* ForumPostsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664CFBD326F345D50066CC08 /* ForumPostsParser.swift */; };
 		665E0A9B272147E900D605A8 /* HorizontalProgressrBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665E0A9A272147E900D605A8 /* HorizontalProgressrBar.swift */; };
+		665E0A9D2721522900D605A8 /* AppQLPreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665E0A9C2721522900D605A8 /* AppQLPreviewController.swift */; };
 		66623A3626EF8376000B94B9 /* OfflineFolderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66623A3526EF8376000B94B9 /* OfflineFolderCollectionViewCell.swift */; };
 		66623A3826EFA02A000B94B9 /* NotificationParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66623A3726EFA02A000B94B9 /* NotificationParser.swift */; };
 		66623A3A26EFA1AB000B94B9 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66623A3926EFA1AB000B94B9 /* Notification.swift */; };
@@ -184,6 +185,7 @@
 		664CFBD126F33FB90066CC08 /* ForumContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumContentViewController.swift; sourceTree = "<group>"; };
 		664CFBD326F345D50066CC08 /* ForumPostsParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumPostsParser.swift; sourceTree = "<group>"; };
 		665E0A9A272147E900D605A8 /* HorizontalProgressrBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalProgressrBar.swift; sourceTree = "<group>"; };
+		665E0A9C2721522900D605A8 /* AppQLPreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppQLPreviewController.swift; sourceTree = "<group>"; };
 		66623A3526EF8376000B94B9 /* OfflineFolderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineFolderCollectionViewCell.swift; sourceTree = "<group>"; };
 		66623A3726EFA02A000B94B9 /* NotificationParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationParser.swift; sourceTree = "<group>"; };
 		66623A3926EFA1AB000B94B9 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
@@ -500,6 +502,7 @@
 				66230C9526E8ADE2003DFD41 /* WebLoginViewController.swift */,
 				6666D85B26F1CB210078BCE2 /* TokenAlertViewController.swift */,
 				663478A626ED233700B63527 /* FileViewerViewController.swift */,
+				665E0A9C2721522900D605A8 /* AppQLPreviewController.swift */,
 			);
 			path = "Global Controllers";
 			sourceTree = "<group>";
@@ -653,6 +656,7 @@
 				66230C9B26E8CC39003DFD41 /* TaskManager.swift in Sources */,
 				663478B626EDEBF900B63527 /* SwitchTableViewCell.swift in Sources */,
 				66230C9626E8ADE2003DFD41 /* WebLoginViewController.swift in Sources */,
+				665E0A9D2721522900D605A8 /* AppQLPreviewController.swift in Sources */,
 				66DE700D26EB72E400D8380E /* Module.swift in Sources */,
 				669FC4C026FF60F700E195C7 /* WelcomeViewModel.swift in Sources */,
 				664CFBD226F33FB90066CC08 /* ForumContentViewController.swift in Sources */,
@@ -896,7 +900,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 2FE7MP24X8;
 				INFOPLIST_FILE = myPoliFile/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -904,10 +908,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = it.matteovisotto.myPoliFile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -917,7 +922,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 2FE7MP24X8;
 				INFOPLIST_FILE = myPoliFile/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -925,10 +930,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = it.matteovisotto.myPoliFile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

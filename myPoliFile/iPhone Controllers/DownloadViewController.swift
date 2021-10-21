@@ -11,7 +11,7 @@ import QuickLook
 class DownloadViewController: BaseViewController {
 
     private var collectionView: UICollectionView!
-    private let quickLookController = QLPreviewController()
+    private let quickLookController = AppQLPreviewController()
     private var realNumberOfFiles: Int = 0
     private var realNumberOfFolders: Int = 0
     private var files: [OfflineFile] = []

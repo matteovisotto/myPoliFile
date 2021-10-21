@@ -16,6 +16,10 @@ class FileViewerViewController: BaseViewController {
     private let loaderView = HorizontalProgressBar()
     
     open var file: ModuleContent!
+    
+    override var shouldAutorotate: Bool {
+        return true
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +29,12 @@ class FileViewerViewController: BaseViewController {
         let url = URL(string: file.contentURL)!
         let request = URLRequest(url: url)
         webView.load(request)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
     }
     
     private func setupLayout() {
@@ -91,6 +101,8 @@ class FileViewerViewController: BaseViewController {
             loaderView.progress = CGFloat(progressValue)
         }
     }
+    
+    
 }
 
 extension FileViewerViewController: DownloaderDelegate {
