@@ -24,6 +24,7 @@
 "global.noresult" = "No results found";
 "global.done" = "Done!";
 "global.fatalerror" = "Fatal error";
+"global.preview.download" = "Preparation in progress...";
 
 //File
 "file.documenttype" = "Document type: %@";

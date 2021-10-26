@@ -26,7 +26,7 @@ class FolderContent: ModuleContent {
         }
         self.contentPath = content["filepath"] as! String
         self.mimetype = content["mimetype"] as! String
-        self.author = content["author"] as! String
+        self.author = content["author"] as? String ?? ""
         self.fileExtension = (self.contentName as NSString).pathExtension
         self.isOpenable = isFileOpenable(fileExtension: self.fileExtension)
     }

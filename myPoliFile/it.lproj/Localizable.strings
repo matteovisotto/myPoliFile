@@ -26,6 +26,7 @@
 "global.noresult" = "Nessun risultato";
 "global.done" = "Fatto!";
 "global.fatalerror" = "Errore fatale";
+"global.preview.download" = "Preparazione in corso...";
 
 
 //File

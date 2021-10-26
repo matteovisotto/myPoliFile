@@ -14,6 +14,7 @@ class FileViewerViewController: BaseViewController {
     private var navigationBar = BackHeader()
     private var shareButton = UIButton()
     private let loaderView = HorizontalProgressBar()
+    private let downloadMessage = BlurMessage()
     
     open var file: ModuleContent!
     
@@ -84,12 +85,26 @@ class FileViewerViewController: BaseViewController {
         loaderView.removeFromSuperview()
     }
     
+    private func createDownloadMessage(message: String){
+        self.view.addSubview(downloadMessage)
+        downloadMessage.translatesAutoresizingMaskIntoConstraints = false
+        downloadMessage.topAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: 10).isActive = true
+        downloadMessage.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: 10).isActive = true
+        downloadMessage.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: -10).isActive = true
+        downloadMessage.message = message
+    }
+    
+    private func removeDownloadMessage() {
+        downloadMessage.removeFromSuperview()
+    }
+    
     @objc private func didTapback(){
         self.navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
     }
 
     @objc private func didTapShare() {
+        createDownloadMessage(message: NSLocalizedString("global.preview.download", comment: "Downloading..."))
         let downloader = Downloader(file: self.file, fileDirectory: .itemReplacementDirectory)
         downloader.delegate = self
         downloader.startDownload()
@@ -107,6 +122,10 @@ class FileViewerViewController: BaseViewController {
 
 extension FileViewerViewController: DownloaderDelegate {
     func didDownloaded(result: Bool, url: URL?) {
+        DispatchQueue.main.async {
+            self.removeDownloadMessage()
+        }
+        
         if(result){
             DispatchQueue.main.async {
                 let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [url!], applicationActivities: nil)
