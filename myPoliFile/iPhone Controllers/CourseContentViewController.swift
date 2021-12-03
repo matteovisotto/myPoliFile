@@ -29,6 +29,7 @@ class CourseContentViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         model.loadContent()
+        self.collectionView.reloadData()
     }
     
     private func setupNavigationBar() {
@@ -63,6 +64,10 @@ class CourseContentViewController: BaseViewController {
     @objc private func didTapBack(){
         self.navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    override func willAnimateRotation(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+        self.collectionView.reloadData()
     }
 }
 

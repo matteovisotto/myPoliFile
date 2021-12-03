@@ -56,12 +56,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        if AppGlobal.deviceType == .iPad {
+            return .all
+        }
+        
         if let navigationController = self.window?.rootViewController as? UINavigationController {
-
-               // If the visible view controller is the
-               // view controller you'd like to rotate, allow
-               // that window to support all orientations
+            
             let currentVC = navigationController.visibleViewController
+                                
                if (currentVC is FileViewerViewController || currentVC is AppQLPreviewController ){
                    return .all
                }
@@ -76,6 +78,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
            // return anything
         return .portrait
     }
-
 }
 

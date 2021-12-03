@@ -31,6 +31,11 @@ class FolderViewController: BaseViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.collectionView.reloadData()
+    }
+    
     private func setupNavigationBar() {
         self.view.addSubview(navigationBar)
         navigationBar.translatesAutoresizingMaskIntoConstraints = false
@@ -59,6 +64,10 @@ class FolderViewController: BaseViewController {
     @objc private func didTapBack() {
         self.navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    override func willAnimateRotation(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+        self.collectionView.reloadData()
     }
     
 }

@@ -88,6 +88,10 @@ class SettingsViewController: BaseViewController {
     @objc private func switchValueChange(_ sender: UISwitch) {
         PreferenceManager.setCoursesReloading(defaultAction: sender.isOn)
     }
+    
+    override func willAnimateRotation(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+        self.tableView.reloadData()
+    }
 }
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -190,7 +194,14 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             AppData.categories.removeAll()
              AppData.clearCourses()
             
-            let rootVC = UINavigationController(rootViewController: WelcomeViewController())
+             var rVC: UIViewController? = nil
+             if AppGlobal.deviceType == .iPhone {
+                 rVC = WelcomeViewController()
+             } else {
+                 rVC = WelcomeIPadViewController()
+             }
+            
+            let rootVC = UINavigationController(rootViewController: rVC!)
             rootVC.navigationBar.isHidden = true
             let ad = UIApplication.shared.delegate as! AppDelegate
             let window = ad.window

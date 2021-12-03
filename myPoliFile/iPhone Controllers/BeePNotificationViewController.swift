@@ -28,6 +28,8 @@ class BeePNotificationViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         model.loadContent()
+        (self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout).estimatedItemSize = CGSize(width: UIScreen.main.bounds.width-20, height: 10)
+        self.collectionView.reloadData()
     }
     
     private func setNavigationBar() {
@@ -62,7 +64,10 @@ class BeePNotificationViewController: BaseViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-   
+    override func willAnimateRotation(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+        (self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout).estimatedItemSize = CGSize(width: UIScreen.main.bounds.width-20, height: 10)
+        self.collectionView.reloadData()
+    }
 }
 
 extension BeePNotificationViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {

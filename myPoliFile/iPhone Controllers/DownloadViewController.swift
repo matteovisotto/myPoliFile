@@ -35,6 +35,7 @@ class DownloadViewController: BaseViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
         loadContent()
+        self.collectionView.reloadData()
     }
     
     private func setupCollectionView() {
@@ -163,6 +164,10 @@ class DownloadViewController: BaseViewController {
     
     @objc private func swipeHandler() {
         didTapBackButton()
+    }
+    
+    override func willAnimateRotation(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+        self.collectionView.reloadData()
     }
 }
 

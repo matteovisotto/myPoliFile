@@ -32,7 +32,7 @@ class BaseViewController: UIViewController {
         }
         return c
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .groupTableViewBackground

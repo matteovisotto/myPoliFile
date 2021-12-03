@@ -126,6 +126,10 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         enrollAlert.modalTransitionStyle = .crossDissolve
         self.present(enrollAlert, animated: true, completion: nil)
     }
+    
+    override func willAnimateRotation(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+        self.collectionView.reloadData()
+    }
 }
 
 extension SearchViewController: UISearchBarDelegate {

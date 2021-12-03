@@ -57,10 +57,13 @@ class CoursesViewController: BaseViewController {
         self.topMenu.setSelectedIndex(atIndex: 0)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         model.loadContent()
-        
+        self.topMenu.collectionView.reloadData()
+        self.topMenu.setSelectedIndex(atIndex: model.selectedMenuIndex)
+        (self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout).estimatedItemSize = CGSize(width: UIScreen.main.bounds.width-20, height: 10)
+        self.collectionView.reloadData()
     }
     
     private func setupTopMenu() {
@@ -94,6 +97,13 @@ class CoursesViewController: BaseViewController {
         collectionView.reloadData()
         refreshControl.endRefreshing()
         model.loadContent()
+    }
+    
+    override func willAnimateRotation(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+        self.topMenu.collectionView.reloadData()
+        self.topMenu.setSelectedIndex(atIndex: model.selectedMenuIndex)
+        (self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout).estimatedItemSize = CGSize(width: UIScreen.main.bounds.width-20, height: 10)
+        self.collectionView.reloadData()
     }
 }
 

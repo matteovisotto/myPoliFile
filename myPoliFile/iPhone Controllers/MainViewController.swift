@@ -24,7 +24,6 @@ class MainViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hideKeyboardWhenTappedAround()
         self.view.backgroundColor = .groupTableViewBackground
         
         let collectionViewLayout = UICollectionViewFlowLayout()
@@ -39,6 +38,10 @@ class MainViewController: BaseViewController {
         displayContentController(content: viewControllers[self.selectedItem])
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.collectionView.reloadData()
+        self.collectionView.selectItem(at: IndexPath(item: self.selectedItem, section: 0), animated: true, scrollPosition: .right)
+    }
     
     @objc private func didTapSettingBtn() {
         self.navigationController?.pushViewController(SettingsViewController(), animated: true)
@@ -114,6 +117,11 @@ class MainViewController: BaseViewController {
         content.willMove(toParent: nil)
         content.view.removeFromSuperview()
         content.removeFromParent()
+    }
+ 
+    override func willAnimateRotation(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+        self.collectionView.reloadData()
+        self.collectionView.selectItem(at: IndexPath(item: self.selectedItem, section: 0), animated: true, scrollPosition: .right)
     }
     
 }
