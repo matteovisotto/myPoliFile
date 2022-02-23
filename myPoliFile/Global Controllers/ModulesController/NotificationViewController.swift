@@ -19,7 +19,9 @@ class NotificationViewController: BaseViewController {
         super.viewDidLoad()
         self.view.backgroundColor = backgroundColor
         setupLayout()
+        //let htmlContent = WebpageBuilder.prepareNotificationPage(forNotification: self.notification)
         webView.loadHTMLString(notification.htmlContent, baseURL: nil)
+        webView.navigationDelegate = self
     }
     
     private func setupLayout() {
@@ -44,5 +46,13 @@ class NotificationViewController: BaseViewController {
     @objc private func didTapback(){
         self.navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension NotificationViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        /*webView.evaluateJavaScript("") { _, err in
+            print(err.debugDescription)
+        }*/
     }
 }

@@ -34,6 +34,10 @@ class CourseContentViewModel {
         }
     }
     
+    func refreshContent() {
+        downloadCourse()
+    }
+    
     private func downloadCourse() {
         self.course.sections.removeAll()
         loader = CircleLoader.createGeometricLoader()

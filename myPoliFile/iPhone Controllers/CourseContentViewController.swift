@@ -13,6 +13,7 @@ class CourseContentViewController: BaseViewController {
     
     private let navigationBar = BackHeader()
     private var loader = Loader()
+    private let refreshControl = UIRefreshControl()
     private var collectionView: UICollectionView!
     
     private var model: CourseContentViewModel!
@@ -53,12 +54,19 @@ class CourseContentViewController: BaseViewController {
         collectionView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         collectionView.backgroundColor = .clear
+        collectionView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(didAskRefresh), for: .valueChanged)
+        refreshControl.tintColor = .primary.withAlphaComponent(0.5)
         model.registerCollectionViewElements()
         collectionView.delegate = self
         collectionView.dataSource = self
     }
     
-    
+    @objc private func didAskRefresh() {
+        model.refreshContent()
+        collectionView.reloadData()
+        refreshControl.endRefreshing()
+    }
     
     
     @objc private func didTapBack(){
