@@ -35,7 +35,7 @@ class CourseDetailParser {
                                 let modname = m["modname"] as! String
                                 let modnameEnum = Module.defineModname(modname: modname)
                                 let instance = m["instance"] as! Int
-                                let name = StringParser.getTranslationFromTag(text: m["name"] as! String)
+                                let name = StringParser.getTranslationFromTag(text: m["name"] as? String ?? "")
                                 var module: Module!
                                 
                                 switch modnameEnum {
@@ -43,14 +43,14 @@ class CourseDetailParser {
                                     module = ModuleURL()
                                     let mod = module as! ModuleURL
                                     mod.instance = instance
-                                    mod.contents = ModuleURL.parseContent(content: m["contents"] as! [[String : Any]])
+                                    mod.contents = ModuleURL.parseContent(content: m["contents"] as? [[String : Any]] ?? [])
                                     mod.name = name
                                     break
                                 case .folder:
                                     module = ModuleFolder()
                                     let mod = module as! ModuleFolder
                                     mod.instance = instance
-                                    mod.contents = ModuleFolder.parseContent(content: m["contents"] as! [[String : Any]])
+                                    mod.contents = ModuleFolder.parseContent(content: m["contents"] as? [[String : Any]] ?? [])
                                     mod.name = name
                                     break
                                 case .forum:
@@ -67,7 +67,7 @@ class CourseDetailParser {
                                     module = ModuleResource()
                                     let mod = module as! ModuleResource
                                     mod.instance = instance
-                                    mod.contents = ModuleResource.parseContent(content: m["contents"] as! [[String : Any]])
+                                    mod.contents = ModuleResource.parseContent(content: m["contents"] as? [[String : Any]] ?? [])
                                     mod.name = name
                                     break
                                 default:
