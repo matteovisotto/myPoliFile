@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		66090FA828D3A9240064EA3E /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66090FA728D3A9240064EA3E /* Utils.swift */; };
+		66090FAA28D3AC080064EA3E /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66090FA928D3AC080064EA3E /* DateExtension.swift */; };
 		661D7252272A7C1B0076171A /* SettingIPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661D7251272A7C1B0076171A /* SettingIPadViewController.swift */; };
 		661D7254272A7EF40076171A /* CoursesIPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661D7253272A7EF40076171A /* CoursesIPadViewController.swift */; };
 		661D7256272A84540076171A /* DimensionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661D7255272A84540076171A /* DimensionManager.swift */; };
@@ -124,6 +126,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		66090FA728D3A9240064EA3E /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		66090FA928D3AC080064EA3E /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		661D7251272A7C1B0076171A /* SettingIPadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingIPadViewController.swift; sourceTree = "<group>"; };
 		661D7253272A7EF40076171A /* CoursesIPadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesIPadViewController.swift; sourceTree = "<group>"; };
 		661D7255272A84540076171A /* DimensionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimensionManager.swift; sourceTree = "<group>"; };
@@ -297,6 +301,7 @@
 				661FC5C626E890E300B33983 /* Assets.xcassets */,
 				661FC5C826E890E300B33983 /* LaunchScreen.storyboard */,
 				661FC5CB26E890E300B33983 /* Info.plist */,
+				66090FA728D3A9240064EA3E /* Utils.swift */,
 			);
 			path = myPoliFile;
 			sourceTree = "<group>";
@@ -460,6 +465,7 @@
 				664190AC26EA77C200A08308 /* UIColorExtension.swift */,
 				664190B426EA9FFF00A08308 /* UIViewControllerExtension.swift */,
 				6634788F26EC87D600B63527 /* StringExtension.swift */,
+				66090FA928D3AC080064EA3E /* DateExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -743,6 +749,7 @@
 				663478A526ED176300B63527 /* ForumViewController.swift in Sources */,
 				66DE701726EB774800D8380E /* FolderContent.swift in Sources */,
 				66DE701926EB789500D8380E /* Section.swift in Sources */,
+				66090FA828D3A9240064EA3E /* Utils.swift in Sources */,
 				663478BD26EE06F200B63527 /* ModuleContent.swift in Sources */,
 				66230CBA26E9E513003DFD41 /* Loader.swift in Sources */,
 				664744B326F2476000815030 /* ForumCollectionViewCell.swift in Sources */,
@@ -766,6 +773,7 @@
 				66623A3A26EFA1AB000B94B9 /* Notification.swift in Sources */,
 				66DE700426EB5B2B00D8380E /* Recording.swift in Sources */,
 				66DE701226EB76D100D8380E /* ModuleForum.swift in Sources */,
+				66090FAA28D3AC080064EA3E /* DateExtension.swift in Sources */,
 				66DE701526EB772300D8380E /* ModuleFolder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

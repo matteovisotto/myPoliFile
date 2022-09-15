@@ -83,3 +83,4 @@
 //Enroll
 "enroll.enroll" = "Enroll";
 "enroll.message" = "You have to enroll this course to see its content";
+"enroll.enrollment" = "Enrollment";

@@ -30,7 +30,7 @@ class EnrollAlertController: AlertViewController {
         titleLabel.rightAnchor.constraint(equalTo: alertView.rightAnchor, constant: -10).isActive = true
         titleLabel.font = .boldSystemFont(ofSize: 25)
         titleLabel.textAlignment = .center
-        titleLabel.text = "Token"
+        titleLabel.text = NSLocalizedString("enroll.enrollment", comment: "Enrollment")
         
         alertView.addSubview(messageLabel)
         messageLabel.translatesAutoresizingMaskIntoConstraints = false

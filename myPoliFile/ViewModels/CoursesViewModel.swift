@@ -106,7 +106,16 @@ class CoursesViewModel {
                 cell.tagView.text = "Generic"
                 cell.tagView.color = .systemOrange
             } else {
-                cell.tagView.color = .systemGreen
+                if(Utils.verifyIfAccademicYear(cat.categoryName)){
+                    if(Utils.isCurrentAccademicYear(cat.categoryName)){
+                        cell.tagView.color = .systemGreen
+                    } else {
+                        cell.tagView.color = .systemRed
+                    }
+                } else {
+                    cell.tagView.color = .systemGray
+                }
+                
             }
         }
         return cell
