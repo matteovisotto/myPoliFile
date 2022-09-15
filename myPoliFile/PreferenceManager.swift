@@ -96,5 +96,12 @@ class PreferenceManager {
         UserDefaults.standard.removeObject(forKey: "coursesReloading")
     }
     
+    public static func setOldHidden(_ hidden: Bool) {
+        UserDefaults.standard.setValue(hidden, forKey: "hideOld")
+    }
+    
+    public static func getOldHidden() -> Bool {
+        return UserDefaults.standard.bool(forKey: "hideOld")
+    }
     
 }

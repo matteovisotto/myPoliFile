@@ -42,9 +42,13 @@ class CourseParser {
                             if(isHidden){
                                 AppData.hiddenCourses.append(newCourse)
                             } else {
-                                AppData.courses.append(newCourse)
-                                if(isFavourite){
-                                    AppData.favouriteCourses.append(newCourse)
+                                if(PreferenceManager.getOldHidden()){
+                                    
+                                } else {
+                                    AppData.courses.append(newCourse)
+                                    if(isFavourite){
+                                        AppData.favouriteCourses.append(newCourse)
+                                    }
                                 }
                             }
                         } else {
