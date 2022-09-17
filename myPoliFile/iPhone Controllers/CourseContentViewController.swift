@@ -128,6 +128,10 @@ extension CourseContentViewController: UICollectionViewDelegate, UICollectionVie
                 folderController.folder = FolderViewModel.prepareFiles(myFiles: (module as! ModuleFolder).contents, forCurrentPath: "/")
                 self.navigationController?.pushViewController(folderController, animated: true)
                 break
+            case .page:
+                let pageController = PageViewController()
+                self.navigationController?.pushViewController(pageController, animated: true)
+                break
             default:
                 return
             }

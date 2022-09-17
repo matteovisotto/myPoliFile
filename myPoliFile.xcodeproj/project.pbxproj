@@ -76,6 +76,7 @@
 		664CFBD026F33DCF0066CC08 /* WebpageBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664CFBCF26F33DCF0066CC08 /* WebpageBuilder.swift */; };
 		664CFBD226F33FB90066CC08 /* ForumContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664CFBD126F33FB90066CC08 /* ForumContentViewController.swift */; };
 		664CFBD426F345D50066CC08 /* ForumPostsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664CFBD326F345D50066CC08 /* ForumPostsParser.swift */; };
+		664FFDD528D5C38A00486E48 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664FFDD428D5C38A00486E48 /* PageViewController.swift */; };
 		665E0A9B272147E900D605A8 /* HorizontalProgressrBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665E0A9A272147E900D605A8 /* HorizontalProgressrBar.swift */; };
 		665E0A9D2721522900D605A8 /* AppQLPreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665E0A9C2721522900D605A8 /* AppQLPreviewController.swift */; };
 		66623A3626EF8376000B94B9 /* OfflineFolderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66623A3526EF8376000B94B9 /* OfflineFolderCollectionViewCell.swift */; };
@@ -118,6 +119,8 @@
 		66DE702526EB8CA000D8380E /* MVTopMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE702226EB8CA000D8380E /* MVTopMenuView.swift */; };
 		66DE702726EB90A900D8380E /* GenericCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE702626EB90A900D8380E /* GenericCollectionViewCell.swift */; };
 		66E59AE326EFE2A300EC1CAD /* FileDeleteBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E59AE226EFE2A300EC1CAD /* FileDeleteBottomSheet.swift */; };
+		66E774C328D46C0D00A2CE7B /* ModulePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E774C228D46C0D00A2CE7B /* ModulePage.swift */; };
+		66E774C528D46C5100A2CE7B /* PageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E774C428D46C5100A2CE7B /* PageContent.swift */; };
 		66EAF1B426F86B20009D3F03 /* TitleDescriptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EAF1B326F86B20009D3F03 /* TitleDescriptionButton.swift */; };
 		66EAF1B626F87149009D3F03 /* FeedbackAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EAF1B526F87149009D3F03 /* FeedbackAlert.swift */; };
 		66F2CE1526EF5A42003B1868 /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F2CE1426EF5A42003B1868 /* AppGlobal.swift */; };
@@ -196,6 +199,7 @@
 		664CFBCF26F33DCF0066CC08 /* WebpageBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebpageBuilder.swift; sourceTree = "<group>"; };
 		664CFBD126F33FB90066CC08 /* ForumContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumContentViewController.swift; sourceTree = "<group>"; };
 		664CFBD326F345D50066CC08 /* ForumPostsParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumPostsParser.swift; sourceTree = "<group>"; };
+		664FFDD428D5C38A00486E48 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		665E0A9A272147E900D605A8 /* HorizontalProgressrBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalProgressrBar.swift; sourceTree = "<group>"; };
 		665E0A9C2721522900D605A8 /* AppQLPreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppQLPreviewController.swift; sourceTree = "<group>"; };
 		66623A3526EF8376000B94B9 /* OfflineFolderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineFolderCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -241,6 +245,8 @@
 		66DE702226EB8CA000D8380E /* MVTopMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVTopMenuView.swift; sourceTree = "<group>"; };
 		66DE702626EB90A900D8380E /* GenericCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCollectionViewCell.swift; sourceTree = "<group>"; };
 		66E59AE226EFE2A300EC1CAD /* FileDeleteBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDeleteBottomSheet.swift; sourceTree = "<group>"; };
+		66E774C228D46C0D00A2CE7B /* ModulePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModulePage.swift; sourceTree = "<group>"; };
+		66E774C428D46C5100A2CE7B /* PageContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageContent.swift; sourceTree = "<group>"; };
 		66EAF1B326F86B20009D3F03 /* TitleDescriptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleDescriptionButton.swift; sourceTree = "<group>"; };
 		66EAF1B526F87149009D3F03 /* FeedbackAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackAlert.swift; sourceTree = "<group>"; };
 		66F2CE1426EF5A42003B1868 /* AppGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGlobal.swift; sourceTree = "<group>"; };
@@ -410,6 +416,7 @@
 			children = (
 				66623A3D26EFA591000B94B9 /* NotificationViewController.swift */,
 				664CFBD126F33FB90066CC08 /* ForumContentViewController.swift */,
+				664FFDD428D5C38A00486E48 /* PageViewController.swift */,
 			);
 			path = ModulesController;
 			sourceTree = "<group>";
@@ -543,6 +550,7 @@
 		66DE700926EB72B500D8380E /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				66E774C128D46C0000A2CE7B /* Page */,
 				663478B726EE01A600B63527 /* Resource */,
 				66DE701326EB771600D8380E /* Folder */,
 				66DE700E26EB74F400D8380E /* URL */,
@@ -589,6 +597,15 @@
 				663478AE26ED415400B63527 /* OfflineFile.swift */,
 			);
 			path = OfflineContent;
+			sourceTree = "<group>";
+		};
+		66E774C128D46C0000A2CE7B /* Page */ = {
+			isa = PBXGroup;
+			children = (
+				66E774C228D46C0D00A2CE7B /* ModulePage.swift */,
+				66E774C428D46C5100A2CE7B /* PageContent.swift */,
+			);
+			path = Page;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -713,9 +730,11 @@
 				663478A326ED05B000B63527 /* FileCollectionViewCell.swift in Sources */,
 				665E0A9B272147E900D605A8 /* HorizontalProgressrBar.swift in Sources */,
 				664190AD26EA77C200A08308 /* UIColorExtension.swift in Sources */,
+				664FFDD528D5C38A00486E48 /* PageViewController.swift in Sources */,
 				66230C9E26E8DB93003DFD41 /* AlertViewController.swift in Sources */,
 				66DE700826EB5DAE00D8380E /* Forum.swift in Sources */,
 				6641909F26EA4F5500A08308 /* SquareImageButton.swift in Sources */,
+				66E774C328D46C0D00A2CE7B /* ModulePage.swift in Sources */,
 				66623A3C26EFA396000B94B9 /* NotificationCollectionViewCell.swift in Sources */,
 				66230CA426E8EA25003DFD41 /* MainViewController.swift in Sources */,
 				66DE702526EB8CA000D8380E /* MVTopMenuView.swift in Sources */,
@@ -765,6 +784,7 @@
 				661D7252272A7C1B0076171A /* SettingIPadViewController.swift in Sources */,
 				66230CBC26E9F8F1003DFD41 /* Category.swift in Sources */,
 				66D4DA3227043E2600B186BF /* EnrollAlertController.swift in Sources */,
+				66E774C528D46C5100A2CE7B /* PageContent.swift in Sources */,
 				664190B126EA8DBE00A08308 /* CourseCollectionViewCell.swift in Sources */,
 				669FC4BB26FF254300E195C7 /* FolderViewModel.swift in Sources */,
 				66230CBF26E9FBD9003DFD41 /* CourseParser.swift in Sources */,
