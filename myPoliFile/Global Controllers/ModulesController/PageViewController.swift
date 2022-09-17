@@ -10,16 +10,18 @@ import UIKit
 
 class PageViewController: BaseViewController {
     private var navigationBar = BackHeader()
+    private var loader = Loader()
     
-    private var displayLabel: UITextView = UITextView()
+    private var contentView: UITextView = UITextView()
     
-    private var testHTML = "<div class=\"no-overflow\"><p dir=\"ltr\" style=\"text-align: left;\"></p><h4>Data and Information Quality (DQ) 2022-2023</h4><p><br>    </p><table>    <caption></caption>    <thead>    <tr>    <th scope=\"col\">Date</th>    <th scope=\"col\">Topic</th>    <th scope=\"col\">Recolodings' link</th>    </tr>    </thead>    <tbody>    <tr>    <td>14 -09 - 2022</td>    <td>&nbsp;Introduction to the course (<a href=\"01%20intro.pdf\">slides</a>)&nbsp;</td>    <td><span style=\"font-size: 13.6px;\"><a href=\"https://bit.ly/3SmhiGn\" class=\"_blanktarget\">https://bit.ly/3SmhiGn</a></span></td>    </tr>    <tr>    <td>16 - 09 - 2022</td>    <td>Data Governance (<a href=\"02%20Data%20Governance.pdf\">slides</a>)</td>    <td></td>    </tr><tr>    <td>&nbsp;21 - 09 - 2022</td>    <td>&nbsp;DQ dimensions&nbsp;</td>    <td>&nbsp;</td>    </tr>    </tbody>    </table>    <br><br><p></p><br><p></p></div>"
+    var page: ModulePage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = backgroundColor
         setupLayout()
-        displayLabel.attributedText = testHTML.html2Attributed
+        self.navigationBar.titleLabel.text = page.name
+        downloadPage()
     }
     
     private func setupLayout() {
@@ -32,16 +34,23 @@ class PageViewController: BaseViewController {
         navigationBar.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
         navigationBar.backButton.addTarget(self, action: #selector(didTapback), for: .touchUpInside)
         
-        self.view.addSubview(displayLabel)
-        displayLabel.translatesAutoresizingMaskIntoConstraints = false
-        displayLabel.topAnchor.constraint(equalTo: navigationBar.bottomAnchor).isActive = true
-        displayLabel.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor).isActive = true
-        displayLabel.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor).isActive = true
-        displayLabel.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        displayLabel.isEditable = false
-        displayLabel.delegate = self
+        self.view.addSubview(contentView)
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor).isActive = true
+        contentView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor).isActive = true
+        contentView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        contentView.isEditable = false
+        contentView.delegate = self
     }
     
+    private func downloadPage() {
+        self.loader = CircleLoader.createGeometricLoader()
+        self.loader.startAnimation()
+        let pageTask = TaskManager(url: URL(string: self.page.indexPage)!)
+        pageTask.delegate = self
+        pageTask.execute()
+    }
     
     @objc private func didTapback(){
         self.navigationController?.popViewController(animated: true)
@@ -53,7 +62,41 @@ extension PageViewController: UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL,
                   in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        print(URL.absoluteString)
+        let stringUrl = URL.absoluteString
+        if (stringUrl.starts(with: "http://") || stringUrl.starts(with: "https://")) {
+            UIApplication.shared.open(URL)
+        } else {
+            guard let last = stringUrl.components(separatedBy: "/").last else {return false}
+            for c in self.page.contents {
+                if (c.contentURL.contains(last) && c.isOpenable){
+                    let fileAction = FileOpenAction(target: self, moduleContent: c, loader: self.loader)
+                    fileAction.displayActions()
+                }
+            }
+        }
         return false
+    }
+}
+
+extension PageViewController: TaskManagerDelegate {
+    func taskManager(taskManager: TaskManager, didFinishWith result: Bool, stringContent: String) {
+        DispatchQueue.main.async {
+            self.loader.stopAnimation()
+        }
+        if result{
+            DispatchQueue.main.async {
+                self.contentView.attributedText = stringContent.html2Attributed
+            }
+        } else {
+            //Show error
+            DispatchQueue.main.async {
+                self.loader.stopAnimation()
+                let errorVC = ErrorAlertController()
+                errorVC.isLoadingPhase = false
+                errorVC.setContent(title: NSLocalizedString("global.error", comment: "Error"), message: stringContent)
+                errorVC.modalPresentationStyle = .overFullScreen
+                self.present(errorVC, animated: true, completion: nil)
+            }
+        }
     }
 }

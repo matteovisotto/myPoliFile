@@ -10,7 +10,17 @@ import UIKit
 
 class ModulePage: Module {
     
-    var contents: [PageContent] = []
+    var contents: [PageContent] = [] {
+        didSet {
+            for c in contents {
+                if (c.fileExtension == "html") {
+                    indexPage = c.contentURL
+                }
+            }
+        }
+    }
+    
+    var indexPage = ""
     
     required init() {
         super.init(modname: .page, icon: UIImage(named: "icon-page")!)
@@ -19,7 +29,7 @@ class ModulePage: Module {
     public static func parseContent(content: [[String: Any]]) -> [PageContent]{
         var contents: [PageContent] = []
         for c in content {
-            //contents.append(FolderContent(content: c))
+            contents.append(PageContent(content: c))
         }
         return contents
     }

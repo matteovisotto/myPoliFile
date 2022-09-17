@@ -130,6 +130,7 @@ extension CourseContentViewController: UICollectionViewDelegate, UICollectionVie
                 break
             case .page:
                 let pageController = PageViewController()
+                pageController.page = (module as! ModulePage)
                 self.navigationController?.pushViewController(pageController, animated: true)
                 break
             default:
