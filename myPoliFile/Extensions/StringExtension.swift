@@ -33,77 +33,11 @@ extension UIColor {
 
 extension String {
     var html2Attributed: NSAttributedString? {
+        let h = "<style>table {  border: 1px solid #ccc;  border-collapse: collapse;  margin: 0;  padding: 0;  width: 100%;  table-layout: fixed;}table caption {  font-size: 1.5em;  margin: .5em 0 .75em;}table tr {  background-color: #f8f8f8;  border: 1px solid #ddd;  padding: .35em;}table th,table td {  padding: .625em;  text-align: center;}table th {  font-size: .85em;  letter-spacing: .1em;  text-transform: uppercase;}@media screen and (max-width: 600px) {  table {    border: 0;  }  table caption {    font-size: 1.3em;  }    table thead {    border: none;    clip: rect(0 0 0 0);    height: 1px;    margin: -1px;    overflow: hidden;    padding: 0;    position: absolute;    width: 1px;  }    table tr {    border-bottom: 3px solid #ddd;    display: block;    margin-bottom: .625em;  }    table td {    border-bottom: 1px solid #ddd;    display: block;    font-size: .8em;    text-align: right;  }    table td::before {    /*    * aria-label has no advantage, it won't be read inside a table    content: attr(aria-label);    */    content: attr(data-label);    float: left;    font-weight: bold;    text-transform: uppercase;  }    table td:last-child {    border-bottom: 0;  }}/* general styling */body {  font-family: \"Open Sans\", sans-serif;  line-height: 1.25;}</style> \(self)"
         do {
-            guard let data = data(using: String.Encoding.utf8) else {
+            guard let data = h.data(using: String.Encoding.utf8) else {
                 return nil
             }
-            return try NSAttributedString(data: data,
-                                          options: [.documentType: NSAttributedString.DocumentType.html,
-                                                    .characterEncoding: String.Encoding.utf8.rawValue],
-                                          documentAttributes: nil)
-        } catch {
-            print("error: ", error)
-            return nil
-        }
-    }
-    
-    var htmlAttributed: (NSAttributedString?, NSDictionary?) {
-        do {
-            guard let data = data(using: String.Encoding.utf8) else {
-                return (nil, nil)
-            }
-
-            var dict:NSDictionary?
-            dict = NSMutableDictionary()
-
-            return try (NSAttributedString(data: data,
-                                          options: [.documentType: NSAttributedString.DocumentType.html,
-                                                    .characterEncoding: String.Encoding.utf8.rawValue],
-                                          documentAttributes: &dict), dict)
-        } catch {
-            print("error: ", error)
-            return (nil, nil)
-        }
-    }
-    
-    func htmlAttributed(using font: UIFont, color: UIColor) -> NSAttributedString? {
-        do {
-            let htmlCSSString = "<style>" +
-                "html *" +
-                "{" +
-                "font-size: \(font.pointSize)pt !important;" +
-                "color: #\(color.hexString!) !important;" +
-                "font-family: \(font.familyName), Helvetica !important;" +
-                "}</style> \(self)"
-
-            guard let data = htmlCSSString.data(using: String.Encoding.utf8) else {
-                return nil
-            }
-
-            return try NSAttributedString(data: data,
-                                          options: [.documentType: NSAttributedString.DocumentType.html,
-                                                    .characterEncoding: String.Encoding.utf8.rawValue],
-                                          documentAttributes: nil)
-        } catch {
-            print("error: ", error)
-            return nil
-        }
-    }
-
-    func htmlAttributed(family: String?, size: CGFloat, color: UIColor) -> NSAttributedString? {
-        do {
-            let htmlCSSString = "<style>" +
-                "html *" +
-                "{" +
-                "font-size: \(size)pt !important;" +
-                "color: #\(color.hexString!) !important;" +
-                "font-family: \(family ?? "Helvetica"), Helvetica !important;" +
-            "}</style> \(self)"
-
-            guard let data = htmlCSSString.data(using: String.Encoding.utf8) else {
-                return nil
-            }
-
             return try NSAttributedString(data: data,
                                           options: [.documentType: NSAttributedString.DocumentType.html,
                                                     .characterEncoding: String.Encoding.utf8.rawValue],

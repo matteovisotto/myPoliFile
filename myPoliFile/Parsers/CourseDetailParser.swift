@@ -77,6 +77,11 @@ class CourseDetailParser {
                                     mod.contents = ModulePage.parseContent(content: m["contents"] as? [[String: Any]] ?? [])
                                     mod.name = name
                                     break
+                                case .lesson:
+                                    module = ModuleLesson()
+                                    module.instance = instance
+                                    module.name = name
+                                    break
                                 default:
                                     module = Module(modname: .undefined, icon: UIImage(named: "icon-undefined") ?? UIImage())
                                     module.instance = instance

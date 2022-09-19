@@ -16,6 +16,7 @@ class Module {
         case forum
         case resource
         case page
+        case lesson
         case undefined
     }
     
@@ -42,6 +43,8 @@ class Module {
             return .resource
         } else if (modname == "page") {
             return .page
+        } else if (modname == "lesson") {
+            return .lesson
         } else {
             return .undefined
         }

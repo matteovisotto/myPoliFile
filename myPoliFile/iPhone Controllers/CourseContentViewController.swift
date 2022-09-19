@@ -133,6 +133,11 @@ extension CourseContentViewController: UICollectionViewDelegate, UICollectionVie
                 pageController.page = (module as! ModulePage)
                 self.navigationController?.pushViewController(pageController, animated: true)
                 break
+            case .lesson:
+                let lessonController = LessonViewController()
+                lessonController.lesson = (module as! ModuleLesson)
+                self.navigationController?.pushViewController(lessonController, animated: true)
+                break
             default:
                 return
             }
