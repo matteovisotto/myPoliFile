@@ -105,6 +105,10 @@ class CoursesViewController: BaseViewController {
         (self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout).estimatedItemSize = CGSize(width: UIScreen.main.bounds.width-20, height: 10)
         self.collectionView.reloadData()
     }
+    
+    func reloadContent() {
+        self.collectionView.reloadData()
+    }
 }
 
 extension CoursesViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {

@@ -66,11 +66,11 @@ class CoursesViewModel {
     
     func getNumberOfElements() -> Int {
         if(self.selectedMenuIndex == 0){
-            realNumberOfItems = AppData.courses.count
+            realNumberOfItems = AppData.coursesGetProxy.count
         } else if (self.selectedMenuIndex == 1){
-            realNumberOfItems = AppData.favouriteCourses.count
+            realNumberOfItems = AppData.favouriteCoursesGetProxy.count
         } else {
-            realNumberOfItems = AppData.hiddenCourses.count
+            realNumberOfItems = AppData.hiddenCoursesGetProxy.count
         }
 
         return (realNumberOfItems==0) ? 1 : realNumberOfItems
@@ -86,11 +86,11 @@ class CoursesViewModel {
         
         var course: Course!
         if(self.selectedMenuIndex == 0){
-            course = AppData.courses[indexPath.item]
+            course = AppData.coursesGetProxy[indexPath.item]
         } else if (self.selectedMenuIndex == 1){
-            course = AppData.favouriteCourses[indexPath.item]
+            course = AppData.favouriteCoursesGetProxy[indexPath.item]
         } else {
-            course = AppData.hiddenCourses[indexPath.item]
+            course = AppData.hiddenCoursesGetProxy[indexPath.item]
         }
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "courseCell", for: indexPath) as! CourseCollectionViewCell
@@ -125,11 +125,11 @@ class CoursesViewModel {
         if isEmpty {return}
         var course: Course!
         if(self.selectedMenuIndex == 0){
-            course = AppData.courses[indexPath.item]
+            course = AppData.coursesGetProxy[indexPath.item]
         } else if (self.selectedMenuIndex == 1){
-            course = AppData.favouriteCourses[indexPath.item]
+            course = AppData.favouriteCoursesGetProxy[indexPath.item]
         } else {
-            course = AppData.hiddenCourses[indexPath.item]
+            course = AppData.hiddenCoursesGetProxy[indexPath.item]
         }
         
         AppData.currentCourse = StringParser.parseCourseName(course.fullname).courseName

@@ -18,7 +18,15 @@ class MainIPadViewController: BaseViewController {
     
     private var headerView = HomeHeader()
     
-    private var selectedItem: Int = 0
+    private var selectedItem: Int = 0{
+        didSet{
+            if(selectedItem == 0){
+                headerView.filterButton.isHidden = false
+            } else {
+                headerView.filterButton.isHidden = true
+            }
+        }
+    }
     
     private let viewControllers: [UIViewController] = [CoursesIPadViewController(), SearchViewController(), DownloadViewController()]
     private let titles: [String] = [NSLocalizedString("home.courses", comment: ""), NSLocalizedString("home.search", comment: ""), "Download"]
@@ -49,6 +57,18 @@ class MainIPadViewController: BaseViewController {
         self.navigationController?.pushViewController(BeePNotificationViewController(), animated: true)
     }
     
+    @objc private func didTapFilterBtn() {
+        let filterController = FilterAlertViewController()
+        filterController.modalPresentationStyle = .overFullScreen
+        filterController.callback = {filter in
+            PreferenceManager.setCourseFilter(filter)
+            if let cVC = self.viewControllers[0] as? CoursesIPadViewController {
+                cVC.reloadContent()
+            }
+        }
+        self.present(filterController, animated: true)
+    }
+    
     private func setHeader() {
         self.view.addSubview(headerView)
         headerView.translatesAutoresizingMaskIntoConstraints = false
@@ -60,6 +80,7 @@ class MainIPadViewController: BaseViewController {
         headerView.headerTitle = NSLocalizedString("home.courses", comment: "")
         headerView.settingsButton.addTarget(self, action: #selector(didTapSettingBtn), for: .touchUpInside)
         headerView.notificationButton.addTarget(self, action: #selector(didTapNotificationBtn), for: .touchUpInside)
+        headerView.filterButton.addTarget(self, action: #selector(didTapFilterBtn), for: .touchUpInside)
     }
     
     private func setCollectionView() {

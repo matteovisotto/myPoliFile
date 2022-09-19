@@ -38,6 +38,7 @@
 		66230CC126E9FD9A003DFD41 /* CategoryParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66230CC026E9FD9A003DFD41 /* CategoryParser.swift */; };
 		66230CC326EA2625003DFD41 /* UserParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66230CC226EA2625003DFD41 /* UserParser.swift */; };
 		66230CC526EA2974003DFD41 /* FatalErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66230CC426EA2974003DFD41 /* FatalErrorViewController.swift */; };
+		66290C8A28D89AC7007265A5 /* FilterAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66290C8928D89AC7007265A5 /* FilterAlertViewController.swift */; };
 		6634789026EC87D600B63527 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6634788F26EC87D600B63527 /* StringExtension.swift */; };
 		6634789226EC889A00B63527 /* FloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6634789126EC889A00B63527 /* FloatingTextField.swift */; };
 		6634789426EC973400B63527 /* ModuleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6634789326EC973400B63527 /* ModuleCollectionViewCell.swift */; };
@@ -166,6 +167,7 @@
 		66230CC026E9FD9A003DFD41 /* CategoryParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryParser.swift; sourceTree = "<group>"; };
 		66230CC226EA2625003DFD41 /* UserParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserParser.swift; sourceTree = "<group>"; };
 		66230CC426EA2974003DFD41 /* FatalErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FatalErrorViewController.swift; sourceTree = "<group>"; };
+		66290C8928D89AC7007265A5 /* FilterAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterAlertViewController.swift; sourceTree = "<group>"; };
 		6634788F26EC87D600B63527 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		6634789126EC889A00B63527 /* FloatingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTextField.swift; sourceTree = "<group>"; };
 		6634789326EC973400B63527 /* ModuleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -544,6 +546,7 @@
 				6666D85B26F1CB210078BCE2 /* TokenAlertViewController.swift */,
 				663478A626ED233700B63527 /* FileViewerViewController.swift */,
 				665E0A9C2721522900D605A8 /* AppQLPreviewController.swift */,
+				66290C8928D89AC7007265A5 /* FilterAlertViewController.swift */,
 			);
 			path = "Global Controllers";
 			sourceTree = "<group>";
@@ -781,6 +784,7 @@
 				66230CC526EA2974003DFD41 /* FatalErrorViewController.swift in Sources */,
 				66230CA026E8DDDC003DFD41 /* ErrorAlertController.swift in Sources */,
 				66D4602A26EBE43A003C4682 /* ForumParser.swift in Sources */,
+				66290C8A28D89AC7007265A5 /* FilterAlertViewController.swift in Sources */,
 				663478AF26ED415400B63527 /* OfflineFile.swift in Sources */,
 				66D18E1626FE5B3800CCD183 /* WelcomeIPadViewController.swift in Sources */,
 				66C283D628D8592C006E1449 /* LessonViewController.swift in Sources */,

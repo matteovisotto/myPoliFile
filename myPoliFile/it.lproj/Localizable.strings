@@ -27,7 +27,10 @@
 "global.done" = "Fatto!";
 "global.fatalerror" = "Errore fatale";
 "global.preview.download" = "Preparazione in corso...";
-
+"global.filter.all" = "Tutti";
+"global.filter.current" = "Corrente";
+"global.filter.old" = "Precedenti";
+"global.apply" = "Applica";
 
 //File
 "file.documenttype" = "Documento: %@";
@@ -84,6 +87,8 @@
 "alert.fileactiontext" = "Scegli un azione per questo file";
 "alert.downloaddescription" = "Scarica il file direttamente nel tuo device";
 "alert.opendescription" = "Apri in preview nell'app, successivamente puoi sempre scaricarlo";
+"alert.filter.title" = "Filtra corsi";
+"alert.filter.message" = "Seleziona se visualizzare tutti i corsi, solo i vecchi o solo i nuovi";
 
 //Enroll
 "enroll.enroll" = "Iscriviti";

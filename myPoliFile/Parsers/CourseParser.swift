@@ -42,14 +42,10 @@ class CourseParser {
                             if(isHidden){
                                 AppData.hiddenCourses.append(newCourse)
                             } else {
-                                if(PreferenceManager.getOldHidden()){
-                                    
-                                } else {
                                     AppData.courses.append(newCourse)
                                     if(isFavourite){
                                         AppData.favouriteCourses.append(newCourse)
                                     }
-                                }
                             }
                         } else {
                             DispatchQueue.main.async {

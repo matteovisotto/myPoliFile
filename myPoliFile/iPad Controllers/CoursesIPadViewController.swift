@@ -63,6 +63,10 @@ override func viewDidAppear(_ animated: Bool) {
     model.loadContent()
     
 }
+    
+func reloadContent() {
+    self.collectionView.reloadData()
+}
 
 private func setupTopMenu() {
     self.view.addSubview(topMenu)
