@@ -77,6 +77,8 @@
 "error.download" = "Si è verificato un errore nel download del file";
 "error.userdata" = "Impossibile trovare i tuoi dati personali";
 "error.unablestart" = "L'errore verificatosi non permette l'avvio dell'applicazione";
+"error.web.invalidToken" = "Il tuo token di accesso è cambiato. Effettua nuovamente il login per continuare ad usare l'app";
+"error.web.generic" = "Si è verificato con il server, riprova più tardi";
 
 //Alerts
 "alert.deletefoldertext" = "Sicuro di voler eliminare la cartella %@ e tutti i file in essa contenuti?";

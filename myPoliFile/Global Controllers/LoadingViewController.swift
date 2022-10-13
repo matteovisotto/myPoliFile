@@ -61,8 +61,49 @@ class LoadingViewController: BaseViewController {
 
 extension LoadingViewController: TaskManagerDelegate {
     func taskManager(taskManager: TaskManager, didFinishWith result: Bool, stringContent: String) {
-        //TODO:- Here if the string content is {"exception":"moodle_exception","errorcode":"invalidtoken","message":"Token non valido - il token non \u00e8 stato trovato"} the token is changed, so logout.
             if result {
+                let errorHandler = ErrorParser(target: self, stringData: stringContent)
+                if let errorType = errorHandler.getError() {
+                    if errorType == .invalidToken {
+                        DispatchQueue.main.async {
+                            let forceLogout = ForceLogoutAlertController()
+                            forceLogout.setAlert(title: NSLocalizedString("global.error", comment: "Error"), message: NSLocalizedString(errorType.rawValue, comment: "")) {
+                                PreferenceManager.removeToken()
+                                PreferenceManager.removePersonalCode()
+                                PreferenceManager.removeFileDefaultAction()
+                                PreferenceManager.removeCoursesReloading()
+                                AppData.mySelf = User()
+                                AppData.categories.removeAll()
+                                 AppData.clearCourses()
+                                
+                                 var rVC: UIViewController? = nil
+                                 if AppGlobal.deviceType == .iPhone {
+                                     rVC = WelcomeViewController()
+                                 } else {
+                                     rVC = WelcomeIPadViewController()
+                                 }
+                                
+                                let rootVC = UINavigationController(rootViewController: rVC!)
+                                rootVC.navigationBar.isHidden = true
+                                let ad = UIApplication.shared.delegate as! AppDelegate
+                                let window = ad.window
+                                window?.rootViewController = rootVC
+                                window?.makeKeyAndVisible()
+                            }
+                            forceLogout.modalPresentationStyle = .overFullScreen
+                            self.present(forceLogout, animated: true)
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            let errorVC = ErrorAlertController()
+                            errorVC.setContent(title: NSLocalizedString("global.error", comment: "Error"), message: NSLocalizedString(errorType.rawValue, comment: ""))
+                            errorVC.modalPresentationStyle = .overFullScreen
+                            self.present(errorVC, animated: true, completion: nil)
+                        }
+                    }
+                    return
+                }
+                
                 if(taskManager == userTask) {
                     let uParser = UserParser(target: self, stringData: stringContent)
                     uParser.parse {

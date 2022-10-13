@@ -99,6 +99,8 @@
 		66C283D428D856D9006E1449 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C283D328D856D9006E1449 /* Lesson.swift */; };
 		66C283D628D8592C006E1449 /* LessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C283D528D8592C006E1449 /* LessonViewController.swift */; };
 		66C283D828D8598D006E1449 /* LessonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C283D728D8598D006E1449 /* LessonViewModel.swift */; };
+		66C5C33528F8510000B0B3DE /* ErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C5C33428F8510000B0B3DE /* ErrorParser.swift */; };
+		66C5C33728F853E200B0B3DE /* ForceLogoutAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C5C33628F853E200B0B3DE /* ForceLogoutAlertController.swift */; };
 		66D18E0A26FE25BC00CCD183 /* StringParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D18E0926FE25BC00CCD183 /* StringParser.swift */; };
 		66D18E0F26FE3A5500CCD183 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D18E0E26FE3A5500CCD183 /* AppData.swift */; };
 		66D18E1226FE3E1800CCD183 /* CoursesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D18E1126FE3E1800CCD183 /* CoursesViewModel.swift */; };
@@ -231,6 +233,8 @@
 		66C283D328D856D9006E1449 /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
 		66C283D528D8592C006E1449 /* LessonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewController.swift; sourceTree = "<group>"; };
 		66C283D728D8598D006E1449 /* LessonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewModel.swift; sourceTree = "<group>"; };
+		66C5C33428F8510000B0B3DE /* ErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorParser.swift; sourceTree = "<group>"; };
+		66C5C33628F853E200B0B3DE /* ForceLogoutAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceLogoutAlertController.swift; sourceTree = "<group>"; };
 		66D18E0926FE25BC00CCD183 /* StringParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringParser.swift; sourceTree = "<group>"; };
 		66D18E0E26FE3A5500CCD183 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		66D18E1126FE3E1800CCD183 /* CoursesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesViewModel.swift; sourceTree = "<group>"; };
@@ -365,6 +369,7 @@
 				66E59AE226EFE2A300EC1CAD /* FileDeleteBottomSheet.swift */,
 				66EAF1B526F87149009D3F03 /* FeedbackAlert.swift */,
 				66D4DA3127043E2600B186BF /* EnrollAlertController.swift */,
+				66C5C33628F853E200B0B3DE /* ForceLogoutAlertController.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -412,6 +417,7 @@
 				664CFBD326F345D50066CC08 /* ForumPostsParser.swift */,
 				66D18E0926FE25BC00CCD183 /* StringParser.swift */,
 				66C283D128D85684006E1449 /* LessonParser.swift */,
+				66C5C33428F8510000B0B3DE /* ErrorParser.swift */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -752,6 +758,7 @@
 				664190AD26EA77C200A08308 /* UIColorExtension.swift in Sources */,
 				664FFDD528D5C38A00486E48 /* PageViewController.swift in Sources */,
 				66230C9E26E8DB93003DFD41 /* AlertViewController.swift in Sources */,
+				66C5C33528F8510000B0B3DE /* ErrorParser.swift in Sources */,
 				66DE700826EB5DAE00D8380E /* Forum.swift in Sources */,
 				6641909F26EA4F5500A08308 /* SquareImageButton.swift in Sources */,
 				66E774C328D46C0D00A2CE7B /* ModulePage.swift in Sources */,
@@ -760,6 +767,7 @@
 				66DE702526EB8CA000D8380E /* MVTopMenuView.swift in Sources */,
 				66DE700B26EB72C900D8380E /* ModuleURL.swift in Sources */,
 				66D18E1426FE502D00CCD183 /* CourseContentViewModel.swift in Sources */,
+				66C5C33728F853E200B0B3DE /* ForceLogoutAlertController.swift in Sources */,
 				66D4602C26EBE574003C4682 /* Discussion.swift in Sources */,
 				66C283D828D8598D006E1449 /* LessonViewModel.swift in Sources */,
 				6666D85C26F1CB210078BCE2 /* TokenAlertViewController.swift in Sources */,
@@ -972,7 +980,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = 2FE7MP24X8;
 				INFOPLIST_FILE = myPoliFile/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -980,7 +988,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = it.matteovisotto.myPoliFile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -994,7 +1002,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = 2FE7MP24X8;
 				INFOPLIST_FILE = myPoliFile/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1002,7 +1010,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = it.matteovisotto.myPoliFile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
