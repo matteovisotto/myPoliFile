@@ -61,7 +61,7 @@ class LoadingViewController: BaseViewController {
 
 extension LoadingViewController: TaskManagerDelegate {
     func taskManager(taskManager: TaskManager, didFinishWith result: Bool, stringContent: String) {
-            //Load user information task result
+        //TODO:- Here if the string content is {"exception":"moodle_exception","errorcode":"invalidtoken","message":"Token non valido - il token non \u00e8 stato trovato"} the token is changed, so logout.
             if result {
                 if(taskManager == userTask) {
                     let uParser = UserParser(target: self, stringData: stringContent)
