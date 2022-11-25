@@ -49,7 +49,7 @@ class StringParser {
                 let courseName = secondDivision[0]
                 let courseProf = secondDivision[1].replacingOccurrences(of: ")", with: "")
                 cName.courseName = String(courseName).trimmingCharacters(in: .whitespacesAndNewlines)
-                cName.courseProf = courseProf.trimmingCharacters(in: .whitespacesAndNewlines)
+                cName.courseProf = courseProf.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: "(\\[[0-9]{6}\\])", with: "", options: .regularExpression)
                 return cName
             }
             cName.courseName = String(fullCourseName).trimmingCharacters(in: .whitespacesAndNewlines)
