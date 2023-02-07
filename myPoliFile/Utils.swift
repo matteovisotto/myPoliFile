@@ -21,7 +21,7 @@ class Utils {
     public static func isCurrentAccademicYear(_ categoryName: String) -> Bool{
         let startYear: String = categoryName.components(separatedBy: "-").first ?? ""
         let today = Date()
-        if((Int(startYear) == today.getYear()) || (Int(startYear) ?? 0 < today.getYear() && today.getMonth() <= 8)) {
+        if((Int(startYear) == today.getYear()) || (Int(startYear) ?? 0 == today.getYear()-1 && today.getMonth() <= 8)) {
             return true
         }
         return false
