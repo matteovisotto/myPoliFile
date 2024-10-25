@@ -40,6 +40,7 @@ class PageViewController: BaseViewController {
         contentView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor).isActive = true
         contentView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        contentView.backgroundColor = .white
         contentView.isEditable = false
         contentView.delegate = self
     }
