@@ -89,6 +89,8 @@ class WelcomeIPadViewController: BaseViewController {
         loginButton.setTitle(NSLocalizedString("welcome.polimilogin", comment: "PoliMi Login"), for: .normal)
         tokenButton.setTitle(NSLocalizedString("welcome.tokenlogin", comment: "Token Login"), for: .normal)
         tokenButton.setTitleColor(.primary, for: .normal)
+        tokenButton.setTitleColor(.primary.withAlphaComponent(0.5), for: .disabled)
+        
         
         personalCode.addTarget(self, action: #selector(textChanges), for: .editingChanged)
         loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)

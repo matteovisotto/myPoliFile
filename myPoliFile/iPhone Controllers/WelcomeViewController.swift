@@ -44,6 +44,7 @@ class WelcomeViewController: BaseViewController {
         tokenButton.heightAnchor.constraint(equalToConstant: 33).isActive = true
         tokenButton.setTitle(NSLocalizedString("welcome.tokenlogin", comment: "Token Login"), for: .normal)
         tokenButton.setTitleColor(.primary, for: .normal)
+        tokenButton.setTitleColor(.primary.withAlphaComponent(0.5), for: .disabled)
         tokenButton.addTarget(self, action: #selector(didTapTokenButton), for: .touchUpInside)
         tokenButton.isEnabled = false
         

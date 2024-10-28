@@ -31,6 +31,12 @@ class AppButton: UIButton {
         }
     }
     
+    override var isEnabled: Bool {
+        didSet {
+            backgroundColor = isEnabled ? normalColor : normalColor.withAlphaComponent(0.5)
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = normalColor
